@@ -15,3 +15,8 @@ p, h3 {
     margin-right: 5px;
     margin-left: 2px;
   }
+
+  .post-image {
+    height: 100px;
+    margin: 5px;
+  }
