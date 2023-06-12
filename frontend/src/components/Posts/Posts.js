@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPostErrors, fetchPosts } from "../../store/posts";
 import PostBox from "./PostBox";
+import "./PostBox.css";
 
 function Posts() {
   const dispatch = useDispatch();
@@ -17,9 +18,13 @@ function Posts() {
   return (
     <>
       <h2>All posts</h2>
+      <div className="post-index-container">
+        <div>
       {posts.map((post) => (
         <PostBox key={post._id} post={post} />
       ))}
+      </div>
+      </div>
     </>
   );
 }
