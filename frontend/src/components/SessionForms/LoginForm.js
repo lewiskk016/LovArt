@@ -45,6 +45,7 @@ function LoginForm() {
               <label>
                 Email
                 <input
+                required
                   type="text"
                   value={email}
                   onChange={update("email")}
@@ -55,6 +56,7 @@ function LoginForm() {
               <label>
                 Password
                 <input
+                required
                   type="password"
                   value={password}
                   onChange={update("password")}

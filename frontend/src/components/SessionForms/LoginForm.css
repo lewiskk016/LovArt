@@ -105,6 +105,7 @@ color: rgb(217, 100, 120)
 .text-overlay h1{
     /* text-shadow: 1px 1px 1px #000, 
     3px 3px 5px blue; */
+    font-size: 24px;
     background-color: cornflowerblue;
     color: rgba(255, 255, 255, 1);
     text-shadow: 2px 2px 0px rgba(64, 116, 181, 1), 
@@ -146,7 +147,7 @@ color: rgb(217, 100, 120)
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 .session-form input[type="text"] {
@@ -173,19 +174,24 @@ color: rgb(217, 100, 120)
     font-size: 14px;
     line-height: 1.29em;
 }
+.session-form input[type="submit"]::placeholder{
+    text-align: start;
+}
 
 .session-form input[type="submit"]{
     display: block;
     box-sizing: border-box;
     width: 36%;
     margin: 0 0 18px;
-    padding: 15px 90px;
+    padding: 15px 168px;
     background: black;
     color: white;
     border: 1px solid #999;
     border-radius: 3px;
     font-size: 14px;
     line-height: 1.29em;
+    cursor: pointer;
+    text-align: center;
    
 }
 
