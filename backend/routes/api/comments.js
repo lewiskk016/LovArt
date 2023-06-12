@@ -137,4 +137,51 @@ router.delete('/:commentId', requireUser, async (req, res, next) => {
   }
 });
 
+// Like a comment
+router.post('/:commentId/like', requireUser, async (req, res, next) => {
+    try {
+      const comment = await Comment.findById(req.params.commentId);
+  
+      if (!comment) {
+        throw new Error('Comment not found');
+      }
+  
+      if (comment.likes.includes(req.user._id)) {
+        throw new Error('User has already liked this comment');
+      }
+  
+      comment.likes.push(req.user._id);
+      await comment.save();
+  
+      return res.json(comment);
+    } catch (err) {
+      next(err);
+    }
+  });
+  
+  // Unlike a comment
+  router.post('/:commentId/unlike', requireUser, async (req, res, next) => {
+    try {
+      const comment = await Comment.findById(req.params.commentId);
+  
+      if (!comment) {
+        throw new Error('Comment not found');
+      }
+  
+      const likeIndex = comment.likes.indexOf(req.user._id);
+  
+      if (likeIndex === -1) {
+        throw new Error('User has not liked this comment');
+      }
+  
+      comment.likes.splice(likeIndex, 1);
+      await comment.save();
+  
+      return res.json(comment);
+    } catch (err) {
+      next(err);
+    }
+  });
+  
+
 module.exports = router;

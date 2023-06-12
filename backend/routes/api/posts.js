@@ -130,5 +130,54 @@ router.delete('/:id', requireUser, async (req, res, next) => {
   }
 });
 
+// Like a post
+router.post('/:postId/like', requireUser, async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+
+    if (!post) {
+      throw new Error('Post not found');
+    }
+
+    if (post.likes.includes(req.user._id)) {
+      throw new Error('User has already liked this post');
+    }
+
+    post.likes.push(req.user._id);
+    await post.save();
+
+    return res.json(post);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Unlike a post
+router.post('/:postId/unlike', requireUser, async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+
+    if (!post) {
+      throw new Error('Post not found');
+    }
+
+    const likeIndex = post.likes.indexOf(req.user._id);
+
+    if (likeIndex === -1) {
+      throw new Error('User has not liked this post');
+    }
+
+    post.likes.splice(likeIndex, 1);
+    await post.save();
+
+    return res.json(post);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Similar endpoints can be created for comments as well.
+
+
 
 module.exports = router;
