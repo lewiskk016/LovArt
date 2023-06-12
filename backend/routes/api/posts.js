@@ -69,4 +69,63 @@ router.post('/', requireUser, validatePostInput, async (req, res, next) => {
   }
 });
 
+router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      const error = new Error('Post not found');
+      error.statusCode = 404;
+      error.errors = { message: "No post found with that id" };
+      return next(error);
+    }
+
+    // Check if the authenticated user is the author of the post
+    if (post.author.toString() !== req.user._id.toString()) {
+      const error = new Error('Unauthorized');
+      error.statusCode = 401;
+      error.errors = { message: "You are not authorized to edit this post" };
+      return next(error);
+    }
+
+    // Update the post with the new text
+    post.text = req.body.text;
+    const updatedPost = await post.save();
+
+    return res.json(updatedPost);
+  }
+  catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:id', requireUser, async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      const error = new Error('Post not found');
+      error.statusCode = 404;
+      error.errors = { message: "No post found with that id" };
+      return next(error);
+    }
+
+    // Check if the authenticated user is the author of the post
+    if (post.author.toString() !== req.user._id.toString()) {
+      const error = new Error('Unauthorized');
+      error.statusCode = 401;
+      error.errors = { message: "You are not authorized to delete this post" };
+      return next(error);
+    }
+
+    await Post.deleteOne({ _id: post._id });
+
+    return res.json({ success: true });
+  }
+  catch (err) {
+    next(err);
+  }
+});
+
+
 module.exports = router;
