@@ -21,7 +21,7 @@ const initializeImages = async () => {
   console.log("Initializing profile avatars...");
   await User.updateMany({}, { profileImageUrl: DEFAULT_PROFILE_IMAGE_URL });
 
-  console.log("Initializing Tweet image URLs...");
+  console.log("Initializing Post image URLs...");
   await Post.updateMany({}, { imageUrls: [] });
 
   console.log("Done!");
