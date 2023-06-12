@@ -1,10 +1,15 @@
 import "./PostBox.css"
 
 function PostBox ({ post: { text, author }}) {
-  const { username } = author;
+  const { username, profileImageUrl } = author;
   return (
     <div className="post">
-      <h3>{username}</h3>
+      <h3>
+        {profileImageUrl ?
+            <img className="profile-image" src={profileImageUrl} alt="profile"/> :
+            undefined}
+        {username}
+        </h3>
       <p>{text}</p>
     </div>
   );

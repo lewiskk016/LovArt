@@ -2,11 +2,12 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup, clearSessionErrors } from '../../store/session';
-import image from "../SessionForms/monet.jpeg";
+import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css"
 
 
 function SignupForm () {
+  const [image, setImage] = useState(null);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -48,11 +49,13 @@ function SignupForm () {
     const user = {
       email,
       username,
+      image,
       password
     };
 
-    dispatch(signup(user)); 
+    dispatch(signup(user));
   }
+    const updateFile = e => setImage(e.target.files[0]);
 
   return (
     <>
@@ -105,6 +108,10 @@ function SignupForm () {
           placeholder="Confirm Password"
         />
       </label>
+      <label>
+        Profile Image
+        <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
+      </label>
       <input
         type="submit"
         value="Sign Up"
@@ -116,7 +123,7 @@ function SignupForm () {
       </div>
       <div className='signup-page-image'>
         <div className='page-img'>
-          <img src={image} alt="monet painting"/>
+          <img src={monet} alt="monet painting"/>
           <div className='text-overlay'>
             <p>“Art is never finished, only abandoned”</p>
             <h1 className='bottom-right'> Leonardo Da Vinci </h1>
