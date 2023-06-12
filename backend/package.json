@@ -28,6 +28,10 @@
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
     "nodemon": "^2.0.22"
-  }
+  },
+  "main": "app.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
-
