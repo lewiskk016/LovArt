@@ -1,0 +1,229 @@
+.login-page{
+    display: flex;
+    width: 100%;
+    height: 900px;
+}
+.back-line{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    border: solid 2px black;
+    justify-content: center;
+    align-items: center; 
+}
+.session-form .link-sign {
+text-decoration: none;
+color: rgb(217, 100, 120)
+}
+
+.link-sign{
+    background-image: linear-gradient(
+    to right,
+    #54b3d6,
+    #54b3d6 50%,
+    #9b3eca 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;  
+}
+.link-sign:before{
+    content: '';
+    background: #c754d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.link-sign:hover::before{
+    width: 100%;
+  }
+
+.login-form-container{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    border: solid 5px black;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./monet.jpeg);
+    background-color:#dbcdda
+    
+}
+
+.login-page-image{
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    border: solid 2px black;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.page-img{
+    /* display: block; */
+    width: 80%;
+    height: 80%;
+    border:5px solid black;
+    background-color: white;
+   
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 20px;
+    color: #fff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+    color: #fff;
+  }
+
+.bottom-right {
+    margin: 0;
+  }
+  
+.text-overlay h1{
+    /* text-shadow: 1px 1px 1px #000, 
+    3px 3px 5px blue; */
+    font-size: 24px;
+    background-color: cornflowerblue;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 2px 2px 0px rgba(64, 116, 181, 1), 
+                 2px -2px 0px rgba(64, 116, 181, 1), 
+                 -2px 2px 0px rgba(64, 116, 181, 1), 
+                 -2px -2px 0px rgba(64, 116, 181, 1), 
+                 2px 0px 0px rgba(64, 116, 181, 1), 
+                 0px 2px 0px rgba(64, 116, 181, 1), 
+                 -2px 0px 0px rgba(64, 116, 181, 1), 
+                 0px -2px 0px rgba(64, 116, 181, 1);
+}
+  
+  .text-overlay p {
+    font-size:50px;
+    /* text-shadow: 1px 1px 1px #000, 
+    3px 3px 5px blue; */
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 2px 2px 0px rgba(64, 116, 181, 1), 
+                 2px -2px 0px rgba(64, 116, 181, 1), 
+                 -2px 2px 0px rgba(64, 116, 181, 1), 
+                 -2px -2px 0px rgba(64, 116, 181, 1), 
+                 2px 0px 0px rgba(64, 116, 181, 1), 
+                 0px 2px 0px rgba(64, 116, 181, 1), 
+                 -2px 0px 0px rgba(64, 116, 181, 1), 
+                 0px -2px 0px rgba(64, 116, 181, 1);
+  }
+  
+
+
+.login-form{
+    width: 80%;
+    height: 80%;
+    border: 3px solid black;
+    background-color: white;
+}
+
+.session-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 75px;
+}
+
+.session-form input[type="text"] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 10px 90px;
+    background: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.29em;
+}
+.session-form input[type="password"]{
+    display: block;
+    box-sizing: border-box;
+    width:100%;
+    margin: 0 0 18px;
+    padding: 10px 90px;
+    background: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.29em;
+}
+.session-form input[type="submit"]::placeholder{
+    text-align: start;
+}
+
+.session-form input[type="submit"]{
+    display: block;
+    box-sizing: border-box;
+    width: 36%;
+    margin: 0 0 18px;
+    padding: 15px 168px;
+    background: black;
+    color: white;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.29em;
+    cursor: pointer;
+    text-align: center;
+   
+}
+
+.session-form h2{
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 40px;
+    line-height: 1.28571em;
+    color:  rgb(70, 68, 68);
+    text-align: center;
+    padding-bottom: 10px;
+    display: block;
+    margin: 0 0 0px;
+    letter-spacing: 2px;
+}
+
+.session-form label{
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333333;
+    font-weight: 800;
+}
+
+.session-form input[type="text"]::placeholder{
+    text-align: center;
+}
+.session-form input[type="password"]::placeholder{
+    text-align: center;
+}
+
+.page-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover
+}

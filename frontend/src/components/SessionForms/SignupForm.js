@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import image from "../SessionForms/monet.jpeg";
+import "./SignupForm.css"
+
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -53,12 +55,19 @@ function SignupForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Sign Up Form</h2>
+    <>
+
+    <div className='signup-page'>
+      <div className='sign-back-line'>
+        <div className='sign-form-container'>
+          <div className='signup-form'>
+    <form className="session-form form-signup" onSubmit={handleSubmit}>
+      <h2 className='sign-header'>Sign Up Form</h2>
       <div className="errors">{errors?.email}</div>
       <label>
         <span>Email</span>
         <input type="text"
+        required
           value={email}
           onChange={update('email')}
           placeholder="Email"
@@ -68,6 +77,7 @@ function SignupForm () {
       <label>
         <span>Username</span>
         <input type="text"
+        required
           value={username}
           onChange={update('username')}
           placeholder="Username"
@@ -77,6 +87,7 @@ function SignupForm () {
       <label>
         <span>Password</span>
         <input type="password"
+        required
           value={password}
           onChange={update('password')}
           placeholder="Password"
@@ -88,6 +99,7 @@ function SignupForm () {
       <label>
         <span>Confirm Password</span>
         <input type="password"
+        required
           value={password2}
           onChange={update('password2')}
           placeholder="Confirm Password"
@@ -99,6 +111,20 @@ function SignupForm () {
         disabled={!email || !username || !password || password !== password2}
       />
     </form>
+    </div>
+        </div>
+      </div>
+      <div className='signup-page-image'>
+        <div className='page-img'>
+          <img src={image} alt="monet painting"/>
+          <div className='text-overlay'>
+            <p>“Art is never finished, only abandoned”</p>
+            <h1 className='bottom-right'> Leonardo Da Vinci </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }
 
