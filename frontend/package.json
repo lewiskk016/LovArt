@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "redux-logger": "^3.0.6"
   }
 }

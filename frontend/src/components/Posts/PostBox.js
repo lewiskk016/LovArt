@@ -1,8 +1,12 @@
 import "./PostBox.css"
 import image from "./profile.png"
 
-function PostBox ({ post: { text, author }}) {
-  const { username } = author;
+function PostBox ({ post: { text, author, imageUrls }}) {
+  const { username, profileImageUrl } = author;
+  const images = imageUrls?.map((url, index) => {
+    return <img className="post-image" key ={url} src={url} alt={`postImage${index}`} />
+  });
+
   return (
     <div className="post-con">
 <div className="post-image">
@@ -20,12 +24,16 @@ function PostBox ({ post: { text, author }}) {
   <div className="user-image">
     <img src={image} alt="" />
   </div>
-  <div className="user-username"><h3>{username}</h3></div>
+  <div className="user-username"><h3>{profileImageUrl ?
+            <img className="profile-image" src={profileImageUrl} alt="profile"/> :
+            undefined}
+            {username}</h3></div>
 
 </div>
 </div>
 <div className="post-description">
 <p>{text}</p>
+{images}
 </div>
     </div>
   );

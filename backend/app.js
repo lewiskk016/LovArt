@@ -7,6 +7,8 @@ const csurf = require('csurf');
 /* --- Need to import these to load the models into mongoose --- */
 require('./models/User');
 require('./models/Post');
+require('./models/Comment');
+
 /* ------------------------------------------------------------- */
 require('./config/passport'); // Need to import to configure passport module
 const passport = require('passport');
@@ -48,6 +50,8 @@ app.use(
 const postsRouter = require('./routes/api/posts');
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
+const commentsRouter = require('./routes/api/comments');
+app.use('/api/posts/:postId/comments', commentsRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
