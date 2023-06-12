@@ -1,10 +1,22 @@
 p, h3 {
     margin-left: 5px;
   }
-  
+
   .post {
     border: 2px solid blue;
     border-radius: 10px;
     margin-bottom: 5px;
     min-height: 57px;
+  }
+
+  .profile-image {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    margin-left: 2px;
+  }
+
+  .post-image {
+    height: 100px;
+    margin: 5px;
   }

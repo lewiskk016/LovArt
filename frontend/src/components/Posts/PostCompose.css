@@ -4,7 +4,17 @@ input[type=textarea] {
     min-width: 393px;
     margin-top: 5px;
   }
-  
+
   .post-preview {
-    min-height: 150px;
+    min-height: 250px;
+  }
+
+
+  label {
+    display: block;
+    margin-top: 5px;
+  }
+
+  input[type=file] {
+    margin-left: 5px;
   }
