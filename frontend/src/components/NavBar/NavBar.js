@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
+import image from "./lovart-logo.png"
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -24,17 +25,32 @@ function NavBar () {
       );
     } else {
       return (
-        <div className="links-auth">
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+        <>
+           <div className='navbar'>
+           <div className='logo'>
+            <Link to="/"> <img src={image} alt="logo" /></Link>
+            <div className='logo-overlay'></div>
+           </div>
+           <div className="signup">
+           <div className='nav-login'>
+            <Link className="login" to={'/login'}>Login</Link></div>
+           <div className='nav-register'>
+           <Link className="register" to={'/signup'}>Register</Link>
+           </div>
+           </div>
         </div>
+           
+        <div className="links-auth">
+         
+          
+         </div>
+         </>
       );
     }
   }
 
   return (
     <>
-      <h1>Chirper</h1>
       { getLinks() }
     </>
   );

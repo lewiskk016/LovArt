@@ -1,8 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import image from "../SessionForms/monet.jpeg";
+import "./SignupForm.css"
+
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -53,7 +55,13 @@ function SignupForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
+    <>
+
+    <div className='signup-page'>
+      <div className='sign-back-line'>
+        <div className='sign-form-container'>
+          <div className='signup-form'>
+    <form className="session-form-sign" onSubmit={handleSubmit}>
       <h2>Sign Up Form</h2>
       <div className="errors">{errors?.email}</div>
       <label>
@@ -99,6 +107,20 @@ function SignupForm () {
         disabled={!email || !username || !password || password !== password2}
       />
     </form>
+    </div>
+        </div>
+      </div>
+      <div className='signup-page-image'>
+        <div className='page-img'>
+          <img src={image} alt="monet painting"/>
+          <div className='text-overlay'>
+            <p></p>
+            <h1 className='right-bottom'></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }
 
