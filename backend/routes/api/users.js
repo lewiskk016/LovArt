@@ -74,7 +74,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
 });
 
 
-router.post('/login', validateRegisterInput, async (req, res, next) => {
+router.post('/login', validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
@@ -83,7 +83,7 @@ router.post('/login', validateRegisterInput, async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+    return res.json(await loginUser(user)); 
   })(req, res, next);
 });
 
