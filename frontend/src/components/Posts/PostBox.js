@@ -2,12 +2,15 @@
 import "./PostBox.css"
 import image from "./profile.png"
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserPosts } from "../../store/posts"
+import { deleteUserPosts, fetchPosts, updatePost, fetchUserPosts } from "../../store/posts"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState } from 'react';
 
 function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId }}) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch()
+  const [newText, setNewText] = useState(text);
+  const [editMode, setEditMode] = useState(false);
   const posts = useSelector((state) => state.posts);
   const images = imageUrls?.map((url, index) => {
     return <img className="post-image" key ={url} src={url} alt={`postImage${index}`} />
@@ -17,7 +20,17 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
   }
+
+  const handleUpdate = () => {
+    dispatch(updatePost(postId, newText))
+    setEditMode(false);
+  }
  
+  const handleTextChange = (event) => {
+    setNewText(event.target.value);
+  }
+
+
 
   return (
     <div className="post-con">
@@ -54,14 +67,23 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         </div>
       </div>
       <div className="post-description">
-        <p>{text}</p>
-       
+        {editMode ? (
+          <div>
+            <input type="text" value={newText} onChange={handleTextChange} />
+            <button onClick={handleUpdate}>Save</button>
+          </div>
+        ) : (
+          <p>{text}</p>
+        )}
       </div>
       <div>
-      {currentUser._id === authorId && (
-        <button onClick={handleDelete}>Delete Post</button>
-      )}
-</div>
+        {currentUser._id === authorId && (
+          <div>
+            <button onClick={handleDelete}>Delete Post</button>
+            {!editMode && <button onClick={() => setEditMode(true)}>Edit Post</button>}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
