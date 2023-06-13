@@ -36,7 +36,6 @@ function App() {
           <ProtectedRoute path="/profile/:username" component={UserIndex} />
           <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/Posts/new" component={PostCompose} />
-          {/* <ProtectedRoute exact path="/Posts/edit" component={PostUpdate} /> */}
         </Switch>
       </>
     )
