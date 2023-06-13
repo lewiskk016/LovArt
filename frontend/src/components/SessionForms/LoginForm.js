@@ -69,6 +69,8 @@ function LoginForm() {
                 disabled={!email || !password}
               />
             </form>
+
+
           </div>
         </div>
         </div>
@@ -87,3 +89,15 @@ function LoginForm() {
 }
 
 export default LoginForm;
+
+
+
+
+
+
+          <div className="demo-user-container">
+            <label className="Demo-User"></label>
+            <form className="demo-user-form" onSubmit={handleSubmit}>
+            <button className="demo" type="submit" onClick={() => { setEmail("demo-user@appacademy.io"); setPassword("starwars"); }}>Demo User</button>
+            </form>
+            </div>
