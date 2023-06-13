@@ -1,13 +1,12 @@
 import "./PostBox.css";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function PostBox({ post: { text, author, imageUrls } }){
 
 
   const { username, profileImageUrl } = author;
-  const images = imageUrls?.map((url, index) => {
-
-    
+  
+  const images = imageUrls?.map((url, index) => {  
     return (
       <img
         className="post-image"
@@ -44,7 +43,8 @@ function PostBox({ post: { text, author, imageUrls } }){
             ) : undefined}
           </div>
           <div className="user-username">
-            <h3>{username}</h3>
+            <Link to={`/profile/${username}`}>{username}</Link>
+            {/* <h3>{username}</h3> */}
           </div>
           <div className="artist-name">
             <h1>ARTIST</h1>
