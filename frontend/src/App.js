@@ -37,8 +37,6 @@ function App() {
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
           <ProtectedRoute exact path="/Posts" component={Posts} />
-
-          {/* <ProtectedRoute exact path="/Posts/ component={Comments} /> */}
           <ProtectedRoute path="/profile/:username" component={UserIndex} />
           <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/Posts/new" component={PostCompose} />
