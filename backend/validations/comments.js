@@ -5,7 +5,7 @@ const handleValidationErrors = require('./handleValidationErrors');
 // middleware to validate the keys in the body of a request to create/edit a comment
 const validateCommentInput = [
   check('text')
-    .exists({ checkFalsy: true })
+    .exists({ checkFalsy: false })
     .isLength({ min: 5, max: 140 })
     .withMessage('Comment must be between 5 and 140 characters'),
   handleValidationErrors,
