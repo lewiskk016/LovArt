@@ -1,70 +1,189 @@
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 150px;
-    border: 2px solid black;
-    /* position: absolute; */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 150px;
+  border: 2px solid black;
+  /* position: absolute; */
 }
 
-.logo{
-    display: flex;
-    height: 100%;
-    width:200px;
-    border-right: 2px solid black;
+.logo {
+  display: flex;
+  height: 100%;
+  width: 200px;
+  border-right: 2px solid black;
 }
- .signup{
-    display: flex;
-    height: 100%;
-    width:400px;
-}
-
-.nav-login{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid white;
-    border-left: 2px solid black;
-    background-color: white;
+.signup {
+  display: flex;
+  height: 100%;
+  width: 400px;
 }
 
-.nav-register{
-    width: 60%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 5px solid white;
+.nav-login {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid white;
+  border-left: 2px solid black;
+  background-color: white;
 }
 
-.logo img{
-    height: 100%;
-    width: 100%;
+.nav-register {
+  width: 60%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 5px solid white;
+}
+
+.logo img {
+  height: 100%;
+  width: 100%;
 }
 
 .register {
-    text-decoration: none;
-    font-size: 45px;
-    color: white;
-    letter-spacing: 5px;
-    cursor: pointer;
+  text-decoration: none;
+  font-size: 45px;
+  color: white;
+  letter-spacing: 5px;
+  cursor: pointer;
 }
 
-.register:hover{
-    color:pink
+.register:hover {
+  color: pink;
 }
 
-.login{
-    text-decoration: none;
-    font-size: 30px;
-    color: black;
-    letter-spacing: 5px;
-    cursor: pointer;
+.login {
+  text-decoration: none;
+  font-size: 30px;
+  color: black;
+  letter-spacing: 5px;
+  cursor: pointer;
 }
 
-.login:hover{
-    color: pink;
+.login:hover {
+  color: pink;
+}
+
+.links-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  height: 70%;
+  /* border: 3px solid black; */
+  border-radius: 6px;
+  top: 0;
+  position: fixed;
+  right: 0;
+  margin-right: 10px;
+  /* background: rgb(237, 222, 224); */
+}
+
+.all-posts {
+  width: 100%;
+  height: 15%;
+  border: 2px solid black;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.profile-page {
+  width: 100%;
+  height: 15%;
+  border: 2px solid black;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.write-post {
+  width: 100%;
+  height: 15%;
+  border: 2px solid black;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin-bottom: 10px;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 15%;
+  border: 2px solid black;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.logout-btn button {
+  padding: 5px 30%;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #ffffff;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.side-nav-text {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  background: linear-gradient(to right, rgb(148, 203, 203), rgb(107, 162, 162)),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+    );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.side-nav-text:hover {
+  /* color: pink;
+font-size: 40px;
+text-shadow: 1px 1px 1px #000, 
+3px 3px 5px white; 
+background:
+linear-gradient(
+  to right,
+  rgba(100, 200, 200, 1),
+  rgba(100, 200, 200, 1)
+),
+linear-gradient(
+  to right,
+  rgba(255, 0, 0, 1),
+  rgba(255, 0, 180, 1),
+  rgba(0, 100, 200, 1)
+); */
+  font-size: 40px;
+  background-size: 0 3px, 100% 3px;
+}
+
+.logout-btn button:hover {
+  font-size: 30px;
+  text-shadow: 1px 1px 1px #d1c5c5, 3px 3px 5px rgb(209, 97, 214);
 }
