@@ -41,7 +41,7 @@ router.post('/', requireUser, validateCommentInput, async (req, res, next) => {
       comment = await Comment.populate(comment, {path: 'author', select: '_id username'});
   
       // Add the new comment to the post's comments array
-      post.comments.push(comment._id);
+      post.comments.push(comment);
       await post.save();
   
       return res.json(comment);
