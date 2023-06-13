@@ -22,7 +22,6 @@ function Comments({postId}) {
     const comments = useSelector((state) => Object.values(state.comments.all));
     const currentUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users);
-    // console.log(postId)
     const handleComment = (e) => {
         e.preventDefault();
         dispatch(createComment({comment, postId}));

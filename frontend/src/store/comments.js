@@ -60,10 +60,6 @@ export const fetchUserComments = (id) => async (dispatch) => {
     }
 
 export const createComment = ({comment, postId}) => async (dispatch) => {
-    // debugger
-    // console.log(comment)
-    // console.log(postId)
-    // debugger
     try {
         const res = await jwtFetch(`/api/posts/${postId}/comments`, {
             method: "POST",
@@ -73,13 +69,10 @@ export const createComment = ({comment, postId}) => async (dispatch) => {
             }
         });
         const newComment = await res.json();
-        console.log(newComment)
         dispatch(receiveNewComment(newComment));
         // return newComment;
     } catch (err) {
-        console.log(err);
         const resBody = await err.json();
-        console.log(resBody);
         if (resBody.statusCode === 400) {
             dispatch(receiveErrors(resBody.errors));
         }
