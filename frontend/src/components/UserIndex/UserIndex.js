@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -13,13 +12,18 @@ const UserIndex = () => {
         dispatch(fetchUserPosts())
     })
 
-    return (
-      <div>
-        <h1>Profile Page</h1>
-        <p>Username: {username}</p>
-        {/* Add profile information for the given username */}
-      </div>
-    );
-  };
+  return (
+    <div>
+      <h1>Profile Page</h1>
+      {/* Display author information here */}
+      {author && (
+        <div>
+          <p>Username: {author.username}</p>
+          {/* Display other profile information */}
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default UserIndex
+export default UserIndex;

@@ -69,8 +69,8 @@
 .profile-image{
   border: 0cap;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
 }
 
@@ -124,10 +124,10 @@
  }
 
  .user-image{
-  margin-top: 30px;
-  margin-left: 20px;
-  width: 30%;
-  height: 50%;
+  /* margin-top: 30px;
+  margin-left: 20px; */
+  width: 200px;
+  height: 0px;
   border-radius: 50%;
  }
 .user-image img{
@@ -166,3 +166,84 @@
     position: fixed;
     right: 0;
   } */
+.post-page-container{
+  height: 90%;
+  width: 50%;
+}
+
+
+
+/*------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+.container {
+    min-height: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.card {
+    
+	height:800px;
+	width:800px;
+	font-family: 'Poppins', sans-serif;
+		border-radius:9px;
+		background-color:#000;
+		position:relative;
+	 cursor:pointer;
+	 border:none;
+	 outline:none;
+   margin-bottom: 20px;
+   
+}
+.card h5{
+    position:absolute;
+    font-size:17px;
+    font-weight:900;
+    top:50px;
+    left:33px;
+    color:white;
+}
+.card p{
+    font-size:12px;
+    font-weight:700;
+    color:white;
+    text-align:center;
+    position:absolute;
+    top:50px;
+     width:100%;
+	height:100%;
+	margin-top:10px;
+	padding:20px;
+	box-sizing:border-box;
+}
+.card .rotate-img{
+    width:100%;
+	height:100%;
+    z-index:1000;
+	object-fit:cover;
+	transition:all 0.5s;
+	 transform-origin:95% 50% ;
+	border-radius:9px;
+	position:absolute;
+}
+.card:hover .rotate-img{
+    transform:rotate(-140deg);
+   
+}
+.card small{
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    background-color:white;
+    position:absolute;
+    right:5px;
+    top:110px;
+    z-index:1000;
+}

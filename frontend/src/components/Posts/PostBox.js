@@ -1,6 +1,6 @@
 
 import "./PostBox.css"
-import image from "./profile.png"
+import image from "./monet.jpeg"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUserPosts, fetchPosts, updatePost, fetchUserPosts } from "../../store/posts"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -100,6 +100,12 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         )}
       </div>
     </div>
+	     <h5><u></u></h5>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+        <img className="rotate-img" src={image} alt=""></img>	
+        <small></small>
+	</div>	
+</div>
   );
 }
 

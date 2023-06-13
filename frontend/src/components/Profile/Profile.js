@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserPosts, clearPostErrors } from "../../store/posts";
 import PostBox from "../Posts/PostBox";
+import ProfileBox from "./ProfileBox";
 
 
 function Profile() {
@@ -17,10 +18,12 @@ function Profile() {
   if (userPosts.length === 0) {
     return <div>{currentUser.username} has no Posts</div>;
   } else {
+    
     return (
       <>
         <h2>All of {currentUser.username}'s Posts</h2>
         {userPosts.map((post) => (
+
           <>
           <div className="image-grid">
           <PostBox key={post._id} post={post} />

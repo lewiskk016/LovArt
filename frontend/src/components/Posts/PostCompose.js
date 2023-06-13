@@ -15,6 +15,8 @@ function PostCompose () {
   const newPost = useSelector(state => state.posts.new);
   const errors = useSelector(state => state.errors.posts);
 
+  const image = author.profileImageUrl
+
   useEffect(() => {
     return () => dispatch(clearPostErrors());
   }, [dispatch]);
@@ -50,7 +52,7 @@ function PostCompose () {
   }
   return (
     <>
-      <form className="compose-post" onSubmit={handleSubmit}>
+      {/* <form className="compose-post" onSubmit={handleSubmit}>
         <input
           type="textarea"
           value={text}
@@ -79,7 +81,47 @@ function PostCompose () {
       <div className="previous-post">
         <h3>Previous Post</h3>
         {newPost ? <PostBox post={newPost} /> : undefined}
+      </div> */}
+
+      <div className='create-post-page'>
+        <div className='create-post-container'>
+        <form className="compose-post" onSubmit={handleSubmit}>
+        <div className='photo-upload'>
+          <div className='upload-photo-box'> 
+        <div className='icon-style'><i class="fa-solid fa-camera" ></i></div>
+        <h1>
+          Images to Upload
+        </h1>
+        </div>
+          <div className='upload-photo-btn'><input
+            type="file"
+            ref={fileRef}
+            accept=".jpg, .jpeg, .png"
+            multiple
+            onChange={updateFiles} /> </div>
+          </div>
+        <div className='upload-photo'>
+        </div>
+        <div className='create-post-description'>
+            <div className='user-details'>
+              <img src={image} alt="" /> 
+              <h1>{author.username}</h1>
+            </div>
+            <div className='create-description'> <input
+          type="textarea"
+          value={text}
+          onChange={update}
+          placeholder="Write your post..."
+          required
+        /></div>
+            <div className='post-submit-btn'><input type="submit" value="Submit" />
+            <div className="errors">{errors?.text}</div>   
+          </div>
+          </div>         
+          </form>
+        </div>
       </div>
+
     </>
   )
 }
