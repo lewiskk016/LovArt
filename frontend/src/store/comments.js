@@ -60,15 +60,15 @@ export const fetchUserComments = (id) => async (dispatch) => {
     }
 
 export const createComment = ({comment, postId}) => async (dispatch) => {
-    debugger
+    // debugger
     // console.log(comment)
     // console.log(postId)
-    debugger
+    // debugger
     try {
         const res = await jwtFetch(`/api/posts/${postId}/comments`, {
             method: "POST",
-            body: JSON.stringify(comment),
-            Headers: {
+            body: JSON.stringify({text: comment}),
+            headers: {
             ContentType: "application/json"
             }
         });
