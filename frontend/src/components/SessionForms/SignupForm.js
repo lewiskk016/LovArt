@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signup, clearSessionErrors } from '../../store/session';
 import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function SignupForm () {
@@ -112,6 +113,12 @@ function SignupForm () {
         Profile Image
         <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
       </label>
+      <div className="login-link-container">
+              <span>Already have an account? </span>
+              <Link to="/login" className="login-link">
+                Login
+              </Link>
+      </div>
       <input
         type="submit"
         value="Sign Up"
