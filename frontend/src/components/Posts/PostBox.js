@@ -74,14 +74,6 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
       </div>
       <div className="post-description">
 
-        <p>{text}</p>
-
-      </div>
-      <div className="post-comment">
-        <div className="comment">
-        <Comment postId={postId} />
-        </div>
-
         {editMode ? (
           <div>
             <input type="text" value={newText} onChange={handleTextChange} />
@@ -90,6 +82,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         ) : (
           <p>{text}</p>
         )}
+
+      </div>
+      <div className="post-comment">
+        <div className="comment">
+        <Comment postId={postId} />
+        </div>
+
 
       </div>
       <div>
