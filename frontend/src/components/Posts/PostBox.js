@@ -4,7 +4,11 @@ import image from "./profile.png"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUserPosts, fetchPosts, updatePost, fetchUserPosts } from "../../store/posts"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
+import Comment from "../Comments/Comments";
+
 import React, { useState } from 'react';
+
 
 function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId }}) {
   const currentUser = useSelector((state) => state.session.user);
@@ -14,12 +18,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const posts = useSelector((state) => state.posts);
   const images = imageUrls?.map((url, index) => {
     return <img className="post-image" key ={url} src={url} alt={`postImage${index}`} />
-  
   });
 
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
   }
+
+
 
   const handleUpdate = () => {
     dispatch(updatePost(postId, newText))
@@ -32,6 +37,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
 
 
 
+
   return (
     <div className="post-con">
       <div className="post-image">
@@ -39,13 +45,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
           <h1>ART</h1>
         </div> */}
         <div className="artist-img">
-         {images} 
+         {images}
         </div>
       </div>
       <div className="post-det">
         <div className="post-username">
           <div className="username"></div>
-        
+
         </div>
         <div className="post-like">
           <div className="user-image">
@@ -67,6 +73,15 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         </div>
       </div>
       <div className="post-description">
+
+        <p>{text}</p>
+
+      </div>
+      <div className="post-comment">
+        <div className="comment">
+        <Comment postId={postId} />
+        </div>
+
         {editMode ? (
           <div>
             <input type="text" value={newText} onChange={handleTextChange} />
@@ -75,6 +90,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         ) : (
           <p>{text}</p>
         )}
+
       </div>
       <div>
         {currentUser._id === authorId && (
