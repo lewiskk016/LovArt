@@ -15,11 +15,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
   }
-
-  
-
-
-
+ 
 
   return (
     <div className="post-con">
