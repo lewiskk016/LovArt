@@ -5,7 +5,7 @@ import { clearPostErrors, fetchPosts, fetchUserPosts } from '../../store/posts';
 
 
 const UserIndex = () => {
-    const { username } = useParams();
+    const  { username }  = useParams();
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -16,9 +16,9 @@ const UserIndex = () => {
     <div>
       <h1>Profile Page</h1>
       {/* Display author information here */}
-      {author && (
+      {username && (
         <div>
-          <p>Username: {author.username}</p>
+          <p>Username: {username}</p>
           {/* Display other profile information */}
         </div>
       )}

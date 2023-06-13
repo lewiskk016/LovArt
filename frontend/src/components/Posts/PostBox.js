@@ -98,14 +98,12 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
             {!editMode && <button onClick={() => setEditMode(true)}>Edit Post</button>}
           </div>
         )}
+    
+	 
       </div>
     </div>
-	     <h5><u></u></h5>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-        <img className="rotate-img" src={image} alt=""></img>	
-        <small></small>
-	</div>	
-</div>
+
+
   );
 }
 
