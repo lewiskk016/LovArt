@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import session from "./session"
 import errors from "./errors";
 import posts from "./posts";
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
   errors, 
-  posts
+  posts,
+  user
 });
 
 let enhancer;

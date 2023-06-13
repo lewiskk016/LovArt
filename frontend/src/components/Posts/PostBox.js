@@ -1,6 +1,6 @@
 
 import "./PostBox.css"
-import image from "./profile.png"
+import image from "./monet.jpeg"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUserPosts } from "../../store/posts"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -20,22 +20,9 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
  
 
   return (
-    <div className="post-con">
-      <div className="post-image">
-        {/* <div className="artist">
-          <h1>ART</h1>
-        </div> */}
-        <div className="artist-img">
-         {images} 
-        </div>
-      </div>
-      <div className="post-det">
-        <div className="post-username">
-          <div className="username"></div>
-        
-        </div>
-        <div className="post-like">
-          <div className="user-image">
+<div className="container">
+	 <div className="card">
+   <div className="user-image">
             {profileImageUrl ? (
               <img
                 className="profile-image"
@@ -43,26 +30,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
                 alt="profile"
               />
             ) : undefined}
-          </div>
-          <div className="user-username">
-            <Link to={`/profile/${username}`}>{username}</Link>
-            {/* <h3>{username}</h3> */}
-          </div>
-          <div className="artist-name">
-            <h1>ARTIST</h1>
-          </div>
-        </div>
-      </div>
-      <div className="post-description">
-        <p>{text}</p>
-       
-      </div>
-      <div>
-      {currentUser._id === authorId && (
-        <button onClick={handleDelete}>Delete Post</button>
-      )}
-</div>
     </div>
+	     <h5><u></u></h5>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+        <img className="rotate-img" src={image} alt=""></img>	
+        <small></small>
+	</div>	
+</div>
   );
 }
 
