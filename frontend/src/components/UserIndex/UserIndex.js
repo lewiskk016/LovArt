@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchUserObject } from '../../store/user';
+import { clearPostErrors, fetchPosts, fetchUserPosts } from '../../store/posts';
+
 
 const UserIndex = () => {
-  const dispatch = useDispatch();
-  const { authorId } = useParams(); // Access the authorId parameter from the URL
+    const { username } = useParams();
+    const dispatch = useDispatch()
 
-  const author = useSelector(state => {
-    return state.user.user; // Adjust the selector based on your state structure
-  });
-
-  useEffect(() => {
-    dispatch(fetchUserObject(authorId));
-  }, [dispatch, authorId]);
+    useEffect(()=>{
+        dispatch(fetchUserPosts())
+    })
 
   return (
     <div>

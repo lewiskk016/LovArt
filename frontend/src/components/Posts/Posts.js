@@ -21,7 +21,7 @@ function Posts() {
         <div className="post-page-container">
       {posts.map((post) => (
         <>
-        <PostBox key={post._id} post={post} />  
+        <PostBox key={post._id} post={post} />
         </>
       ))}
       </div>

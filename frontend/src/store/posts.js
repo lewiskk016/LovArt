@@ -6,7 +6,8 @@ const RECEIVE_USER_POSTS = "posts/RECEIVE_USER_POSTS";
 const RECEIVE_NEW_POST = "posts/RECEIVE_NEW_POST";
 const RECEIVE_POST_ERRORS = "posts/RECEIVE_POST_ERRORS";
 const CLEAR_POST_ERRORS = "posts/CLEAR_POST_ERRORS";
-const DELETE_POSTS = 'posts/DELETE_POSTS'
+const DELETE_POST = 'posts/DELETE_POST'
+const UPDATE_POST = 'posts/UPDATE_POST';
 
 const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
@@ -23,10 +24,11 @@ const receiveNewPost = (post) => ({
   post,
 });
 
-const deletePost = (postId) => ({
-  type: DELETE_POSTS,
+export const deletePost = postId => ({
+  type: DELETE_POST,
   postId
-})
+});
+
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_POST_ERRORS,
@@ -88,16 +90,39 @@ export const deleteUserPosts = (postId) => async (dispatch) => {
     const res = await jwtFetch(`/api/posts/${postId}`, {
       method: "DELETE"
     });
-    const post = await res.json();
-    dispatch(deletePost(post));
+    dispatch(deletePost(postId));
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
     }
   }
-
 }
+  
+
+
+
+export const updatePost = (postId, text) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/posts/${postId}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text }),
+    });
+    const updatedPost = await res.json();
+    dispatch({
+      type: UPDATE_POST,
+      payload: updatedPost,
+    });
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
+  }
+};
 
 const nullErrors = null;
 
@@ -113,10 +138,8 @@ export const postErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
-const postsReducer = (
-  state = { all: {}, user: {}, new: undefined },
-  action
-) => {
+const postsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
+
   switch (action.type) {
     case RECEIVE_POSTS:
       return { ...state, all: action.posts, new: undefined };
@@ -126,6 +149,19 @@ const postsReducer = (
       return { ...state, new: action.post };
     case RECEIVE_USER_LOGOUT:
       return { ...state, user: {}, new: undefined };
+    case DELETE_POST:
+      return {
+        ...state,
+        all: state.all.filter(post => post._id !== action.postId),
+      };
+    case UPDATE_POST:
+      const { payload: updatedPost } = action;
+      return {
+        ...state,
+        all: state.all.map((post) => 
+          post._id === updatedPost._id ? updatedPost : post
+        ),
+      };
     default:
       return state;
   }

@@ -23,7 +23,12 @@ function Profile() {
       <>
         <h2>All of {currentUser.username}'s Posts</h2>
         {userPosts.map((post) => (
-          <ProfileBox key={post._id} post={post} />
+
+          <>
+          <div className="image-grid">
+          <PostBox key={post._id} post={post} />
+          </div>
+          </>
         ))}
       </>
     );
