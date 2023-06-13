@@ -3,8 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Post = mongoose.model('Post');
 const passport = require('passport');
-const { loginUser, restoreUser } = require('../../config/passport');
+const { loginUser, restoreUser, requireUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
 const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
 const validateRegisterInput = require('../../validations/register');
@@ -92,6 +93,88 @@ router.post('/login', singleMulterUpload(""), validateLoginInput, async (req, re
   })(req, res, next);
 });
 
+router.get('/:userId/posts', async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const posts = await Post.find({ author: userId })
+      .sort({ createdAt: -1 })
+      .populate("author", "_id username profileImageUrl");
+
+    return res.json(posts);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// POST /api/users/:userId/follow
+router.post('/:userId/follow', requireUser, async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const currentUser = await User.findById(req.user._id); // Assuming you have the authenticated user's ID
+
+    // Check if the current user is already following the target user
+    if (currentUser.following.includes(userId)) {
+      return res.status(400).json({ message: 'User is already being followed' });
+    }
+
+    currentUser.following.push(userId);
+    await currentUser.save();
+
+    const targetUser = await User.findById(userId); // Find the target user
+    targetUser.followers.push(currentUser._id); // Add the follower to the target user's followers array
+    await targetUser.save();
+
+    res.json({ message: 'User followed successfully' });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+// POST /api/users/:userId/unfollow
+router.post('/:userId/unfollow', requireUser, async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const currentUser = await User.findById(req.user._id); // Assuming you have the authenticated user's ID
+
+    // Check if the current user is already not following the target user
+    if (!currentUser.following.includes(userId)) {
+      return res.status(400).json({ message: 'User is not being followed' });
+    }
+
+    // Remove the target user from the current user's following list
+    currentUser.following = currentUser.following.filter((followedUserId) => followedUserId.toString() !== userId);
+    await currentUser.save();
+
+    const targetUser = await User.findById(userId); // Find the target user
+    targetUser.followers = targetUser.followers.filter((followerId) => followerId.toString() !== currentUser._id.toString()); // Remove the current user from the target user's followers array
+    await targetUser.save();
+
+    res.json({ message: 'User unfollowed successfully' });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+// GET /api/users/:userId/followers
+router.get('/:userId/followers', async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId).populate('followers', '_id username profileImageUrl');
+
+    if (!user) {
+      const error = new Error('User not found');
+      error.statusCode = 404;
+      error.errors = { message: 'No user found with that id' };
+      return next(error);
+    }
+
+    return res.json(user.followers);
+  } catch (err) {
+    next(err);
+  }
+});
 
 
 module.exports = router;
