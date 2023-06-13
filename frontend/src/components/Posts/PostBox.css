@@ -22,7 +22,9 @@
   flex-direction: row;
   height: 50%;
   width: 100%;
-  border: 2px solid black;
+  border-bottom: 2px solid black;
+
+  /* border: 2px solid black; */
  }
 .artist{
   display: flex;
@@ -30,8 +32,8 @@
   align-items: center;
   height: 100%;
   width: 15%;
-  border: 2px solid black;
-  background-color: cornflowerblue;
+  /* border: 2px solid black; */
+  background-color: rgb(0, 0, 0);
 }
 .artist h1{
   writing-mode: vertical-lr;
@@ -44,9 +46,16 @@
 
 .artist-img{
   height: 100%;
-  width: 85%;
-  border: 2px solid black;
-  background-image: url(./monet.jpeg);
+  width: 100%;
+}
+.artist-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.artist-img p{
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 .post-det{
@@ -54,7 +63,15 @@
   flex-direction: row;
   width: 100%;
   height: 17%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+}
+
+.profile-image{
+  border: 0cap;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
  .post-username{
@@ -62,12 +79,12 @@
   flex-direction: row;
   width: 50%;
   height: 100%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
  }
  .username{
   width: 80%;
   height: 100%;
-  border: 2px solid black
+  /* border: 2px solid black */
  }
  .artist-name{
   display: flex;
@@ -75,16 +92,18 @@
   align-items: center;
   width: 20%;
   height: 100%;
-  border: 2px solid black;
-  background-color: cornflowerblue;
+  /* border: 2px solid black; */
+  background-color: rgb(0, 0, 0);
 
  }
  .post-like{
   display: flex;
   flex-direction: row;
-  width: 50%;
-  height: 100%;
-  border: 2px solid rgb(21, 103, 180);
+  /* width: 40%; */
+  height: 90%;
+  margin-left: 10px;
+  margin-top: 10px;
+  /* border: 2px solid black; */
  }
  .artist-name h1{
   writing-mode: vertical-lr;
@@ -97,29 +116,30 @@
  .post-description{
   width: 100%;
   height: 10%;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
  }
 
  .user-image{
-  margin-top: 10px;
-  width: 40%;
-  height: 80%;
-  border: 1px solid cornflowerblue;
+  margin-top: 30px;
+  margin-left: 20px;
+  width: 30%;
+  height: 50%;
   border-radius: 50%;
  }
 .user-image img{
   height: 100%;
   width: 100%;
+  margin-right: 10px;
 }
  .user-username{
-  width: 60%;
+  width: 50%;
   height: 100%;
-  border: 2px solid cornflowerblue;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
  }
 
@@ -127,11 +147,22 @@
   font-size: 25px;
   left: 0;
   letter-spacing: 2px;
+  margin-left: 10px;
  }
 
-  .profile-image {
-    height: 20px;
-    width: 20px;
-    margin-right: 5px;
-    margin-left: 2px;
-  }
+ .make-post{
+  height: 50px;
+  width: 50px;
+  border: 2px solid red
+ }
+
+
+  /* .half-page{
+    display: flex;
+    width: 20%;
+    height: 70%;
+    border: 2px solid blue;
+    top: 0;
+    position: fixed;
+    right: 0;
+  } */

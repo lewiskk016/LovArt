@@ -17,13 +17,15 @@ function Posts() {
 
   return (
     <>
-      <h2>All posts</h2>
       <div className="post-index-container">
-        <div>
+        <div className="post-page-container">
       {posts.map((post) => (
-        <PostBox key={post._id} post={post} />
+        <>
+        <PostBox key={post._id} post={post} />  
+        </>
       ))}
       </div>
+      <div className="half-page"></div>
       </div>
     </>
   );
