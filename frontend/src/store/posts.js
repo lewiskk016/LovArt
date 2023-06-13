@@ -8,6 +8,7 @@ const RECEIVE_POST_ERRORS = "posts/RECEIVE_POST_ERRORS";
 const CLEAR_POST_ERRORS = "posts/CLEAR_POST_ERRORS";
 const DELETE_POSTS = 'posts/DELETE_POSTS'
 
+
 const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
   posts,
