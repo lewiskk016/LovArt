@@ -93,7 +93,10 @@ router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
 
     // Update the post with the new text
     post.text = req.body.text;
-    const updatedPost = await post.save();
+    await post.save();
+
+    // Re-fetch the post from the database with the author field populated
+    const updatedPost = await Post.findById(req.params.id).populate('author');
 
     return res.json(updatedPost);
   }
