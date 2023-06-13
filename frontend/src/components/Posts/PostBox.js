@@ -1,21 +1,23 @@
-import "./PostBox.css";
+
+import "./PostBox.css"
+import image from "./profile.png"
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUserPosts } from "../../store/posts"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function PostBox({ post: { text, author, imageUrls } }){
-
-
-  const { username, profileImageUrl } = author;
+function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId }}) {
+  const currentUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch()
+  const posts = useSelector((state) => state.posts);
+  const images = imageUrls?.map((url, index) => {
+    return <img className="post-image" key ={url} src={url} alt={`postImage${index}`} />
   
-  const images = imageUrls?.map((url, index) => {  
-    return (
-      <img
-        className="post-image"
-        key={url}
-        src={url}
-        alt={`postImage${index}`}
-      />
-    );
   });
+
+  const handleDelete = () => {
+    dispatch(deleteUserPosts(postId));
+  }
+ 
 
   return (
     <div className="post-con">
@@ -55,6 +57,11 @@ function PostBox({ post: { text, author, imageUrls } }){
         <p>{text}</p>
        
       </div>
+      <div>
+      {currentUser._id === authorId && (
+        <button onClick={handleDelete}>Delete Post</button>
+      )}
+</div>
     </div>
   );
 }

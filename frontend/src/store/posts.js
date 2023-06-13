@@ -6,6 +6,7 @@ const RECEIVE_USER_POSTS = "posts/RECEIVE_USER_POSTS";
 const RECEIVE_NEW_POST = "posts/RECEIVE_NEW_POST";
 const RECEIVE_POST_ERRORS = "posts/RECEIVE_POST_ERRORS";
 const CLEAR_POST_ERRORS = "posts/CLEAR_POST_ERRORS";
+const DELETE_POSTS = 'posts/DELETE_POSTS'
 
 const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
@@ -21,6 +22,11 @@ const receiveNewPost = (post) => ({
   type: RECEIVE_NEW_POST,
   post,
 });
+
+const deletePost = (postId) => ({
+  type: DELETE_POSTS,
+  postId
+})
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_POST_ERRORS,
@@ -76,6 +82,22 @@ export const composePost = (text, images) => async (dispatch) => {
     }
   }
 };
+
+export const deleteUserPosts = (postId) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/posts/${postId}`, {
+      method: "DELETE"
+    });
+    const post = await res.json();
+    dispatch(deletePost(post));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
+  }
+
+}
 
 const nullErrors = null;
 
