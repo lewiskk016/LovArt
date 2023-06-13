@@ -7,6 +7,7 @@ const RECEIVE_NEW_POST = "posts/RECEIVE_NEW_POST";
 const RECEIVE_POST_ERRORS = "posts/RECEIVE_POST_ERRORS";
 const CLEAR_POST_ERRORS = "posts/CLEAR_POST_ERRORS";
 
+
 const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
   posts,
