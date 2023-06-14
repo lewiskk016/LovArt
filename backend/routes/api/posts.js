@@ -201,11 +201,13 @@ router.post('/:postId/like', requireUser, async (req, res, next) => {
       throw new Error('Post not found');
     }
 
-    if (post.likes.includes(req.user._id)) {
+    const userId = req.user._id.toString();
+
+    if (post.likes.includes(userId)) {
       throw new Error('User has already liked this post');
     }
 
-    post.likes.push(req.user._id);
+    post.likes.push(userId);
     await post.save();
 
     return res.json(post);
@@ -214,6 +216,8 @@ router.post('/:postId/like', requireUser, async (req, res, next) => {
   }
 });
 
+
+// Unlike a post
 // Unlike a post
 router.post('/:postId/unlike', requireUser, async (req, res, next) => {
   try {
@@ -223,13 +227,13 @@ router.post('/:postId/unlike', requireUser, async (req, res, next) => {
       throw new Error('Post not found');
     }
 
-    const likeIndex = post.likes.indexOf(req.user._id);
+    const userId = req.user._id.toString();
 
-    if (likeIndex === -1) {
+    if (!post.likes.includes(userId)) {
       throw new Error('User has not liked this post');
     }
 
-    post.likes.splice(likeIndex, 1);
+    post.likes.pull(userId);
     await post.save();
 
     return res.json(post);
@@ -237,6 +241,7 @@ router.post('/:postId/unlike', requireUser, async (req, res, next) => {
     next(err);
   }
 });
+
 
 // Similar endpoints can be created for comments as well.
 
