@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserPosts, clearPostErrors, fetchPosts } from "../../store/posts";
 import PostBox from "../Posts/PostBox";
-import ProfileBox from "./ProfileBox";
+import ProfileIndexItem from "./ProfileIndexItem";
 import { useParams } from "react-router-dom";
+import "./ProfileIndexItem.css"
 
 function Profile() {
   const dispatch = useDispatch();
@@ -35,12 +36,14 @@ function Profile() {
   } else {
     return (
       <>
-        <h2>All of {authorId || currentUser.username}'s Posts</h2>
+        {/* <h2>All of {authorId || currentUser.username}'s Posts</h2> */}
+       <div className="image-gallery">
         {userPosts.map((post) => (
-          <div className="image-grid" key={post._id}>
-            <PostBox post={post} />
-          </div>
+          // <div className="image-grid" key={post._id}>
+            <ProfileIndexItem post={post} />
+          // </div>
         ))}
+        </div>
       </>
     );
   }

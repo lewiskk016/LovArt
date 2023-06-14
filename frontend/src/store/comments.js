@@ -69,6 +69,7 @@ export const fetchUserComments = (id) => async (dispatch) => {
     }
 
     export const createComment = ({ comment, postId }) => async (dispatch, getState) => {
+        
         try {
             const res = await jwtFetch(`/api/posts/${postId}/comments`, {
                 method: "POST",
@@ -94,6 +95,7 @@ export const fetchUserComments = (id) => async (dispatch) => {
                 dispatch(receiveErrors(resBody.errors));
             }
         }
+        
     }
     
     export const updateComment = ({ postId, comment, commentId }) => async (dispatch) => {
