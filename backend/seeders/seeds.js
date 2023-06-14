@@ -10,7 +10,7 @@
 // const NUM_SEED_USERS = 10;
 // const NUM_SEED_POSTS = 30;
 
-// // Create users
+// Create users
 // const users = [];
 
 // users.push(
@@ -33,7 +33,7 @@
 //   )
 // }
   
-// // Create posts
+// Create posts
 // const posts = [];
 
 // for (let i = 0; i < NUM_SEED_POSTS; i++) {
