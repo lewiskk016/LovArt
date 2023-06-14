@@ -5,7 +5,7 @@ import { Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
 import NavBar from "./components/NavBar/NavBar";
 
-import MainPage from "./MainPage/MainPage";
+// import MainPage from "./MainPage/MainPage";
 
 import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
