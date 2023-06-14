@@ -4,6 +4,7 @@ import { signup, clearSessionErrors } from "../../store/session";
 import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Carousel from "../Carousel/Carousel";
 
 function SignupForm() {
   const [image, setImage] = useState(null);
@@ -150,8 +151,10 @@ function SignupForm() {
           <div className="page-img">
             <img src={monet} alt="monet painting" />
             <div className="text-overlay">
-              <p>“Art is never finished, only abandoned”</p>
-              <h1 className="bottom-right"> Leonardo Da Vinci </h1>
+              <p>
+                <Carousel></Carousel>
+              </p>{" "}
+              <h1 className="bottom-right"></h1>
             </div>
           </div>
         </div>

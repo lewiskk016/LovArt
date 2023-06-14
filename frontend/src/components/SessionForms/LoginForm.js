@@ -95,8 +95,10 @@ function LoginForm() {
           <div className="page-img">
             <img src={image} alt="monet painting" />
             <div class="text-overlay">
-              <p><Carousel></Carousel></p>
-              <h1 className="right-bottom">Twyla Tharp</h1>
+              <p>
+                <Carousel></Carousel>
+              </p>
+              <h1 className="right-bottom"></h1>
             </div>
           </div>
         </div>

@@ -106,8 +106,10 @@
 .text-overlay h1 {
   /* text-shadow: 1px 1px 1px #000, 
     3px 3px 5px blue; */
-  font-size: 24px;
-  background-color: cornflowerblue;
+  font-size: 45px;
+  /* background-color: cornflowerblue; */
+  /* background: #a29bfe59; */
+  /* border-radius: 10px; */
   color: rgba(255, 255, 255, 1);
   text-shadow: 2px 2px 0px rgba(64, 116, 181, 1),
     2px -2px 0px rgba(64, 116, 181, 1), -2px 2px 0px rgba(64, 116, 181, 1),
@@ -117,6 +119,7 @@
 }
 
 .text-overlay p {
+  /* background: #a29bfe59; */
   font-size: 50px;
   color: rgba(255, 255, 255, 1);
   text-shadow: 2px 2px 0px rgba(64, 116, 181, 1),
