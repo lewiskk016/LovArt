@@ -4,6 +4,7 @@ import "./LoginForm.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { login, clearSessionErrors } from "../../store/session";
 import image from "../SessionForms/monet.jpeg";
+import Carousel from "../Carousel/Carousel";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -94,7 +95,7 @@ function LoginForm() {
           <div className="page-img">
             <img src={image} alt="monet painting" />
             <div class="text-overlay">
-              <p>Art is the only way to run away without leaving home. </p>
+              <p><Carousel></Carousel></p>
               <h1 className="right-bottom">Twyla Tharp</h1>
             </div>
           </div>
