@@ -25,6 +25,8 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
     return <img className="post-image" key={url} src={url} alt={`postImage${index}`} />
   });
 
+  console.log()
+
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
   };
@@ -59,6 +61,11 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
     dispatch(likePostAction(postId));
   };
 
+  const handleUnLike = () => {
+    dispatch(unlikePostAction(postId));
+  };
+
+
   return (
     <div className="post-con">
       <div className="post-image">
@@ -91,6 +98,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
       </div>
       <div className="post-like">Likes: {likes?.length ?? 0}</div>
       <button onClick={handleLike}>Like</button>
+      <button onClick={handleUnLike}>UnLike</button>
       {/* <div className="post-like">
       Likes: {likes.length}
       <button onClick={handleLike}>
