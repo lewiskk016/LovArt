@@ -1,90 +1,78 @@
-import './Comments.css'
-
+import './Comments.css';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { fetchComments, createComment, deleteComment } from "../../store/comments";
-import { clearPostErrors } from "../../store/posts";
-import { fetchPosts } from "../../store/posts";
+import { createComment, updateComment, deleteComment } from "../../store/comments";
+import { updatePost } from "../../store/posts";
 import { getCurrentUser } from "../../store/session";
+import { useState } from 'react';
 
-
-function Comments({postId}) {
+function Comments({ postId }) {
     const dispatch = useDispatch();
     const [comment, setComment] = useState("");
-    const [errors, setErrors] = useState([]);
-    const [showEdit, setShowEdit] = useState(false);
-    const [editComment, setEditComment] = useState("");
-    const [editCommentId, setEditCommentId] = useState("");
-    const [showDelete, setShowDelete] = useState(false);
-    const [deleteCommentId, setDeleteCommentId] = useState("");
-
-    const comments = useSelector((state) => Object.values(state.comments.all));
+    const post = useSelector((state) => state.posts.all.find((post) => post._id === postId));
     const currentUser = useSelector((state) => state.session.user);
-    const users = useSelector((state) => state.users);
+    const comments = post ? post.lastTwoComments : [];
+
+    const [updatedComments, setUpdatedComments] = useState({});
+
     const handleComment = (e) => {
         e.preventDefault();
-        dispatch(createComment({comment, postId}));
+        dispatch(createComment({ comment, postId }));
         setComment("");
-    }
+    };
 
-    const handleEdit = (e) => {
-        e.preventDefault();
-        dispatch(createComment(postId, editComment));
-        setEditComment("");
-        setShowEdit(false);
-    }
+    const handleUpdateComment = (commentId, updatedText) => {
+        dispatch(updateComment({ postId, comment: updatedText, commentId }));
+        setUpdatedComments({ ...updatedComments, [commentId]: "" });
+    };
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-        dispatch(deleteComment(deleteCommentId));
-        setShowDelete(false);
-    }
-
-    // useEffect(() => {
-    //     dispatch(fetchComments(postId));
-    //     dispatch(fetchPosts());
-    //     return () => {
-    //       dispatch(clearPostErrors());
-    //     };
-    //   }, [dispatch, postId]);
-
+    const handleDeleteComment = (commentId) => {
+        dispatch(deleteComment(commentId, postId));  
+    };
 
     return (
-        <>
-            <div className="comment-index-container">
-                <div className="comment-page-container">
-                    {comments.map((comment) => (
-                        <>
-                            <div className="comment-box">
-                                <div className="comment-box-username">
-
-                                    {users[comment.user_id].username}
-                                </div>
-                                <div className="comment-box-comment">
-                                    {comment.comment}
-                                </div>
-                                <div className="comment-box-buttons">
-                                    {currentUser.id === comment.user_id && (
-                                        <>
-                                            <button className="comment-box-edit" onClick={() => {
-                                                setShowEdit(true);
-                                                setEditComment(comment.comment);
-                                                setEditCommentId(comment._id);
-                                            }}>Edit</button>
-                                            <button className="comment-box-delete" onClick={() => {
-                                                setShowDelete(true);
-                                                setDeleteCommentId(comment._id);
-                                            }}>Delete</button>
-                                        </>
-                                    )}
-                                </div>
+        <div className="comment-index-container">
+            <div className="comment-page-container">
+                {comments && comments.map((comment) => (
+                    <div className="comment-box" key={comment._id}>
+                        <div className="comment-box-username">
+                            {comment.author}
+                        </div>
+                        <div className="comment-box-comment">
+                            {comment.text}
+                        </div>
+                        {currentUser && currentUser._id === comment.authorId && (
+                            <div>
+                                <input
+                                    type="text"
+                                    value={updatedComments[comment._id] || ""}
+                                    onChange={(e) =>
+                                        setUpdatedComments({
+                                            ...updatedComments,
+                                            [comment._id]: e.target.value,
+                                        })
+                                    }
+                                />
+                                <button
+                                    onClick={() =>
+                                        handleUpdateComment(
+                                            comment._id,
+                                            updatedComments[comment._id]
+                                        )
+                                    }
+                                >
+                                    Update
+                                </button>
+                                <button
+                                    onClick={() => handleDeleteComment(comment._id)}
+                                >
+                                    Delete
+                                </button>
                             </div>
-                        </>
-                    ))}
-                </div>
-                <div className="half-page"></div>
+                        )}
+                    </div>
+                ))}
             </div>
+            <div className="half-page"></div>
             <div className="comment-form-container">
                 <form className="comment-form" onSubmit={handleComment}>
                     <textarea
@@ -96,27 +84,7 @@ function Comments({postId}) {
                     <button className="comment-form-button" type="submit">Post</button>
                 </form>
             </div>
-            {showEdit && (
-                <div className="edit-comment-container">
-                    <form className="edit-comment-form" onSubmit={handleEdit}>
-                        <textarea
-
-                            className="edit-comment-form-input"
-                            value={editComment}
-                            onChange={(e) => setEditComment(e.target.value)}
-                        />
-                        <button className="edit-comment-form-button" type="submit">Edit</button>
-                    </form>
-                </div>
-            )}
-            {showDelete && (
-                <div className="delete-comment-container">
-                    <form className="delete-comment-form" onSubmit={handleDelete}>
-                        <button className="delete-comment-form-button" type="submit">Delete</button>
-                    </form>
-                </div>
-            )}
-        </>
+        </div>
     );
 }
 

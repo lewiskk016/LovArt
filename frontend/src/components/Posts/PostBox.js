@@ -8,36 +8,21 @@ import {
   fetchUserPosts,
 } from "../../store/posts";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
 import Comment from "../Comments/Comments";
-
-import React, { useState } from "react";
-import { likePostAction, unlikePostAction } from "../../store/posts";
+import React, { useState } from 'react';
+import {likePostAction, unlikePostAction} from "../../store/posts"
 import { useParams } from "react-router-dom";
 
-function PostBox({
-  post: {
-    text,
-    author: { username, profileImageUrl, _id: authorId },
-    imageUrls,
-    _id: postId,
-    likes,
-  },
-}) {
+
+
+function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, likes }}) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
   const posts = useSelector((state) => state.posts);
   const images = imageUrls?.map((url, index) => {
-    return (
-      <img
-        className="post-image"
-        key={url}
-        src={url}
-        alt={`postImage${index}`}
-      />
-    );
+    return <img className="post-image" key={url} src={url} alt={`postImage${index}`} />
   });
 
   const handleDelete = () => {
@@ -77,7 +62,9 @@ function PostBox({
   return (
     <div className="post-con">
       <div className="post-image">
+
         <div className="artist-img">{images}</div>
+        
       </div>
       <div className="post-det">
         <div className="post-username">
@@ -94,7 +81,7 @@ function PostBox({
             ) : undefined}
           </div>
           <div className="user-username">
-            <Link to={`/profile/${username}`}>{username}</Link>
+            <Link to={`/profile/${authorId}`}>{username}</Link>
             {/* <h3>{username}</h3> */}
           </div>
           <div className="artist-name">
@@ -126,6 +113,9 @@ function PostBox({
         <div className="comment">
           <Comment postId={postId} />
         </div>
+        
+        <Comment postId={postId} />
+
       </div>
       <div>
         {currentUser._id === authorId && (
