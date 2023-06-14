@@ -8,16 +8,22 @@ const validateCommentInput = require('../../validations/posts.js');
 
 // GET all comments for a specific post
 router.get('/', async (req, res, next) => {
-  try {
-    const comments = await Comment.find({ post: req.params.postId })
-      .populate('author', '_id username')
-      .sort({ createdAt: -1 });
-
-    return res.json(comments);
-  } catch (err) {
-    next(err);
-  }
-});
+    try {
+      const comments = await Comment.find({ post: req.params.postId })
+        .populate('author', '_id username')
+        .sort({ createdAt: -1 });
+        return res.json(comments);
+        // const formattedComments = comments.map((comment) => ({
+        //     ...comment.toObject(),
+        //     user_id: comment.author._id,
+        //     username: comment.author.username,
+        // }));
+  
+    //   return res.json(formattedComments);
+    } catch (err) {
+      next(err);
+    }
+  });
 
 
 // POST create a new comment for a specific post
@@ -108,34 +114,36 @@ router.patch('/:commentId', requireUser, validateCommentInput, async (req, res, 
 
 // DELETE a specific comment for a specific post
 router.delete('/:commentId', requireUser, async (req, res, next) => {
-  try {
-    const comment = await Comment.findOne({
-      _id: req.params.commentId,
-      post: req.params.postId,
-    });
-
-    if (!comment) {
-      const error = new Error('Comment not found');
-      error.statusCode = 404;
-      error.errors = { message: 'No comment found with that id' };
-      return next(error);
+    try {
+      const comment = await Comment.findOne({
+        _id: req.params.commentId,
+        post: req.params.postId,
+      });
+  
+      if (!comment) {
+        const error = new Error('Comment not found');
+        error.statusCode = 404;
+        error.errors = { message: 'No comment found with that id' };
+        return next(error);
+      }
+  
+      // Check if the authenticated user is the author of the comment
+      if (comment.author.toString() !== req.user._id.toString()) {
+        const error = new Error('Unauthorized');
+        error.statusCode = 401;
+        error.errors = { message: 'You are not authorized to delete this comment' };
+        return next(error);
+      }
+  
+      await Comment.deleteOne({ _id: comment._id });
+  
+      return res.json({ success: true });
+    } catch (err) {
+      next(err);
     }
-
-    // Check if the authenticated user is the author of the comment
-    if (comment.author.toString() !== req.user._id.toString()) {
-      const error = new Error('Unauthorized');
-      error.statusCode = 401;
-      error.errors = { message: 'You are not authorized to delete this comment' };
-      return next(error);
-    }
-
-    await Comment.deleteOne({ _id: comment._id });
-
-    return res.json({ success: true });
-  } catch (err) {
-    next(err);
-  }
-});
+  });
+  
+  
 
 // Like a comment
 router.post('/:commentId/like', requireUser, async (req, res, next) => {
