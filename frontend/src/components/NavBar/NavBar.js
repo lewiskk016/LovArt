@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./NavBar.css";
 import { logout } from "../../store/session";
-import image from "./lovart-logo.png";
+// import image from "./lovart-logo.png";
 
 function NavBar() {
   const loggedIn = useSelector((state) => !!state.session.user);
@@ -45,15 +45,15 @@ function NavBar() {
     } else {
       return (
         <>
-          <div className="navbar">
+          {/* <div className="navbar">
             <div className="logo">
-              <Link to={loggedIn ? "/posts" : "/"}>
-                {" "}
-                <img src={image} alt="logo" />
-              </Link>
+              <Link to={loggedIn ? "/posts" : "/"}> */}
+                {/* {" "} */}
+                {/* <img src={image} alt="logo" /> */}
+              {/* </Link>
               <div className="logo-overlay"></div>
-            </div>
-            <div className="signup">
+            </div> */}
+            {/* <div className="signup">
               <div className="nav-login">
                 <Link className="login" to={"/"}>
                   Login
@@ -64,10 +64,10 @@ function NavBar() {
                   Register
                 </Link>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
-          <div className="links-auth"></div>
+          {/* // <div className="links-auth"></div> */}
         </>
       );
     }

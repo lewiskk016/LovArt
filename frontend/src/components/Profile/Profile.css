@@ -1,0 +1,82 @@
+.profile-page-body{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    flex-direction: column;
+}
+
+.profile-info-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+    width: 70%;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.985);
+
+}
+
+.profile-image-box{
+    display: flex;
+    width: 30%;
+    height: 60%;
+    border: 3mm ridge darkgray;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.profile-info-box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 55%;
+    z-index: 2;
+    margin-bottom: 10px;
+
+}
+
+.profile-image-box img{
+    width: 100%;
+    height: 100%;
+    -webkit-filter: grayscale(100%);    
+    filter: grayscale(100%);
+    /* object-fit: cover; */
+}
+
+.profile-image-box img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    }
+
+.profile-username{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+
+.number-of-posts{
+    font-size: 30px;
+    color: black;
+}
+
+.user-bio{
+    color: white;
+    overflow-wrap: break-word;
+    align-self: center;
+    margin: 20px;
+}
+
+.how-many-posts{
+    width: 40%;
+    height: 100px;
+    display: flex;
+    border: 6px dotted black;
+    border-radius: 3%;
+    justify-content: center;
+    align-items: center;
+}

@@ -5,6 +5,7 @@ import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Carousel from "../Carousel/Carousel";
+import image1 from "./lovart-logo.png"
 
 function SignupForm() {
   const [image, setImage] = useState(null);
@@ -67,8 +68,8 @@ function SignupForm() {
                 className="session-form form-signup"
                 onSubmit={handleSubmit}
               >
-                <h2 className="sign-header">Sign Up Form</h2>
-
+                {/* <h2 className="sign-header">Sign Up Form</h2> */}
+                <img src={image1} className="carousel-logo-img-sign" alt="logo" />
                 <label>
                   {/* <span>Email</span> */}
                   <input
