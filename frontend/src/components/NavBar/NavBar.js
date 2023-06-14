@@ -47,7 +47,7 @@ function NavBar() {
         <>
           <div className="navbar">
             <div className="logo">
-              <Link to={loggedIn ? "/posts" : "/login"}>
+              <Link to={loggedIn ? "/posts" : "/"}>
                 {" "}
                 <img src={image} alt="logo" />
               </Link>
@@ -55,7 +55,7 @@ function NavBar() {
             </div>
             <div className="signup">
               <div className="nav-login">
-                <Link className="login" to={"/login"}>
+                <Link className="login" to={"/"}>
                   Login
                 </Link>
               </div>

@@ -5,7 +5,7 @@ import { Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
 import NavBar from "./components/NavBar/NavBar";
 
-import MainPage from "./MainPage/MainPage";
+// import MainPage from "./MainPage/MainPage";
 
 import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
@@ -33,8 +33,8 @@ function App() {
       <>
         <NavBar />
         <Switch>
-          <AuthRoute exact path="/" component={MainPage} />
-          <AuthRoute exact path="/login" component={LoginForm} />
+          {/* <AuthRoute exact path="/" component={MainPage} /> */}
+          <AuthRoute exact path="/" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
           <ProtectedRoute exact path="/Posts" component={Posts} />
           <ProtectedRoute path="/profile/:authorId" component={Profile} />
@@ -45,5 +45,6 @@ function App() {
     )
   );
 }
+
 
 export default App
