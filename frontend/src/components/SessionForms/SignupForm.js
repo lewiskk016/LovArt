@@ -138,7 +138,7 @@ function SignupForm() {
                 />
                 <div className="login-link-container">
                   <span>Already have an account? </span>
-                  <Link to="/login" className="link-sign">
+                  <Link to="/" className="link-sign">
                     Login
                   </Link>
                 </div>

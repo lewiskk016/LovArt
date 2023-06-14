@@ -28,7 +28,7 @@ export const clearSessionErrors = () => ({
 });
 
 export const signup = (user) => startSession(user, "api/users/register");
-export const login = (user) => startSession(user, "api/users/login");
+export const login = (user) => startSession(user, "api/users/");
 
 const startSession = (userInfo, route) => async (dispatch) => {
   const { image, username, password, email } = userInfo;

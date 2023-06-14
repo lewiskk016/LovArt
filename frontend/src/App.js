@@ -33,8 +33,8 @@ function App() {
       <>
         <NavBar />
         <Switch>
-          <AuthRoute exact path="/" component={MainPage} />
-          <AuthRoute exact path="/login" component={LoginForm} />
+          {/* <AuthRoute exact path="/" component={MainPage} /> */}
+          <AuthRoute exact path="/" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
           <ProtectedRoute exact path="/Posts" component={Posts} />
           <ProtectedRoute path="/profile/:authorId" component={Profile} />
