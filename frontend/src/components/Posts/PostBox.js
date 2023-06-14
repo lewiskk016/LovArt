@@ -94,7 +94,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
           </div>
         </div>
       </div>
-      <div className="post-like">Likes: {likes.length}
+      <div className="post-like">Likes: {likes?.length ?? 0}
       </div>
       <button onClick={handleLike}>Like</button>
       {/* <div className="post-like">
