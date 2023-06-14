@@ -8,9 +8,11 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Comment from "../Comments/Comments";
 
 import React, { useState } from 'react';
+import {likePostAction, unlikePostAction} from "../../store/posts"
+import { useParams } from "react-router-dom";
 
 
-function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId }}) {
+function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, likes }}) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch()
   const [newText, setNewText] = useState(text);
@@ -25,16 +27,36 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   }
 
 
-
   const handleUpdate = () => {
     dispatch(updatePost(postId, newText))
     setEditMode(false);
   }
- 
+
   const handleTextChange = (event) => {
     setNewText(event.target.value);
   }
 
+
+  // const handleLike = () => {
+  //   const hasLiked = likes.some((like) => like.authorId === currentUser._id);
+  //   if (hasLiked) {
+  //     dispatch(unlikePostAction(postId)).catch((error) => {
+  //       if (error.message === "User has already liked this post") {
+  //         // User has already liked this post, continue with unliking
+  //         dispatch(likePostAction(postId));
+  //       } else {
+  //         // Handle other errors
+  //         console.log("Error unliking post:", error);
+  //       }
+  //     });
+  //   } else {
+  //     dispatch(likePostAction(postId));
+  //   }
+  // };
+
+  const handleLike = () => {
+    dispatch(likePostAction(postId));
+  };
 
 
 
@@ -72,6 +94,17 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
           </div>
         </div>
       </div>
+      <div className="post-like">Likes: {likes.length}
+      </div>
+      <button onClick={handleLike}>Like</button>
+      {/* <div className="post-like">
+      Likes: {likes.length}
+      <button onClick={handleLike}>
+          {likes.some((like) => like.authorId === currentUser._id)
+            ? "Unlike"
+            : "Like"}
+        </button>
+      </div> */}
       <div className="post-description">
 
         {editMode ? (
@@ -98,8 +131,8 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
             {!editMode && <button onClick={() => setEditMode(true)}>Edit Post</button>}
           </div>
         )}
-    
-	 
+
+
       </div>
     </div>
 
