@@ -22,7 +22,9 @@
   position: relative;
   background-color: aliceblue;
   overflow: hidden;
-}
+  border: 4mm ridge #d4af37;
+
+  }
 
 .image-gallery .image-box:nth-child(7n+1){
   grid-column: span 2;

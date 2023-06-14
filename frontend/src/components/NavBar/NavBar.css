@@ -93,6 +93,8 @@ margin-right: 150px;
   position: fixed;
   right: 0;
   margin-right: 10px;
+  z-index: 3;
+
 }
 
 .all-posts {
