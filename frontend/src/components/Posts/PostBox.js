@@ -12,6 +12,10 @@ import Comment from "../Comments/Comments";
 import React, { useState } from 'react';
 import {likePostAction, unlikePostAction} from "../../store/posts"
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as thinHeart } from '@fortawesome/free-regular-svg-icons';
+
 
 
 
@@ -20,7 +24,9 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const dispatch = useDispatch();
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
-  const [likeMode, setlikeMode] = useState(false);
+  const [likeMode, setLikeMode] = useState(
+    likes.includes(currentUser?._id)
+  );
   const posts = useSelector((state) => state.posts);
   const images = imageUrls?.map((url, index) => {
     return <img className="post-image" key={url} src={url} alt={`postImage${index}`} />
@@ -59,14 +65,15 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   // };
 
   const handleLike = () => {
-    dispatch(likePostAction(postId));
-    setlikeMode(true);
+    if (likeMode) {
+      dispatch(unlikePostAction(postId, currentUser._id));
+      setLikeMode(false);
+    } else {
+      dispatch(likePostAction(postId, currentUser._id));
+      setLikeMode(true);
+    }
   };
-
-  const handleUnLike = () => {
-    dispatch(unlikePostAction(postId));
-    setlikeMode(false);
-  };
+  
 
 
   return (
@@ -100,11 +107,19 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         </div>
       </div>
       <div className="post-like">Likes: {likes?.length ?? 0}</div>
-      {likeMode ? (
-        <button onClick={handleUnLike}>UnLike</button>)
-         : (
-           <button onClick={handleLike}>Like</button>
-         )}
+      <span onClick={handleLike}>
+          {likeMode ? (
+            <FontAwesomeIcon
+              icon={solidHeart}
+              style={{ color: "#ff0000", cursor: "pointer" }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={thinHeart}
+              style={{ color: "#000000", cursor: "pointer" }}
+            />
+          )}
+        </span>
       {/* <div className="post-like">
       Likes: {likes.length}
       <button onClick={handleLike}>
