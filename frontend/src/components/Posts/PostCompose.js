@@ -88,12 +88,17 @@ function PostCompose () {
         <form className="compose-post" onSubmit={handleSubmit}>
         <div className='photo-upload'>
           <div className='upload-photo-box'> 
-        <div className='icon-style'><i class="fa-solid fa-camera" ></i></div>
+          {(imageUrls.length !== 0) ?                  // <-- MODIFY THIS LINE
+            <img src={imageUrls} alt=""></img> : // <-- MODIFY THIS LINE
+            undefined}
+        <div className='icon-style'><i class="fa-solid fa-camera" ></i>
+       </div>
         <h1>
           Images to Upload
         </h1>
         </div>
           <div className='upload-photo-btn'><input
+          className='create-page-file-input'
             type="file"
             ref={fileRef}
             accept=".jpg, .jpeg, .png"
@@ -114,12 +119,22 @@ function PostCompose () {
           placeholder="Write your post..."
           required
         /></div>
-            <div className='post-submit-btn'><input type="submit" value="Submit" />
+            <div className='post-btn-style'><input type="submit" className='post-submit-btn'value="Submit" />
             <div className="errors">{errors?.text}</div>   
           </div>
           </div>         
           </form>
         </div>
+        <div className="post-preview">
+        <h3>Post Preview</h3>
+        {(text || imageUrls.length !== 0) ?                  // <-- MODIFY THIS LINE
+            <PostBox post={{text, author, imageUrls}} /> : // <-- MODIFY THIS LINE
+            undefined}
+      </div>
+      <div className="previous-post">
+        <h3>Previous Post</h3>
+        {newPost ? <PostBox post={newPost} /> : undefined}
+      </div>
       </div>
 
     </>
