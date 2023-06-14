@@ -8,6 +8,8 @@ const RECEIVE_POST_ERRORS = "posts/RECEIVE_POST_ERRORS";
 const CLEAR_POST_ERRORS = "posts/CLEAR_POST_ERRORS";
 const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST';
+const LIKE_POST = 'posts/:postId/LIKE_POST';
+const UNLIKE_POST = 'posts/:postId/UNLIKE_POST';
 
 const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
@@ -38,6 +40,16 @@ const receiveErrors = (errors) => ({
 export const clearPostErrors = (errors) => ({
   type: CLEAR_POST_ERRORS,
   errors,
+});
+
+const likePost = (postId) => ({
+  type: LIKE_POST,
+  postId
+});
+
+const unlikePost = (postId) => ({
+  type: UNLIKE_POST,
+  postId
 });
 
 export const fetchPosts = () => async (dispatch) => {
@@ -98,7 +110,7 @@ export const deleteUserPosts = (postId) => async (dispatch) => {
     }
   }
 }
-  
+
 
 
 
@@ -116,6 +128,37 @@ export const updatePost = (postId, text) => async (dispatch) => {
       type: UPDATE_POST,
       payload: updatedPost,
     });
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
+  }
+};
+
+export const likePostAction = (postId) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/posts/${postId}/like`, {
+      method: "POST",
+    });
+    const likedPost = await res.json();
+    dispatch(likePost(likedPost._id));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
+  }
+};
+
+export const unlikePostAction = (postId) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/posts/${postId}/unlike`, {
+      method: "POST",
+    });
+    const unlikedPost = await res.json();
+    dispatch(unlikePost(unlikedPost._id));
+    // dispatch(unlikePost(postId))
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
@@ -158,10 +201,25 @@ const postsReducer = (state = { all: {}, user: {}, new: undefined }, action) => 
       const { payload: updatedPost } = action;
       return {
         ...state,
-        all: state.all.map((post) => 
+        all: state.all.map((post) =>
           post._id === updatedPost._id ? updatedPost : post
         ),
       };
+    case LIKE_POST:
+      return {
+        ...state,
+        all: state.all.map((post) =>
+          post._id === action.postId ? { ...post, likes: [...post.likes, action.postId] } : post
+        ),
+      };
+    case UNLIKE_POST:
+      return {
+        ...state,
+        all: state.all.map((post) =>
+          post._id === action.postId ? { ...post, likes: post.likes.filter(like => like !== action.postId) } : post
+        ),
+      };
+
     default:
       return state;
   }
