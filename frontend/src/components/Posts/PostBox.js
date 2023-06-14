@@ -94,17 +94,17 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
           </div>
         </div>
       </div>
-      {/* <div className="post-like">Likes: {likes.length}
+      <div className="post-like">Likes: {likes.length}
       </div>
-      <button onClick={handleLike}>Like</button> */}
-      <div className="post-like">
+      <button onClick={handleLike}>Like</button>
+      {/* <div className="post-like">
       Likes: {likes.length}
       <button onClick={handleLike}>
           {likes.some((like) => like.authorId === currentUser._id)
             ? "Unlike"
             : "Like"}
         </button>
-      </div>
+      </div> */}
       <div className="post-description">
 
         {editMode ? (
