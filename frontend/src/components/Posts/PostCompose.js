@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearPostErrors, composePost } from "../../store/posts";
+import { clearPostErrors, composePost, fetchPosts } from "../../store/posts";
 import PostBox from "./PostBox";
 import "./PostCompose.css";
 import { useRef } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function PostCompose() {
   const fileRef = useRef();
@@ -28,6 +29,7 @@ function PostCompose() {
     setImageUrls([]);
     setText("");
     fileRef.current.value = null;
+    dispatch(fetchPosts())
   };
 
   const update = (e) => setText(e.currentTarget.value);
@@ -101,14 +103,7 @@ function PostCompose() {
             </div>
           </form>
         </div>
-        <div className="post-preview">
-          <h3>Post Preview</h3>
-          {text || imageUrls.length !== 0 ? (
-            <PostBox post={{ text, author, imageUrls }} />
-          ) : undefined}
-        </div>
         <div className="previous-post">
-          <h3>Previous Post</h3>
           {newPost ? <PostBox post={newPost} /> : undefined}
         </div>
       </div>

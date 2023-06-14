@@ -1,5 +1,7 @@
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT } from "./session";
+import { getCurrentUser } from "./session";
+
 
 const RECEIVE_POSTS = "posts/RECEIVE_POSTS";
 const RECEIVE_USER_POSTS = "posts/RECEIVE_USER_POSTS";
@@ -42,14 +44,17 @@ export const clearPostErrors = (errors) => ({
   errors,
 });
 
-const likePost = (postId) => ({
+const likePost = (postId, currentUserId) => ({
   type: LIKE_POST,
-  postId
+  postId,
+  currentUserId,
+
 });
 
-const unlikePost = (postId) => ({
+const unlikePost = (postId, currentUserId) => ({
   type: UNLIKE_POST,
-  postId
+  postId,
+  currentUserId,
 });
 
 export const fetchPosts = () => async (dispatch) => {
@@ -137,36 +142,47 @@ export const updatePost = (postId, text) => async (dispatch) => {
   }
 };
 
-export const likePostAction = (postId) => async (dispatch) => {
+export const likePostAction = (postId, currentUserId) => async (dispatch) => {
   try {
     const res = await jwtFetch(`/api/posts/${postId}/like`, {
-      method: "POST",
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: currentUserId}),
     });
+    
     const likedPost = await res.json();
-    dispatch(likePost(likedPost._id));
+    dispatch(likePost(likedPost._id, currentUserId));
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
-      return dispatch(receiveErrors(resBody.errors));
+      dispatch(receiveErrors(resBody.errors));
     }
   }
 };
 
-export const unlikePostAction = (postId) => async (dispatch) => {
+export const unlikePostAction = (postId, currentUserId) => async (dispatch) => {
   try {
     const res = await jwtFetch(`/api/posts/${postId}/unlike`, {
-      method: "POST",
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: currentUserId }),
     });
     const unlikedPost = await res.json();
-    dispatch(unlikePost(unlikedPost._id));
-    // dispatch(unlikePost(postId))
+    dispatch(unlikePost(unlikedPost._id, currentUserId));
+    
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
-      return dispatch(receiveErrors(resBody.errors));
+      dispatch(receiveErrors(resBody.errors));
     }
   }
 };
+
+
 
 const nullErrors = null;
 
@@ -206,20 +222,39 @@ const postsReducer = (state = { all: {}, user: {}, new: undefined, comments: [] 
           post._id === updatedPost._id ? updatedPost : post
         ),
       };
-    case LIKE_POST:
-      return {
-        ...state,
-        all: state.all.map((post) =>
-          post._id === action.postId ? { ...post, likes: [...post.likes, action.postId] } : post
-        ),
-      };
-    case UNLIKE_POST:
-      return {
-        ...state,
-        all: state.all.map((post) =>
-          post._id === action.postId ? { ...post, likes: post.likes.filter(like => like !== action.postId) } : post
-        ),
-      };
+
+// ...
+
+
+case LIKE_POST:
+  return {
+    ...state,
+    all: state.all.map((post) => {
+      if (post._id === action.postId) {
+        return {
+          ...post,
+          likes: [...post.likes, action.currentUserId],
+        };
+      }
+      return post;
+    }),
+  };
+
+case UNLIKE_POST:
+  return {
+    ...state,
+    all: state.all.map((post) => {
+      if (post._id === action.postId) {
+        return {
+          ...post,
+          likes: post.likes.filter((like) => like !== action.currentUserId),
+        };
+      }
+      return post;
+    }),
+  };
+
+
 
     default:
       return state;
