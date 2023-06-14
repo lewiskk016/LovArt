@@ -20,12 +20,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const dispatch = useDispatch();
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
+  const [likeMode, setlikeMode] = useState(false);
   const posts = useSelector((state) => state.posts);
   const images = imageUrls?.map((url, index) => {
     return <img className="post-image" key={url} src={url} alt={`postImage${index}`} />
   });
 
-  console.log()
+  console.log(likes)
 
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
@@ -59,10 +60,12 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
 
   const handleLike = () => {
     dispatch(likePostAction(postId));
+    setlikeMode(true);
   };
 
   const handleUnLike = () => {
     dispatch(unlikePostAction(postId));
+    setlikeMode(false);
   };
 
 
@@ -97,8 +100,11 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         </div>
       </div>
       <div className="post-like">Likes: {likes?.length ?? 0}</div>
-      <button onClick={handleLike}>Like</button>
-      <button onClick={handleUnLike}>UnLike</button>
+      {likeMode ? (
+        <button onClick={handleUnLike}>UnLike</button>)
+         : (
+           <button onClick={handleLike}>Like</button>
+         )}
       {/* <div className="post-like">
       Likes: {likes.length}
       <button onClick={handleLike}>
