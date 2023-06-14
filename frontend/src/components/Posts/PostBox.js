@@ -113,8 +113,6 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         <div className="comment">
           <Comment postId={postId} />
         </div>
-        
-        <Comment postId={postId} />
 
       </div>
       <div>
