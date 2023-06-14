@@ -1,116 +1,91 @@
-.signup-page{
-    display: flex;
-    width: 88%;
-    height: 720px;
-    margin: 10px;
+.signup-page {
+  display: flex;
+  width: 88%;
+  height: 720px;
+  margin: 10px;
 }
 
-.sign-back-line{
-    display: flex;
-    width: 50%;
-    height: 100%;
-    border: solid 2px black;
-    justify-content: center;
-    align-items: center;  
+.sign-back-line {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  border: solid 2px black;
+  justify-content: center;
+  align-items: center;
 }
 
-.sign-form-container{
-    display: flex;
-    width: 80%;
-    height: 90%;
-    border: solid 5px black;
-    justify-content: center;
-    align-items: center;
-    background-image: url(./monet.jpeg);
-    background-color:#dbcdda
+.sign-form-container {
+  display: flex;
+  width: 80%;
+  height: 90%;
+  border: solid 5px black;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./monet.jpeg);
+  background-color: #dbcdda;
 }
-.signup-page-submit-btn{
-    height: 50%;
-    width:100%;
-    padding: 0.5em 3em;
-    text-align: center;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 0.2em;
-    border: 2px solid black;
-    background-color: black;
-    transition: 1s;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    margin-bottom: 10px;
-
-}
-
-.signup-page-file-input::file-selector-button{
-    padding: 0.5em 1em;
-    border-radius: 0.2em;
-    border: 2px solid #6c5ce7;
-    background-color: #a29bfe;
-    transition: 1s;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 5px;
+.signup-page-submit-btn {
+  height: 50%;
+  width: 100%;
+  padding: 0.5em 3em;
+  text-align: center;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 0.2em;
+  border: 2px solid black;
+  background-color: black;
+  transition: 1s;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 10px;
 }
 
-.signup-page-image{
-    display: flex;
-    position: relative;
-    width: 50%;
-    height: 100%;
-    border: solid 2px black;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+.signup-page-file-input::file-selector-button {
+  padding: 0.5em 1em;
+  border-radius: 0.2em;
+  border: 2px solid #6c5ce7;
+  background-color: #a29bfe;
+  transition: 1s;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
 }
 
-.signup-form{
-    display: flex;
-    width: 80%;
-    height: 90%;
-    border: 3px solid black;
-    background-color: white;
+.signup-page-image {
+  display: flex;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  border: solid 2px black;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
-.form-signup{
-    margin: 40px;
+.signup-form {
+  display: flex;
+  width: 80%;
+  height: 90%;
+  border: 3px solid black;
+  background-color: white;
 }
 
-.sign-header{
-    margin-bottom: 35px;
+.form-signup {
+  margin: 40px;
 }
 
-/* .session-form input[type="file"]{
-    display: block;
-    box-sizing: border-box;
-    width: 36%;
-    margin: 0 0 18px;
-    padding: 15px 168px;
-    background: black;
-    color: white;
-    border: 1px solid #999;
-    border-radius: 3px;
-    font-size: 14px;
-    line-height: 1.29em;
-    cursor: pointer;
-    text-align: center;
-   
-} */
+.sign-header {
+  margin-bottom: 35px;
+}
 
-/* .errors {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  } */
+.errors {
+  color: red;
+  font-size: 16px;
+  margin-top: 1px;
+  padding: 5px 10px;
+}
 
-  .errors {
-    color: red;
-    font-size: 16px;
-    margin-top: 1px;
-    /* background-color: #d8b6b6; */
-    padding: 5px 10px;
-  }
-  
-  .error-input {
-    border: 1px solid #e74c3c;
-  }
+.error-input {
+  border: 1px solid #e74c3c;
+}

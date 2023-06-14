@@ -18,19 +18,27 @@ function NavBar() {
       return (
         <div className="links-nav">
           <div className="all-posts">
-            <Link className="side-nav-text" to={"/posts"}><i className="fa-solid fa-glasses"></i>All posts</Link>
+            <Link className="side-nav-text" to={"/posts"}>
+              <i className="fa-solid fa-glasses"></i>All posts
+            </Link>
           </div>
           <div className="profile-page">
             {" "}
-            <Link className="side-nav-text" to={"/profile"}><i className="fa-solid fa-palette"></i>Profile</Link>
+            <Link className="side-nav-text" to={"/profile"}>
+              <i className="fa-solid fa-palette"></i>Profile
+            </Link>
           </div>
           <div className="write-post">
             {" "}
-            <Link className="side-nav-text" to={"/posts/new"}><i className="fa-solid fa-paintbrush"></i>Share a post</Link>
+            <Link className="side-nav-text" to={"/posts/new"}>
+              <i className="fa-solid fa-paintbrush"></i>Share a post
+            </Link>
           </div>
           <div className="logout-btn">
             {" "}
-            <button className="side-nav-btn" onClick={logoutUser}>Logout</button>
+            <button className="side-nav-btn" onClick={logoutUser}>
+              Logout
+            </button>
           </div>
         </div>
       );
@@ -39,7 +47,7 @@ function NavBar() {
         <>
           <div className="navbar">
             <div className="logo">
-              <Link to={loggedIn ? "/posts" : "/login" }>
+              <Link to={loggedIn ? "/posts" : "/login"}>
                 {" "}
                 <img src={image} alt="logo" />
               </Link>
@@ -69,5 +77,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-

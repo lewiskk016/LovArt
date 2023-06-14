@@ -1,8 +1,12 @@
-
-import "./PostBox.css"
-import image from "./monet.jpeg"
+import "./PostBox.css";
+import image from "./monet.jpeg";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserPosts, fetchPosts, updatePost, fetchUserPosts } from "../../store/posts"
+import {
+  deleteUserPosts,
+  fetchPosts,
+  updatePost,
+  fetchUserPosts,
+} from "../../store/posts";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Comment from "../Comments/Comments";
 import React, { useState } from 'react';
@@ -13,7 +17,7 @@ import { useParams } from "react-router-dom";
 
 function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, likes }}) {
   const currentUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
   const posts = useSelector((state) => state.posts);
@@ -23,18 +27,16 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
 
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
-  }
-
+  };
 
   const handleUpdate = () => {
-    dispatch(updatePost(postId, newText))
+    dispatch(updatePost(postId, newText));
     setEditMode(false);
-  }
+  };
 
   const handleTextChange = (event) => {
     setNewText(event.target.value);
-  }
-
+  };
 
   // const handleLike = () => {
   //   const hasLiked = likes.some((like) => like.authorId === currentUser._id);
@@ -57,22 +59,16 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
     dispatch(likePostAction(postId));
   };
 
-
-
   return (
     <div className="post-con">
       <div className="post-image">
-        {/* <div className="artist">
-          <h1>ART</h1>
-        </div> */}
-        <div className="artist-img">
-          {images}
-        </div>
+
+        <div className="artist-img">{images}</div>
+        
       </div>
       <div className="post-det">
         <div className="post-username">
           <div className="username"></div>
-
         </div>
         <div className="post-like">
           <div className="user-image">
@@ -93,8 +89,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
           </div>
         </div>
       </div>
-      <div className="post-like">Likes: {likes?.length ?? 0}
-      </div>
+      <div className="post-like">Likes: {likes?.length ?? 0}</div>
       <button onClick={handleLike}>Like</button>
       {/* <div className="post-like">
       Likes: {likes.length}
@@ -105,7 +100,6 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         </button>
       </div> */}
       <div className="post-description">
-
         {editMode ? (
           <div>
             <input type="text" value={newText} onChange={handleTextChange} />
@@ -114,12 +108,12 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         ) : (
           <p>{text}</p>
         )}
-
       </div>
       <div className="post-comment">
         <div className="comment">
+          <Comment postId={postId} />
         </div>
-
+        
         <Comment postId={postId} />
 
       </div>
@@ -127,15 +121,13 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
         {currentUser._id === authorId && (
           <div>
             <button onClick={handleDelete}>Delete Post</button>
-            {!editMode && <button onClick={() => setEditMode(true)}>Edit Post</button>}
+            {!editMode && (
+              <button onClick={() => setEditMode(true)}>Edit Post</button>
+            )}
           </div>
         )}
-
-
       </div>
     </div>
-
-
   );
 }
 

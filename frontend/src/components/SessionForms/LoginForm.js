@@ -31,56 +31,64 @@ function LoginForm() {
     <>
       <div className="login-page">
         <div className="back-line">
-        <div className="login-form-container">
-          <div className="login-form">
-            <form className="session-form form-login" onSubmit={handleSubmit}>
-              <h2>Log In Form</h2>
-              <p>
-                Don't you have an account?
-                <Link className="link-sign" to="/signup">
-                  Sign Up
-                </Link>
-              </p>
-           
-              <label>
-                <input
-                required
-                className="input"
-                  type="text"
-                  value={email}
-                  onChange={update("email")}
-                  placeholder="Email"
-                />
-              </label>
-              <div className="errors">{errors?.email}</div>
-            
-              <label>
-                <input
-                required
-                className="input"
-                  type="password"
-                  value={password}
-                  onChange={update("password")}
-                  placeholder="Password"
-                />
-              </label>
-              <div className="errors">{errors?.password}</div>
-              <input
-              className="submit-style-this"
-                type="submit"
-                value="Log In"
-                disabled={!email || !password}
-              />
-            </form>
-            <div className="demo-user-container">
-            {/* <label className="Demo-User"></label> */}
-            <form className="demo-user-form" onSubmit={handleSubmit}>
-            <button className="demo" type="submit" onClick={() => { setEmail("demo-user@appacademy.io"); setPassword("starwars"); }}>Demo User</button>
-            </form>
-            </div>
+          <div className="login-form-container">
+            <div className="login-form">
+              <form className="session-form form-login" onSubmit={handleSubmit}>
+                <h2>Log In Form</h2>
+                <p>
+                  Don't you have an account?
+                  <Link className="link-sign" to="/signup">
+                    Sign Up
+                  </Link>
+                </p>
 
+                <label>
+                  <input
+                    required
+                    className="input"
+                    type="text"
+                    value={email}
+                    onChange={update("email")}
+                    placeholder="Email"
+                  />
+                </label>
+                <div className="errors">{errors?.email}</div>
+
+                <label>
+                  <input
+                    required
+                    className="input"
+                    type="password"
+                    value={password}
+                    onChange={update("password")}
+                    placeholder="Password"
+                  />
+                </label>
+                <div className="errors">{errors?.password}</div>
+                <input
+                  className="submit-style-this"
+                  type="submit"
+                  value="Log In"
+                  disabled={!email || !password}
+                />
+              </form>
+              <div className="demo-user-container">
+                {/* <label className="Demo-User"></label> */}
+                <form className="demo-user-form" onSubmit={handleSubmit}>
+                  <button
+                    className="demo"
+                    type="submit"
+                    onClick={() => {
+                      setEmail("demo-user@appacademy.io");
+                      setPassword("starwars");
+                    }}
+                  >
+                    Demo User
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
-        </div>
         </div>
         <div className="login-page-image">
           <div className="page-img">
