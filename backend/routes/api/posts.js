@@ -10,14 +10,46 @@ const { multipleFilesUpload, multipleMulterUpload } = require("../../awsS3");
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find()
-                              .populate("author", "_id username profileImageUrl")
-                              .sort({ createdAt: -1 });
-    return res.json(posts);
-  }
-  catch(err) {
+      .populate({
+        path: 'author', // Add this line to populate the post author
+        select: '_id username profileImageUrl', // Select the fields you want to populate
+      })
+      .populate({
+        path: 'comments',
+        options: { sort: { createdAt: -1 }, limit: 2 },
+        populate: {
+          path: 'author',
+          select: '_id username',
+        },
+      })
+      .sort({ createdAt: -1 });
+
+    const formattedPosts = posts.map((post) => ({
+      _id: post._id,
+      author: post.author,
+      imageUrls: post.imageUrls,
+      text: post.text,
+      commentCount: post.comments.length,
+      likeCount: post.likes.length,
+      lastTwoComments: post.comments.map((comment) => ({
+        _id: comment._id,
+        text: comment.text,
+        author: comment.author.username,
+        authorId: comment.author.id
+      })),
+      likes: post.likes,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+    }));
+
+    return res.json(formattedPosts);
+  } catch (err) {
     return res.json([]);
   }
 });
+
+
+
 
 router.get('/user/:userId', async (req, res, next) => {
   let user;
@@ -95,15 +127,42 @@ router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
     post.text = req.body.text;
     await post.save();
 
-    // Re-fetch the post from the database with the author field populated
-    const updatedPost = await Post.findById(req.params.id).populate('author');
+    // Re-fetch the post from the database with the necessary populated fields
+    const updatedPost = await Post.findById(req.params.id)
+      .populate({
+        path: 'comments',
+        options: { sort: { createdAt: -1 }, limit: 2 },
+        populate: {
+          path: 'author',
+          select: '_id username',
+        },
+      })
+      .populate('author', '_id username profileImageUrl');
 
-    return res.json(updatedPost);
-  }
-  catch (err) {
+    const formattedPost = {
+      _id: updatedPost._id,
+      author: updatedPost.author,
+      imageUrls: updatedPost.imageUrls,
+      text: updatedPost.text,
+      commentCount: updatedPost.comments.length,
+      likeCount: updatedPost.likes.length,
+      lastTwoComments: updatedPost.comments.map((comment) => ({
+        _id: comment._id,
+        text: comment.text,
+        author: comment.author.username,
+        authorId: comment.author.id
+      })),
+      likes: updatedPost.likes,
+      createdAt: updatedPost.createdAt,
+      updatedAt: updatedPost.updatedAt,
+    };
+
+    return res.json(formattedPost);
+  } catch (err) {
     next(err);
   }
 });
+
 
 router.delete('/:id', requireUser, async (req, res, next) => {
   try {
