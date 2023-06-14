@@ -1,8 +1,9 @@
 .login-page {
   display: flex;
-  width: 88%;
-  height: 700px;
-  margin: 10px;
+  width: 100%;
+  height: 730px;
+  margin: 20px;
+
 }
 .back-line {
   display: flex;
@@ -120,7 +121,7 @@
 
 .text-overlay p {
   /* background: #a29bfe59; */
-  font-size: 50px;
+  font-size: 40px;
   color: rgba(255, 255, 255, 1);
   text-shadow: 2px 2px 0px rgba(64, 116, 181, 1),
     2px -2px 0px rgba(64, 116, 181, 1), -2px 2px 0px rgba(64, 116, 181, 1),
@@ -149,7 +150,7 @@
   display: block;
   box-sizing: border-box;
   width: 100%;
-  margin: 20px 0 15px;
+  margin: 00px 0 15px;
   padding: 7px 90px;
   background: #fff;
   border: 1px solid #999;
@@ -175,7 +176,7 @@
 
 .submit-style-this {
   height: 50%;
-  width: 95%;
+  width: 80%;
   padding: 0.5em 3em;
   text-align: center;
   font-size: 16px;
@@ -245,7 +246,7 @@
 .page-img img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .demo-user-from {
@@ -259,4 +260,11 @@
 .demo:hover {
   background-color: #81ecec;
   border: 2px solid #00cec9;
+}
+
+.carousel-logo-img{
+  width: 100%;
+  height: 150px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }

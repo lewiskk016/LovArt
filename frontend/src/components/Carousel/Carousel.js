@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Carousel.css";
 
+
 const Carousel = () => {
   const data = [
     `"To practice any art, no matter how well or badly, is a way to make your soul grow. So do it."`,
@@ -45,6 +46,7 @@ const Carousel = () => {
         })}
       </div>
       <div className="carousel-container">
+
         {data1.map((item, index) => {
           return (
             <>
