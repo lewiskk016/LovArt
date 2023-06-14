@@ -1,12 +1,13 @@
 .login-page{
     display: flex;
-    width: 100%;
-    height: 900px;
+    width: 88%;
+    height: 700px;
+    margin: 10px;
 }
 .back-line{
     display: flex;
     width: 50%;
-    height: 100%;
+    height: 102%;
     border: solid 2px black;
     justify-content: center;
     align-items: center; 
@@ -30,8 +31,9 @@ color: rgb(217, 100, 120)
   position: relative;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;  
+  transition: all 0.3s ease-in-out; 
 }
+
 .link-sign:before{
     content: '';
     background: #c754d6;
@@ -50,8 +52,10 @@ color: rgb(217, 100, 120)
 
 .login-form-container{
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
-    height: 80%;
+    height: 90%;
     border: solid 5px black;
     justify-content: center;
     align-items: center;
@@ -64,7 +68,7 @@ color: rgb(217, 100, 120)
     display: flex;
     position: relative;
     width: 50%;
-    height: 100%;
+    height: 102%;
     border: solid 2px black;
     justify-content: center;
     align-items: center;
@@ -74,7 +78,7 @@ color: rgb(217, 100, 120)
 .page-img{
     /* display: block; */
     width: 80%;
-    height: 80%;
+    height: 90%;
     border:5px solid black;
     background-color: white;
    
@@ -136,8 +140,9 @@ color: rgb(217, 100, 120)
 
 
 .login-form{
+    /* display: flex; */
     width: 80%;
-    height: 80%;
+    height: 90%;
     border: 3px solid black;
     background-color: white;
 }
@@ -147,15 +152,15 @@ color: rgb(217, 100, 120)
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 75px;
+    margin-top: 30px;
 }
 
 .session-form input[type="text"] {
     display: block;
     box-sizing: border-box;
     width: 100%;
-    margin: 0 0 18px;
-    padding: 10px 90px;
+    margin: 20px 0 15px;
+    padding: 7px 90px;
     background: #fff;
     border: 1px solid #999;
     border-radius: 3px;
@@ -166,24 +171,54 @@ color: rgb(217, 100, 120)
     display: block;
     box-sizing: border-box;
     width:100%;
-    margin: 0 0 18px;
-    padding: 10px 90px;
+    margin: 0 0 15px;
+    padding: 7px 90px;
     background: #fff;
     border: 1px solid #999;
     border-radius: 3px;
     font-size: 14px;
     line-height: 1.29em;
 }
-.session-form input[type="submit"]::placeholder{
-    text-align: start;
+.session-form .submit-style-this::placeholder{
+    text-align:start;
 }
 
-.session-form input[type="submit"]{
-    display: block;
+.submit-style-this{
+    /* display: inline-block;
     box-sizing: border-box;
     width: 36%;
     margin: 0 0 18px;
-    padding: 15px 168px;
+    padding: 10px 164px;
+    background: black;
+    color: white;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.29em;
+    cursor: pointer;
+    text-align: center; */
+    height: 50%;
+    width:95%;
+    padding: 0.5em 3em;
+    text-align: center;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 0.2em;
+    border: 2px solid black;
+    background-color: black;
+    transition: 1s;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+.demo{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0px 0px 0px;
+    padding: 10px 60px;
     background: black;
     color: white;
     border: 1px solid #999;
@@ -192,8 +227,15 @@ color: rgb(217, 100, 120)
     line-height: 1.29em;
     cursor: pointer;
     text-align: center;
-   
+    transition: 1s;
 }
+.demo-user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 .session-form h2{
     font-weight: bold;
@@ -210,11 +252,14 @@ color: rgb(217, 100, 120)
 
 .session-form label{
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     color: #333333;
     font-weight: 800;
 }
 
+.form-login{
+    margin: 40px;
+}
 .session-form input[type="text"]::placeholder{
     text-align: center;
 }
@@ -226,4 +271,17 @@ color: rgb(217, 100, 120)
     height: 100%;
     width: 100%;
     object-fit: cover
+}
+
+.demo-user-from{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.demo:hover{
+    background-color: #81ecec;
+    border: 2px solid #00cec9;
 }
