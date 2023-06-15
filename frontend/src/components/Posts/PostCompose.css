@@ -145,8 +145,12 @@ input[type=textarea] {
     /* border-radius: 5px; */
   }
 
+  .create-imagetext{
+    font-size: larger;
+  }
+
   .create-usersname{
-    margin-top: 25px;
+    margin-top: 20px;
     margin-left: 10px;
   }
 

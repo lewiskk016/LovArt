@@ -38,6 +38,12 @@ function PostCompose() {
     fileRef.current.value = null;
   };
 
+  let imageText;
+
+  if (images.length === 0) {
+    imageText =   <h1 className="create-imagetext">LovArt Accepts .jpg .jpeg .png</h1>
+  }
+
   const update = (e) => setText(e.currentTarget.value);
 
   const updateFiles = async (e) => {
@@ -63,6 +69,7 @@ function PostCompose() {
         <div className="create-post-container">
           <form className="compose-post" onSubmit={handleSubmit}>
             <div className="photo-upload">
+              {imageText}
               <div className="upload-photo-box">
                 {imageUrls.length !== 0 ? (
                   <img src={imageUrls} alt="" className="upload-photo-image"></img>
@@ -84,6 +91,7 @@ function PostCompose() {
                 />
               </div>
             </div>
+            
             <div className="upload-photo"></div>
             <div className="create-post-description">
               <div className="user-details">
