@@ -22,10 +22,14 @@ import { faHeart as thinHeart } from '@fortawesome/free-regular-svg-icons';
 function PostBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, likes }}) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
+  // const [likeMode, setLikeMode] = useState(
+  //   likes.includes(currentUser?._id)
+  // );
   const [likeMode, setLikeMode] = useState(
-    likes.includes(currentUser?._id)
+    currentUser && likes ? likes.includes(currentUser._id) : false
   );
   const posts = useSelector((state) => state.posts.all);
   const images = imageUrls?.map((url, index) => {
@@ -72,7 +76,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
       setLikeMode(true);
     }
   };
-  
+
 
   console.log(profileImageUrl)
   return (
@@ -80,7 +84,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
       <div className="post-image">
 
         <div className="artist-img">{images}</div>
-        
+
       </div>
       <div className="post-det">
         <div className="post-username">
