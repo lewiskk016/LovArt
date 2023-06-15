@@ -2,3 +2,78 @@
     height: 30px;
     width: 30px;
 }
+
+.comment-box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.comment-box-username{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-content: center;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+.comment-box-username span{
+font-weight: bold;
+}
+.comment-box-username img{
+    border-radius: 50%;
+}
+
+.comment-box-comment{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.edit-delete-btn{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+}
+
+.edit-delete-btn span{
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-delete-btn .delete-comment-btn{
+
+       text-align: center;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 0.2em;
+    border: 2px solid #6c5ce7;
+    background-color: #a29bfe;
+    transition: 1s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-delete-btn .delete-comment-btn:hover{
+    background-color: #81ecec;
+    border: 2px solid #00cec9;
+}
+
+.comment-form-container{
+    display: flex;
+    justify-content: start;
+    font-size: 25px;
+    margin-top: 10px;
+}
+.comment-form-container span{
+margin-left: 5px;
+}
+
