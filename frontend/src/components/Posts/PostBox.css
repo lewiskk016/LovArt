@@ -14,12 +14,11 @@
     justify-content: center;
     align-items: center;
     height: 90vh;
-
   }
 
   .loading-art {
     max-width: 200px;
-    max-height: 200px; 
+    max-height: 200px;
   }
 
  .post-index-container{
@@ -67,7 +66,7 @@ margin-bottom: 10px;
   max-height: 700px;
   width: 100%;
   object-fit: cover;
-  
+
 }
 .artist-img p{
   height: 100%;
@@ -217,7 +216,7 @@ font-size: 20px;
 }
 
 .card {
-    
+
 	height:800px;
 	width:800px;
 	font-family: 'Poppins', sans-serif;
@@ -228,7 +227,7 @@ font-size: 20px;
 	 border:none;
 	 outline:none;
    margin-bottom: 20px;
-   
+
 }
 .card h5{
     position:absolute;
@@ -263,7 +262,7 @@ font-size: 20px;
 }
 .card:hover .rotate-img{
     transform:rotate(-140deg);
-   
+
 }
 .card small{
     height:5px;
@@ -280,7 +279,7 @@ font-size: 20px;
 .index-page-new{
   width: 50%;
   height: 600px;
- 
+
   /* border: 2px solid rgb(40, 133, 39); */
   margin: 10px;
 }
