@@ -5,7 +5,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { login, clearSessionErrors } from "../../store/session";
 import image from "../SessionForms/monet.jpeg";
 import Carousel from "../Carousel/Carousel";
-import image1 from "./lovart-logo.png"
+import image1 from "../Posts/lovart-logo-white.png"
 
 function LoginForm() {
   const [email, setEmail] = useState("");

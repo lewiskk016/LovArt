@@ -5,7 +5,7 @@ import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Carousel from "../Carousel/Carousel";
-import image1 from "./lovart-logo.png"
+import image1 from "../Posts/lovart-logo-white.png"
 
 function SignupForm() {
   const [image, setImage] = useState(null);
