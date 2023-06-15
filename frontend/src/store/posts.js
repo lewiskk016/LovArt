@@ -1,7 +1,6 @@
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT } from "./session";
-import { getCurrentUser } from "./session";
-
+import { RECEIVE_DELETED_COMMENT } from './comments';
 
 const RECEIVE_POSTS = "posts/RECEIVE_POSTS";
 const RECEIVE_USER_POSTS = "posts/RECEIVE_USER_POSTS";
@@ -12,8 +11,20 @@ const DELETE_POST = 'posts/DELETE_POST'
 const UPDATE_POST = 'posts/UPDATE_POST';
 const LIKE_POST = 'posts/:postId/LIKE_POST';
 const UNLIKE_POST = 'posts/:postId/UNLIKE_POST';
+const RECEIVE_POST = "posts/RECEIVE_POST";
+const RECEIVE_COMMENTS = "posts/RECEIVE_COMMENTS";
 
-const receivePosts = (posts) => ({
+const receiveComments = (comments) => ({
+  type: RECEIVE_COMMENTS,
+  comments,
+});
+
+export const receivePost = (post) => ({
+  type: RECEIVE_POST,
+  post,
+});
+
+export const receivePosts = (posts) => ({
   type: RECEIVE_POSTS,
   posts,
 });
@@ -32,7 +43,6 @@ export const deletePost = postId => ({
   type: DELETE_POST,
   postId
 });
-
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_POST_ERRORS,
@@ -57,11 +67,24 @@ const unlikePost = (postId, currentUserId) => ({
   currentUserId,
 });
 
+export const fetchPost = (postId) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/posts/${postId}`);
+    const post = await res.json();
+    dispatch(receivePost(post));
+    dispatch(receiveComments(post.lastTwoComments));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      dispatch(receiveErrors(resBody.errors));
+    }
+  }
+};
+
 export const fetchPosts = () => async (dispatch) => {
   try {
     const res = await jwtFetch("/api/posts");
     const posts = await res.json();
-    console.log(posts);
     dispatch(receivePosts(posts));
   } catch (err) {
     const resBody = await err.json();
@@ -117,9 +140,6 @@ export const deleteUserPosts = (postId) => async (dispatch) => {
   }
 }
 
-
-
-
 export const updatePost = (postId, text) => async (dispatch) => {
   try {
     const res = await jwtFetch(`/api/posts/${postId}`, {
@@ -149,9 +169,9 @@ export const likePostAction = (postId, currentUserId) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId: currentUserId}),
+      body: JSON.stringify({ userId: currentUserId }),
     });
-    
+
     const likedPost = await res.json();
     dispatch(likePost(likedPost._id, currentUserId));
   } catch (err) {
@@ -173,7 +193,7 @@ export const unlikePostAction = (postId, currentUserId) => async (dispatch) => {
     });
     const unlikedPost = await res.json();
     dispatch(unlikePost(unlikedPost._id, currentUserId));
-    
+
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
@@ -181,8 +201,6 @@ export const unlikePostAction = (postId, currentUserId) => async (dispatch) => {
     }
   }
 };
-
-
 
 const nullErrors = null;
 
@@ -222,39 +240,46 @@ const postsReducer = (state = { all: {}, user: {}, new: undefined, comments: [] 
           post._id === updatedPost._id ? updatedPost : post
         ),
       };
-
-// ...
-
-
-case LIKE_POST:
+    case RECEIVE_COMMENTS:
+      return {
+        ...state,
+        all: state.all.map((post) =>
+          post._id === action.postId ? { ...post, lastTwoComments: action.comments } : post
+        ),
+      };
+    case LIKE_POST:
+      return {
+        ...state,
+        all: state.all.map((post) => {
+          if (post._id === action.postId) {
+            return {
+              ...post,
+              likes: [...post.likes, action.currentUserId],
+            };
+          }
+          return post;
+        }),
+      };
+    case UNLIKE_POST:
+      return {
+        ...state,
+        all: state.all.map((post) => {
+          if (post._id === action.postId) {
+            return {
+              ...post,
+              likes: post.likes.filter((like) => like !== action.currentUserId),
+            };
+          }
+          return post;
+        }),
+      };
+      case RECEIVE_DELETED_COMMENT:
   return {
     ...state,
-    all: state.all.map((post) => {
-      if (post._id === action.postId) {
-        return {
-          ...post,
-          likes: [...post.likes, action.currentUserId],
-        };
-      }
-      return post;
-    }),
+    all: state.all.map(post => post._id === action.postId 
+      ? { ...post, lastTwoComments: post.lastTwoComments.filter(comment => comment._id !== action.deletedCommentId) } 
+      : post)
   };
-
-case UNLIKE_POST:
-  return {
-    ...state,
-    all: state.all.map((post) => {
-      if (post._id === action.postId) {
-        return {
-          ...post,
-          likes: post.likes.filter((like) => like !== action.currentUserId),
-        };
-      }
-      return post;
-    }),
-  };
-
-
 
     default:
       return state;

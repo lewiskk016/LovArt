@@ -1,12 +1,6 @@
 import "./Comments.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createComment,
-  updateComment,
-  deleteComment,
-} from "../../store/comments";
-import { updatePost } from "../../store/posts";
-import { getCurrentUser } from "../../store/session";
+import { createComment, updateComment, deleteComment,} from "../../store/comments";
 import { useState } from "react";
 
 function Comments({ postId }) {
@@ -18,8 +12,9 @@ function Comments({ postId }) {
   console.log("this is=>",postId.comment)
   const currentUser = useSelector((state) => state.session.user);
   const comments = post ? post.lastTwoComments : [];
-console.log(comments)
+
   const [updatedComments, setUpdatedComments] = useState({});
+  
 
   const handleComment = (e) => {
     e.preventDefault();
@@ -42,9 +37,9 @@ console.log(comments)
         {comments &&
           comments.map((comment) => (
             <div className="comment-box" key={comment._id}>
-              <div className="comment-box-username">{comment.author}</div>
+              <div className="comment-box-username">{comment.author.username}</div>
               <div className="comment-box-comment">{comment.text}</div>
-              {currentUser && currentUser._id === comment.authorId && (
+              {currentUser && currentUser._id === comment.author._id && (
                 <div>
                   <input
                     type="text"

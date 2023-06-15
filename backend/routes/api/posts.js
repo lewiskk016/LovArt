@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
       lastTwoComments: post.comments.map((comment) => ({
         _id: comment._id,
         text: comment.text,
-        author: comment.author.username,
+        author: comment.author,
         authorId: comment.author.id
       })),
       likes: post.likes,
@@ -149,7 +149,7 @@ router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
       lastTwoComments: updatedPost.comments.map((comment) => ({
         _id: comment._id,
         text: comment.text,
-        author: comment.author.username,
+        author: comment.author,
         authorId: comment.author.id
       })),
       likes: updatedPost.likes,
