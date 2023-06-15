@@ -7,6 +7,23 @@ import Comments from "../Comments/Comments";
 import { fetchPosts } from "../../store/posts";
 import PostBox from "../Posts/PostBox";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function ProfileIndexItem({
   post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, comments }
 }) {
@@ -44,6 +61,8 @@ function ProfileIndexItem({
   };
 
 
+
+
 return (
   <>
 
@@ -57,7 +76,7 @@ return (
             href="#"
             className="openModalBtn"
             onClick={() => {
-              setShowComments(!showComments);
+              // setShowComments(!showComments);
             }}
           >
             Comments
@@ -66,10 +85,19 @@ return (
       </div>
     </div>
 
-<div className={`comment-box ${isImageClicked ? 'active' : ''}`}>
+{/* <div className={`comment-box ${isImageClicked ? 'active' : ''}`}>
   <span className="new-class"></span>
   {isImageClicked && (
-    <PostBox
+  <Comments postId={postId} /> )} */}
+
+<div className={`comment-box ${isImageClicked ? 'active' : ''} ${isImageClicked ? 'clicked' : ''}`}>
+      <span className="new-class"></span>
+      {isImageClicked &&
+      <Comments postId={postId} />}
+
+
+
+    {/* <PostBox
       post={{
         text,
         author: {
@@ -82,7 +110,9 @@ return (
         likes
       }}
     />
-  )}
+
+
+  } */}
 </div>
   </>
 );
@@ -101,67 +131,45 @@ export default ProfileIndexItem;
 
 
 
-
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { deleteUserPosts } from '../../store/posts';
-// import './ProfileIndexItem.css';
-// import Modal from '../Modal/Modal';
-// import Comments from '../Comments/Comments';
-// import { fetchPosts } from '../../store/posts';
-// import PostBox from '../Posts/PostBox';
-
 // function ProfileIndexItem({
-//   post: {
-//     text,
-//     author: { username, profileImageUrl, _id: authorId },
-//     imageUrls,
-//     _id: postId,
-//     comments,
-//   },
+//   post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, comments }
 // }) {
 //   const currentUser = useSelector((state) => state.session.user);
 //   const dispatch = useDispatch();
 //   const posts = useSelector((state) => state.posts);
+//   const imageRef = useRef(null);
 //   const likes = useSelector((state) => state.likes);
+//   const post = useSelector((state) => state.posts.all.find((post) => post._id === postId));
 
 //   const [openModal, setOpenModal] = useState(false);
 //   const [showComments, setShowComments] = useState(false);
 //   const [isImageClicked, setIsImageClicked] = useState(false);
 //   const [isPostBoxVisible, setIsPostBoxVisible] = useState(false);
 
-//   const images = imageUrls?.map((url, index) => {
-//     return (
-//       <img
-//         className="listing-index-item-image"
-//         key={url}
-//         src={url}
-//         alt={`postImage${index}`}
-//       />
-//     );
-//   });
 
-//   const handleImageClick = () => {
-//     setIsImageClicked(true);
+//   const images = imageUrls?.map((url, index) => {
+//     return url;
+//     // return <img className="listing-index-item-image" key ={url} src={url} alt={`postImage${index}`} />
+//   });
+//   const numCols = posts.length;
+
+//   const handleDelete = () => {
+//     dispatch(deleteUserPosts(postId));
 //   };
 
-//   const closeModal = () => {
-//     setIsImageClicked(false);
+//   const handleClickImage = () => {
+//     setIsImageClicked(!isImageClicked);
+//   };
+
+//   const handleClickOutside = (event) => {
+//     if (imageRef.current && !imageRef.current.contains(event.target)) {
+//       setIsImageClicked(false);
+//     }
 //   };
 
 //   return (
 //     <>
-//       <div
-//         className={`image-box ${isImageClicked ? 'expanded' : ''}`}
-//         onClick={handleImageClick}
-//       >
+//       <div className={`image-box ${isImageClicked ? 'expanded' : ''}`} onClick={handleClickImage}>
 //         <img src={images} alt="" />
 //         <div className="overlay">
 //           <div className="details">
@@ -178,13 +186,134 @@ export default ProfileIndexItem;
 //         </div>
 //       </div>
 
-//       {isImageClicked && (
-//         <Modal closeModal={closeModal}>
-//           <PostBox post={post} />
-//         </Modal>
-//       )}
+//       <div className={`comment-box ${isImageClicked ? 'active' : ''}`}>
+//         <span className="new-class"></span>
+//         {isImageClicked && (
+//           <Modal onClose={() => setIsImageClicked(false)}>
+//             <PostBox
+//               post={{
+//                 text,
+//                 author: {
+//                   username,
+//                   profileImageUrl,
+//                   _id: authorId
+//                 },
+//                 imageUrls,
+//                 _id: postId,
+//                 likes
+//               }}
+//             />
+//           </Modal>
+//         )}
+//       </div>
+//     </>
+//   );
+// }
 
-//       {/* ... */}
+// export default ProfileIndexItem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteUserPosts } from "../../store/posts";
+// import "./ProfileIndexItem.css";
+// import { useState, useEffect, useRef } from "react";
+// import Modal from "./Modal";
+// import Comments from "../Comments/Comments";
+// import { fetchPosts } from "../../store/posts";
+// import PostBox from "../Posts/PostBox";
+
+// function ProfileIndexItem({
+//   post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, comments }
+// }) {
+//   const currentUser = useSelector((state) => state.session.user);
+//   const dispatch = useDispatch();
+//   const posts = useSelector((state) => state.posts);
+//   const imageRef = useRef(null);
+//   const likes = useSelector((state) => state.likes);
+//   const post = useSelector((state) => state.posts.all.find((post) => post._id === postId));
+
+//   const [openModal, setOpenModal] = useState(false);
+//   const [showComments, setShowComments] = useState(false);
+//   const [isImageClicked, setIsImageClicked] = useState(false);
+//   const [isPostBoxVisible, setIsPostBoxVisible] = useState(false);
+
+
+//   const images = imageUrls?.map((url, index) => {
+//     return url;
+//     // return <img className="listing-index-item-image" key ={url} src={url} alt={`postImage${index}`} />
+//   });
+//   const numCols = posts.length;
+
+//   const handleDelete = () => {
+//     dispatch(deleteUserPosts(postId));
+//   };
+
+//   const handleClickImage = () => {
+//     setIsImageClicked(!isImageClicked);
+//   };
+
+//   const handleClickOutside = (event) => {
+//     if (imageRef.current && !imageRef.current.contains(event.target)) {
+//       setIsImageClicked(false);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <div className={`image-box ${isImageClicked ? 'expanded' : ''}`} onClick={handleClickImage}>
+//         <img src={images} alt="" />
+//         <div className="overlay">
+//           <div className="details">
+//             <button
+//               href="#"
+//               className="openModalBtn"
+//               onClick={() => {
+//                 setShowComments(!showComments);
+//               }}
+//             >
+//               Comments
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className={`comment-box ${isImageClicked ? 'active' : ''}`}>
+//         <span className="new-class"></span>
+//         {isImageClicked && (
+//           <Modal onClose={() => setIsImageClicked(false)}>
+//             <PostBox
+//               post={{
+//                 text,
+//                 author: {
+//                   username,
+//                   profileImageUrl,
+//                   _id: authorId
+//                 },
+//                 imageUrls,
+//                 _id: postId,
+//                 likes
+//               }}
+//             />
+//           </Modal>
+//         )}
+//       </div>
 //     </>
 //   );
 // }
@@ -232,63 +361,114 @@ export default ProfileIndexItem;
 
 
 
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function ProfileIndexItem({
+//   post: {
+//     text,
+//     author: { username, profileImageUrl, _id: authorId },
+//     imageUrls,
+//     _id: postId,
+//     comments,
+//   },
+// }) {
+//   const dispatch = useDispatch();
+//   const [showModal, setShowModal] = useState(false);
+
+//   const handleDelete = () => {
+//     dispatch(deleteUserPosts(postId));
+//   };
 
 //   return (
 //     <>
-//           {/* <div className={`image-box ${isImageClicked ? 'expanded' : ''}`} onClick={handleClickImage}> */}
-
-//     <div className="comment-box">
-//     {isImageClicked && <Comments postId={postId} />}
-//     {/* {isImageClicked && <PostBox postId={postId} />} */}
-//     {/* {isPostBoxVisible && <PostBox post={postId} />} */}
-
-
-//     </div>
-//       <div
-//         className={`image-box ${isImageClicked ? "expanded" : ""}`}
-//         ref={imageRef}
-//         onClick={handleClickImage}
-//       >
-//         {/* <div className={`image-box ${isImageClicked ? "expanded" : ""}`} onClick={handleClickImage}> */}
-
-
-//         <img src={images} alt="" />
+//       <div className="image-box">
+//         <img src={imageUrls} alt="" />
 //         <div className="overlay">
 //           <div className="details">
-//             {/* <h3 className="title">
-//               <a href="">Your Title</a>
-//             </h3> */}
-
 //             <button
-//               href="#"
 //               className="openModalBtn"
-//               onClick={() => {
-//                 setShowComments(!showComments);
-
-//               }}
+//               onClick={() => setShowModal(true)}
 //             >
-
 //               Comments
-
 //             </button>
-
 //           </div>
 //         </div>
 //       </div>
+
+//       {showModal && (
+//         <Modal onClose={() => setShowModal(false)}>
+//           <PostBox
+//             post={{
+//               text,
+//               author: { username, profileImageUrl, _id: authorId },
+//               imageUrls,
+//               _id: postId,
+//             }}
+//           />
+//         </Modal>
+//       )}
 //     </>
 //   );
-
-
-
 // }
 
-// export default ProfileBox;
+// export default ProfileIndexItem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -302,88 +482,96 @@ export default ProfileIndexItem;
 
 
 // import { useDispatch, useSelector } from "react-redux";
-// import { deleteUserPosts } from "../../store/posts"
-// import "./ProfileIndexItem.css"
-// import { useState } from "react";
+// import { deleteUserPosts } from "../../store/posts";
+// import "./ProfileIndexItem.css";
+// import { useState, useEffect, useRef } from "react";
 // import Modal from "../Modal/Modal";
 // import Comments from "../Comments/Comments";
-// import { useEffect } from "react";
-// import { useRef } from "react";
+// import { fetchPosts } from "../../store/posts";
+// import PostBox from "../Posts/PostBox";
+
+// function ProfileIndexItem({
+//   post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId, comments }
+// }) {
+//   const currentUser = useSelector((state) => state.session.user);
+//   const dispatch = useDispatch();
+//   const posts = useSelector((state) => state.posts);
+//   const imageRef = useRef(null);
+//   const likes = useSelector((state) => state.likes);
+//   const post = useSelector((state) => state.posts.all.find((post) => post._id === postId));
+
+//   const [openModal, setOpenModal] = useState(false);
+//   const [showComments, setShowComments] = useState(false);
+//   const [isImageClicked, setIsImageClicked] = useState(false);
+//   const [isPostBoxVisible, setIsPostBoxVisible] = useState(false);
 
 
-// function ProfileBox ({ post: { text, author: { username, profileImageUrl, _id: authorId }, imageUrls, _id: postId }}) {
-//     const currentUser = useSelector((state) => state.session.user);
-//     const dispatch = useDispatch()
-//     const posts = useSelector((state) => state.posts);
-//     const imageRef = useRef(null);
+//   const images = imageUrls?.map((url, index) => {
+//     return url;
+//     // return <img className="listing-index-item-image" key ={url} src={url} alt={`postImage${index}`} />
+//   });
+//   const numCols = posts.length;
 
-//     const [openModal, setOpenModal] = useState(false)
-//     const [showComments, setShowComments] = useState(false);
-//     const [isImageClicked, setIsImageClicked] = useState(false);
+//   const handleDelete = () => {
+//     dispatch(deleteUserPosts(postId));
+//   };
 
-//     const images = imageUrls?.map((url, index) => {
-//       return url
-//       // return <img className="listing-index-item-image" key ={url} src={url} alt={`postImage${index}`} />
-//     });
-//     const numCols = posts.length
-//   console.log("hello",images)
-//     const handleDelete = () => {
-//       dispatch(deleteUserPosts(postId));
+//   const handleClickImage = () => {
+//     setIsImageClicked(!isImageClicked);
+//   };
+
+//   const handleClickOutside = (event) => {
+//     if (imageRef.current && !imageRef.current.contains(event.target)) {
+//       setIsImageClicked(false);
 //     }
+//   };
 
-//     const handleClickImage = () => {
-//       setIsImageClicked(!isImageClicked);
+//   useEffect(() => {
+//     document.addEventListener("click", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("click", handleClickOutside);
 //     };
+//   }, []);
 
-//     const handleClickOutside = (event) => {
-//       if (imageRef.current && !imageRef.current.contains(event.target)) {
-//         setIsImageClicked(false);
-//       }
-//     };
-
-//     useEffect(() => {
-//       document.addEventListener("mousedown", handleClickOutside);
-//       return () => {
-//         document.removeEventListener("mousedown", handleClickOutside);
-//       };
-//     }, []);
-
-//     return (
-//       <>
-//         {/* <div className="image-box"> */}
-//         <div className={`image-box ${isImageClicked ? "expanded" : ""}`} onClick={handleClickImage}>
-//           <img src={images} alt="" />
-//           <div className="overlay">
-//             <div className="details">
-//               <h3 className="title">
-//                 <a href="">Your Title</a>
-//               </h3>
-//               {isImageClicked && <Comments postId={postId} />}
+//   return (
+//     <>
+//       <div className={`image-box ${isImageClicked ? 'expanded' : ''}`} onClick={handleClickImage}>
+//         <img src={images} alt="" ref={imageRef} />
+//         <div className="overlay">
+//           <div className="details">
 //             <button
 //               href="#"
 //               className="openModalBtn"
 //               onClick={() => {
 //                 setShowComments(!showComments);
 //               }}
-//               // {showComments && <Comments postId={postId} />}
-//               // <button
-//               //   href="#"
-//               //   className="openModalBtn"
-//               //   onClick={() => {
-//               //     setShowComments(!showComments);
-//               //   }}
-//               >
-//                 Comments
-//               </button>
-//             </div>
+//             >
+//               Comments
+//             </button>
 //           </div>
 //         </div>
-//         {/* {showComments && <Comments postId={postId} />} */}
-//       </>
-//     );
+//       </div>
 
+//       <div className={`comment-box ${isImageClicked ? 'active' : ''}`}>
+//         <span className="new-class"></span>
+//         {isImageClicked && (
+//           <PostBox
+//             post={{
+//               text,
+//               author: {
+//                 username,
+//                 profileImageUrl,
+//                 _id: authorId
+//               },
+//               imageUrls,
+//               _id: postId,
+//               likes
+//             }}
+//           />
+//         )}
+//       </div>
+//     </>
+//   );
+// }
 
-//     };
-
-
-// export default ProfileBox
+// export default ProfileIndexItem;
