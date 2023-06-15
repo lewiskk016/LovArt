@@ -91,28 +91,16 @@ return (
   <Comments postId={postId} /> )} */}
 
 <div className={`comment-box ${isImageClicked ? 'active' : ''} ${isImageClicked ? 'clicked' : ''}`}>
-      <span className="new-class"></span>
+      {/* <span className="new-class"></span> */}
       {isImageClicked &&
+
       <Comments postId={postId} />}
 
 
 
-    {/* <PostBox
-      post={{
-        text,
-        author: {
-          username,
-          profileImageUrl,
-          _id: authorId
-        },
-        imageUrls,
-        _id: postId,
-        likes
-      }}
-    />
+     {/* <PostBox post={{ text, author: { username, profileImageUrl,_id: authorId},imageUrls,_id: postId,likes}}/>} */}
 
 
-  } */}
 </div>
   </>
 );

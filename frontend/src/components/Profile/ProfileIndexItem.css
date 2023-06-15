@@ -289,6 +289,14 @@
 
 
 
+
+
+
+
+
+
+
+
 .box-body{
   margin: 0;
   padding: 0;
@@ -299,14 +307,14 @@
 
 .image-gallery{
   width: 50%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px 20px;
+  max-width: 1000px;
+  margin: 10 auto;
+  padding: 50px 1px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
+  grid-auto-rows: 250px;
   grid-auto-flow: dense;
-  grid-gap: 10px;
+  grid-gap: 75px;
   position: relative;
   z-index: 0;
 }
@@ -332,7 +340,7 @@
 }
 
 .image-gallery .image-box:hover img{
-  transform: scale(1.1)
+  transform: scale(1.0)
 }
 
 
@@ -348,7 +356,7 @@
   justify-content: center;
   opacity: 0;
   transition: all 0.5s ease;
-  z-index: 1;
+  z-index: 0;
 }
 
 .image-gallery .image-box:hover .overlay{
@@ -441,9 +449,9 @@ transition: all 0.3 0.2s ease;
 
 .image-gallery .image-box.expanded {
   grid-column: span 1.5;
-  grid-row: span 2;
-  width: 80% !important;
-  height: 80% !important;
+  grid-row: span 1.75;
+  width: 100% !important;
+  height:100% !important;
 }
 
 .image-gallery .image-box.expanded img {
@@ -485,14 +493,14 @@ transition: all 0.3 0.2s ease;
 }
 .comment-box {
   width: 400px;
-  z-index: 4;
-  /* Default styles without the black border */
+  z-index: 9;
+  /* transform: scale(1.5) */
+  /* Remove the z-index property */
 }
 
 .comment-box.clicked {
   border: 2px solid black;
   font-family: "Amazon Ember", Arial, sans-serif;
-  font-size: 8px;
+  font-size: 12px;
   padding: 10px;
-
 }
