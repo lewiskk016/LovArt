@@ -16,14 +16,13 @@ function Posts() {
   if (posts.length === 0) return <div>There are no posts</div>;
 
   return (
-    <div className="post-index-container">
-      <div className="post-page-container">
+    // <div className="post-index-container">
+      <div className="finally-happen">
         {posts.map((post) => (
           <PostBox key={post._id} post={post} />
         ))}
-      </div>
-      <div className="half-page"></div>
-    </div>
+      // </div>
+    // </div>
   );
 }
 
