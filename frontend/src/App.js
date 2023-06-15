@@ -12,6 +12,7 @@ import SignupForm from "./components/SessionForms/SignupForm";
 import Posts from "./components/Posts/Posts";
 import Profile from "./components/Profile/Profile";
 import PostCompose from "./components/Posts/PostCompose";
+import ProfileIndexItem from "./components/Profile/ProfileIndexItem";
 
 import Comments from "./components/Comments/Comments";
 
