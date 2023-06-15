@@ -8,7 +8,7 @@ const DEFAULT_PROFILE_IMAGE_URL ='https://kl-mern-twitter.s3.us-east-2.amazonaws
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
-    console.log('Connected to MongoDB successfully');
+    // console.log('Connected to MongoDB successfully');
     initializeImages();
   })
   .catch(err => {
@@ -18,12 +18,12 @@ mongoose
 
 // Initialize image fields in db
 const initializeImages = async () => {
-  console.log("Initializing profile avatars...");
+  // console.log("Initializing profile avatars...");
   await User.updateMany({}, { profileImageUrl: DEFAULT_PROFILE_IMAGE_URL });
 
-  console.log("Initializing Post image URLs...");
+  // console.log("Initializing Post image URLs...");
   await Post.updateMany({}, { imageUrls: [] });
 
-  console.log("Done!");
+  // console.log("Done!");
   mongoose.disconnect();
 }
