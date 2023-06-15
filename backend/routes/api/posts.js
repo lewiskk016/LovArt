@@ -134,7 +134,7 @@ router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
         options: { sort: { createdAt: -1 }, limit: 2 },
         populate: {
           path: 'author',
-          select: '_id username',
+          select: '_id username profileImageUrl',
         },
       })
       .populate('author', '_id username profileImageUrl');
