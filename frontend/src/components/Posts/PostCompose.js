@@ -24,12 +24,19 @@ function PostCompose() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Check if images are selected
+    if (images.length === 0) {
+      // Display an error or show a message indicating that at least one image is required
+      return;
+    }
+
     dispatch(composePost(text, images));
     setImages([]);
     setImageUrls([]);
     setText("");
     fileRef.current.value = null;
-    dispatch(fetchPosts())
+    dispatch(fetchPosts());
   };
 
   const update = (e) => setText(e.currentTarget.value);
@@ -50,6 +57,7 @@ function PostCompose() {
       });
     } else setImageUrls([]);
   };
+
   return (
     <>
       <div className="create-post-page">
@@ -73,7 +81,7 @@ function PostCompose() {
                   accept=".jpg, .jpeg, .png"
                   multiple
                   onChange={updateFiles}
-                />{" "}
+                />
               </div>
             </div>
             <div className="upload-photo"></div>
@@ -83,7 +91,6 @@ function PostCompose() {
                 <h1>{author.username}</h1>
               </div>
               <div className="create-description">
-                {" "}
                 <input
                   type="textarea"
                   value={text}
