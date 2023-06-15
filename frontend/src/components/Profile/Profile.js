@@ -6,6 +6,7 @@ import ProfileIndexItem from "./ProfileIndexItem";
 import { useParams } from "react-router-dom";
 import "./ProfileIndexItem.css"
 import "./Profile.css"
+import art from "../Posts/lovart-logo-white.png"
 
 function Profile() {
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ function Profile() {
 
 
   if (userPosts.length === 0) {
-    return <div>{authorId || currentUser.username} has no Posts</div>;
+    return (
+      <div className="loading-container"> 
+        <img src={art} className="loading-art"/> 
+      </div>
+    );
   } else {
     return (
       <>

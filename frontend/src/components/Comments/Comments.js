@@ -2,6 +2,8 @@ import "./Comments.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment, updateComment, deleteComment,} from "../../store/comments";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faComment as thinComment  } from "@fortawesome/free-regular-svg-icons";
 
 function Comments({ postId }) {
   const dispatch = useDispatch();
@@ -14,12 +16,15 @@ function Comments({ postId }) {
   const comments = post ? post.lastTwoComments : [];
 
   const [updatedComments, setUpdatedComments] = useState({});
+  const [showInput, setShowInput] = useState(false);
+
   
 
   const handleComment = (e) => {
     e.preventDefault();
     dispatch(createComment({ comment, postId }));
     setComment("");
+    setShowInput(false);
   };
 
   const handleUpdateComment = (commentId, updatedText) => {
@@ -31,13 +36,24 @@ function Comments({ postId }) {
     dispatch(deleteComment(commentId, postId));
   };
 
+
+  const handleCommentButtonClick = () => {
+    setShowInput(true);
+  };
+
+  const handleInputChange = (event) => {
+    setComment(event.target.value);
+  };
+
+
+
   return (
     <div className="comment-index-container">
       <div className="comment-page-container">
         {comments &&
           comments.map((comment) => (
             <div className="comment-box" key={comment._id}>
-              <div className="comment-box-username">{comment.author.username}</div>
+              <div className="comment-box-username"><img src={comment.author.profileImageUrl} className="comment-pfp" />{comment.author.username}</div>
               <div className="comment-box-comment">{comment.text}</div>
               {currentUser && currentUser._id === comment.author._id && (
                 <div>
@@ -71,7 +87,7 @@ function Comments({ postId }) {
       </div>
       <div className="half-page"></div>
       <div className="comment-form-container">
-        <form className="comment-form" onSubmit={handleComment}>
+        {/* <form className="comment-form" onSubmit={handleComment}>
           <textarea
             className="comment-form-input"
             placeholder="Add a comment..."
@@ -80,8 +96,23 @@ function Comments({ postId }) {
           />
           <button className="comment-form-button" type="submit">
             Post
-          </button>
+          </button> */}
+              {/* </form> */}
+            {!showInput && (
+        <span onClick={handleCommentButtonClick}> 
+         <FontAwesomeIcon icon={thinComment} style={{color: "#0d0d0d",}} /></span>
+      )}
+      {showInput && (
+        <form onSubmit={handleComment}>
+        <textarea
+            className="comment-form-input"
+            placeholder="Add a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button type="submit">Submit</button>
         </form>
+      )}
       </div>
     </div>
   );

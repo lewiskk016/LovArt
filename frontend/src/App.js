@@ -21,6 +21,7 @@ import PostUpdate from "./components/Posts/PostUpdate";
 
 import { getCurrentUser } from "./store/session";
 import UserIndex from "./components/UserIndex/UserIndex";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +42,7 @@ function App() {
           <ProtectedRoute path="/profile/:authorId" component={Profile} />
           <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/Posts/new" component={PostCompose} />
+          <ProtectedRoute exact path="/AboutUs" component={AboutUs} />
         </Switch>
       </>
     )
