@@ -86,8 +86,6 @@ function PostBox({
     }
   };
 
-
-
   return (
     <div className="post-con">
       <div className="post-image">

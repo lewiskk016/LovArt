@@ -36,6 +36,7 @@ function Comments({ postId }) {
     dispatch(deleteComment(commentId, postId));
   };
 
+
   const handleCommentButtonClick = () => {
     setShowInput(true);
   };
@@ -52,7 +53,7 @@ function Comments({ postId }) {
         {comments &&
           comments.map((comment) => (
             <div className="comment-box" key={comment._id}>
-              <div className="comment-box-username">{comment.author.username}</div>
+              <div className="comment-box-username"><img src={comment.author.profileImageUrl} className="comment-pfp" />{comment.author.username}</div>
               <div className="comment-box-comment">{comment.text}</div>
               {currentUser && currentUser._id === comment.author._id && (
                 <div>

@@ -81,3 +81,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+}
+
+.loading-art {
+    max-width: 200px;
+    max-height: 200px; 
+}

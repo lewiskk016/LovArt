@@ -34,6 +34,12 @@ function NavBar() {
               <i className="fa-solid fa-paintbrush"></i>Share a post
             </Link>
           </div>
+          <div className="about-us-page">
+            {" "}
+            <Link className="side-nav-text" to={"/aboutUs"}>
+              <i className="fa-solid fa-palette"></i>About Us
+            </Link>
+          </div>
           <div className="logout-btn">
             {" "}
             <button className="side-nav-btn" onClick={logoutUser}>

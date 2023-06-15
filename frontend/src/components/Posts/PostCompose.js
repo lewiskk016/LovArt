@@ -61,7 +61,7 @@ function PostCompose() {
                   <img src={imageUrls} alt=""></img>
                 ) : undefined}
                 <div className="icon-style">
-                  <i class="fa-solid fa-camera"></i>
+                  <i className="fa-solid fa-camera"></i>
                 </div>
                 <h1>Images to Upload</h1>
               </div>
