@@ -29,10 +29,15 @@ function PostBox({
 }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
   const [newText, setNewText] = useState(text);
   const [editMode, setEditMode] = useState(false);
-  const [likeMode, setLikeMode] = useState(likes.includes(currentUser?._id));
-
+  // const [likeMode, setLikeMode] = useState(
+  //   likes.includes(currentUser?._id)
+  // );
+  const [likeMode, setLikeMode] = useState(
+    currentUser && likes ? likes.includes(currentUser._id) : false
+  );
 
   const posts = useSelector((state) => state.posts.all);
   const images = imageUrls?.map((url, index) => {
@@ -86,10 +91,12 @@ function PostBox({
     }
   };
 
+
   return (
     <div className="post-con">
       <div className="post-image">
         <div className="artist-img">{images}</div>
+
       </div>
       <div className="post-det">
         <div className="user-image">
