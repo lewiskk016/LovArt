@@ -6,8 +6,8 @@ const handleValidationErrors = require('./handleValidationErrors');
 const validateCommentInput = [
   check('text')
     .exists({ checkFalsy: false })
-    .isLength({ min: 5, max: 140 })
-    .withMessage('Comment must be between 5 and 140 characters'),
+    .isLength({ min: 2, max: 140 })
+    .withMessage('Comment must be between 2 and 140 characters'),
   handleValidationErrors,
 ];
 
