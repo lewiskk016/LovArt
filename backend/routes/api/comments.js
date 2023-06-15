@@ -10,7 +10,7 @@ const validateCommentInput = require('../../validations/posts.js');
 router.get('/', async (req, res, next) => {
     try {
       const comments = await Comment.find({ post: req.params.postId })
-        .populate('author', '_id username')
+        .populate('author', '_id username profileImageUrl')
         .sort({ createdAt: -1 });
         return res.json(comments);
         // const formattedComments = comments.map((comment) => ({
@@ -44,7 +44,7 @@ router.post('/', requireUser, validateCommentInput, async (req, res, next) => {
       });
   
       let comment = await newComment.save();
-      comment = await Comment.populate(comment, {path: 'author', select: '_id username'});
+      comment = await Comment.populate(comment, {path: 'author', select: '_id username profileImageUrl' });
   
       // Add the new comment to the post's comments array
       post.comments.push(comment);
@@ -64,7 +64,7 @@ router.get('/:commentId', async (req, res, next) => {
     const comment = await Comment.findOne({
       _id: req.params.commentId,
       post: req.params.postId,
-    }).populate('author', '_id username');
+    }).populate('author', '_id username profileImageUrl');
 
     if (!comment) {
       const error = new Error('Comment not found');
@@ -86,7 +86,7 @@ router.patch('/:commentId', requireUser, validateCommentInput, async (req, res, 
     const comment = await Comment.findOne({
       _id: req.params.commentId,
       post: req.params.postId,
-    }).populate('author', '_id username'); // Populate the author field
+    }).populate('author', '_id username profileImageUrl'); // Populate the author field
 
     if (!comment) {
       const error = new Error('Comment not found');

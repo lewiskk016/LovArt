@@ -74,7 +74,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   };
   
 
-  console.log(profileImageUrl)
+
   return (
     <div className="post-con">
       <div className="post-image">

@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
         options: { sort: { createdAt: -1 }, limit: 2 },
         populate: {
           path: 'author',
-          select: '_id username',
+          select: '_id username profileImageUrl',
         },
       })
       .sort({ createdAt: -1 });
