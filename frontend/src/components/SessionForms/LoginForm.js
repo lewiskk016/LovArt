@@ -5,7 +5,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { login, clearSessionErrors } from "../../store/session";
 import image from "../SessionForms/monet.jpeg";
 import Carousel from "../Carousel/Carousel";
-import image1 from "./lovart-logo.png"
+import image1 from "../Posts/lovart-logo-white.png"
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -54,6 +54,7 @@ function LoginForm() {
                     value={email}
                     onChange={update("email")}
                     placeholder="Email"
+                    style={{ borderColor: errors?.email ? 'red' : '#ddd' }}
                   />
                 </label>
                 <div className="errors">{errors?.email}</div>
@@ -66,6 +67,7 @@ function LoginForm() {
                     value={password}
                     onChange={update("password")}
                     placeholder="Password"
+                    style={{ borderColor: errors?.password ? 'red' : '#ddd' }}
                   />
                 </label>
                 <div className="errors">{errors?.password}</div>

@@ -5,7 +5,7 @@ import monet from "../SessionForms/monet.jpeg";
 import "./SignupForm.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Carousel from "../Carousel/Carousel";
-import image1 from "./lovart-logo.png"
+import image1 from "../Posts/lovart-logo-white.png"
 
 function SignupForm() {
   const [image, setImage] = useState(null);
@@ -78,6 +78,7 @@ function SignupForm() {
                     value={email}
                     onChange={update("email")}
                     placeholder="Email"
+                    style={{ borderColor: errors?.email ? 'red' : '#ddd' }}
                   />
                 </label>
                 <div className="errors">{errors?.email}</div>
@@ -90,6 +91,7 @@ function SignupForm() {
                     value={username}
                     onChange={update("username")}
                     placeholder="Username"
+                    style={{ borderColor: errors?.username ? 'red' : '#ddd' }}
                   />
                 </label>
                 <div className="errors">{errors?.username}</div>
@@ -102,6 +104,8 @@ function SignupForm() {
                     value={password}
                     onChange={update("password")}
                     placeholder="Password"
+                    style={{ borderColor: errors?.password ? 'red' : '#ddd' }}
+
                   />
                 </label>
                 <div className="errors">{errors?.password}</div>
@@ -114,6 +118,7 @@ function SignupForm() {
                     value={password2}
                     onChange={update("password2")}
                     placeholder="Confirm Password"
+                    style={{ borderColor: errors?.password ? 'red' : '#ddd' }}
                   />
                 </label>
                 <div className="errors">
@@ -152,9 +157,9 @@ function SignupForm() {
           <div className="page-img">
             <img src={monet} alt="monet painting" />
             <div className="text-overlay">
-              <p>
+              <span>
                 <Carousel></Carousel>
-              </p>{" "}
+              </span>{" "}
               <h1 className="bottom-right"></h1>
             </div>
           </div>
