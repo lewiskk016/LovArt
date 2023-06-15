@@ -43,17 +43,31 @@ function Profile() {
         {/* <h2>All of {authorId || currentUser.username}'s Posts</h2> */}
         <div className="profile-page-body">
           <div className="profile-info-bar">
+            <div className="container-for-profile">
+            <div className="image-username-container">
             <div className="profile-image-box">
               <img src={currentUser.profileImageUrl} alt="" />
             </div>
-            <div className="profile-info-box">
+              <div className="profile-username-container">
+
               <h1 className="profile-username">{currentUser.username}</h1>
+</div>
+
+
+            </div>
+      
+            <div className="member-since"> 
+            <div className="how-many-posts"><p className="number-of-posts">{userPosts.length} Posts</p></div>
+              </div>
+            </div>
+            
+            <div className="profile-info-box">
               <p className="user-bio">Now that the component is done statically, it was time to move on to making it do what it is supposed to do. There are two ways that I could’ve made this component — have a Next and Prev button on either side of the carousel block to manually change the item, or make it to keep changing tiles on a loop. I went for the second option.To deal with currentIndex, I made a function what would run at an interval of 3 seconds (which is what will determine how long is a carousel item visible before it moves on to the next one) and called it inside useEffect().</p>
 
             </div>
           </div>
           <hr></hr>
-          <div className="how-many-posts"><p className="number-of-posts">{userPosts.length} Posts</p></div>
+         
        <div className="image-gallery">
         {userPosts.map((post) => (
           // <div className="image-grid" key={post._id}>

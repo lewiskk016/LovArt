@@ -122,7 +122,7 @@ function Comments({ postId }) {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button className="submit-change-btn" type="submit">Submit</button>
           </form>
         )}
       </div>

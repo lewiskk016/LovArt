@@ -160,7 +160,7 @@
   position: relative;
   background-color: aliceblue;
   overflow: hidden;
-  border: 3mm ridge #d4af37;
+  border: 4mm ridge black;
   z-index: 0;
   transition: all 0.5s ease;
 }
