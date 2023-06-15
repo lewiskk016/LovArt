@@ -82,10 +82,11 @@ router.get('/:commentId', async (req, res, next) => {
 // PATCH update a specific comment for a specific post
 router.patch('/:commentId', requireUser, validateCommentInput, async (req, res, next) => {
   try {
+    // Note: You may need to adjust the model name and field names depending on your actual schema.
     const comment = await Comment.findOne({
       _id: req.params.commentId,
       post: req.params.postId,
-    });
+    }).populate('author', '_id username'); // Populate the author field
 
     if (!comment) {
       const error = new Error('Comment not found');
@@ -95,7 +96,7 @@ router.patch('/:commentId', requireUser, validateCommentInput, async (req, res, 
     }
 
     // Check if the authenticated user is the author of the comment
-    if (comment.author.toString() !== req.user._id.toString()) {
+    if (comment.author._id.toString() !== req.user._id.toString()) {
       const error = new Error('Unauthorized');
       error.statusCode = 401;
       error.errors = { message: 'You are not authorized to edit this comment' };
@@ -111,6 +112,7 @@ router.patch('/:commentId', requireUser, validateCommentInput, async (req, res, 
     next(err);
   }
 });
+
 
 // DELETE a specific comment for a specific post
 router.delete('/:commentId', requireUser, async (req, res, next) => {

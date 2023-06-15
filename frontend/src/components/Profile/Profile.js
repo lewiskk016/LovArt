@@ -16,7 +16,6 @@ function Profile() {
       ? Object.values(state.posts.user).filter((post) => post.author._id === authorId)
       : Object.values(state.posts.user)
   );
-console.log(currentUser)
   //Needs fetchPosts so can have all posts in state on refresh and no error
   useEffect(() => {
     dispatch(fetchPosts())

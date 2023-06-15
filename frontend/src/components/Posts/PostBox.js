@@ -27,12 +27,11 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   const [likeMode, setLikeMode] = useState(
     likes.includes(currentUser?._id)
   );
-  const posts = useSelector((state) => state.posts);
+  const posts = useSelector((state) => state.posts.all);
   const images = imageUrls?.map((url, index) => {
     return <img className="post-image" key={url} src={url} alt={`postImage${index}`} />
   });
 
-  console.log(likes)
 
   const handleDelete = () => {
     dispatch(deleteUserPosts(postId));
@@ -75,7 +74,7 @@ function PostBox ({ post: { text, author: { username, profileImageUrl, _id: auth
   };
   
 
-
+  console.log(profileImageUrl)
   return (
     <div className="post-con">
       <div className="post-image">
