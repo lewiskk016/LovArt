@@ -107,7 +107,7 @@ function PostBox({
           {/* <h3>{username}</h3> */}
         </div>
         <div className="post-title">
-          Post Title will be here{" "}
+        {" "}
           {editMode ? (
             <div>
               <input type="text" value={newText} onChange={handleTextChange} />
@@ -117,7 +117,7 @@ function PostBox({
             <p>{text}</p>
           )}
         </div>
-        <div className="post-like">Likes: {likes?.length ?? 0}</div>
+      
       </div>
 
       <div className="post-like-comments">
@@ -136,9 +136,7 @@ function PostBox({
             )}
           </span>
         </div>
-
-        <div className="comment-button">   
-        </div>
+          <div className="post-like"> {likes?.length ?? 0}</div>
       </div>
       <div className="post-comment">
         <div className="comment">
@@ -147,10 +145,10 @@ function PostBox({
       </div>
       <div>
         {currentUser._id === authorId && (
-          <div>
-            <button onClick={handleDelete}>Delete Post</button>
+          <div className="delete-edit-post-btn">
+            <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
             {!editMode && (
-              <button onClick={() => setEditMode(true)}>Edit Post</button>
+              <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
             )}
           </div>
         )}
