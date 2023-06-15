@@ -15,9 +15,10 @@ function Comments({ postId }) {
   const post = useSelector((state) =>
     state.posts.all.find((post) => post._id === postId)
   );
+  console.log("this is=>",postId.comment)
   const currentUser = useSelector((state) => state.session.user);
   const comments = post ? post.lastTwoComments : [];
-
+console.log(comments)
   const [updatedComments, setUpdatedComments] = useState({});
 
   const handleComment = (e) => {
