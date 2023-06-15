@@ -22,6 +22,10 @@ function PostCompose() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+      if (images.length === 0) {
+      // Display an error or show a message indicating that at least one image is required
+      return;
+    }
     dispatch(clearPostErrors());
     dispatch(composePost(text, images))
       .then(() => {
@@ -52,6 +56,7 @@ function PostCompose() {
       });
     } else setImageUrls([]);
   };
+
   return (
     <>
       <div className="create-post-page">
@@ -76,7 +81,7 @@ function PostCompose() {
                   accept=".jpg, .jpeg, .png"
                   multiple
                   onChange={updateFiles}
-                />{" "}
+                />
               </div>
             </div>
             <div className="upload-photo"></div>
