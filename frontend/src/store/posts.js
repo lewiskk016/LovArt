@@ -44,10 +44,10 @@ export const deletePost = postId => ({
   postId
 });
 
-const receiveErrors = (errors) => ({
-  type: RECEIVE_POST_ERRORS,
-  errors,
-});
+export const receiveErrors = (errors) => ({
+      type: RECEIVE_POST_ERRORS,
+      errors
+})
 
 export const clearPostErrors = (errors) => ({
   type: CLEAR_POST_ERRORS,
@@ -118,11 +118,13 @@ export const composePost = (text, images) => async (dispatch) => {
     });
     const post = await res.json();
     dispatch(receiveNewPost(post));
+    return Promise.resolve(); // If everything is successful, resolve the Promise
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
-      return dispatch(receiveErrors(resBody.errors));
+      dispatch(receiveErrors(resBody.errors));
     }
+    return Promise.reject(); // If an error occurred, reject the Promise
   }
 };
 
