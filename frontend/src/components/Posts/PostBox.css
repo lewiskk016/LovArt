@@ -316,6 +316,18 @@ border-bottom: 1px solid black;
   margin-right: 5px;
 
 }
+.save-btn button{
+  margin-right: 10px;
+  text-align: center;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 0.2em;
+  border: 2px solid #6c5ce7;
+  background-color: #a29bfe;
+  transition: 1s;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .delete-edit-post-btn .delete-post-btn{
   margin-right: 10px;

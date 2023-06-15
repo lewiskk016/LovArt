@@ -116,7 +116,7 @@ function PostBox({
         <div className="post-title">
         {" "}
           {editMode ? (
-            <div>
+            <div className="save-btn">
               <input type="text" value={newText} onChange={handleTextChange} />
               <button onClick={handleUpdate}>Save</button>
             </div>
