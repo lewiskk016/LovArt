@@ -111,7 +111,6 @@ export const updateComment = ({ postId, comment, commentId }) => async (dispatch
       body: JSON.stringify({ text: comment }),
     });
     const updatedComment = await res.json();
-    debugger
     dispatch(receiveNewComment(updatedComment));
     const updatedPosts = [...getState().posts.all]; // Get the current posts from the Redux store
     const postIndex = updatedPosts.findIndex(post => post._id === postId);
@@ -121,7 +120,7 @@ export const updateComment = ({ postId, comment, commentId }) => async (dispatch
         updatedPosts[postIndex].lastTwoComments[commentIndex] = updatedComment; // Update the specific comment
       }
     }
-    debugger
+
     // Dispatch the updatePost action to update the post in the Redux store
     dispatch(fetchPost(postId));
 
@@ -152,7 +151,7 @@ export const deleteComment = (commentId, postId) => async (dispatch, getState) =
 
       // Dispatch an action to update the posts in the state
       dispatch(receivePosts(updatedPosts));
-      
+
       // Fetch the updated post data to synchronize with the backend
       dispatch(fetchPost(postId))
     } else {
