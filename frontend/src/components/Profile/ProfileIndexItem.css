@@ -239,6 +239,17 @@
  */
 
 
+.details button{
+  text-align: center;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 0.2em;
+    border: 2px solid #6c5ce7;
+    background-color: #a29bfe;
+    transition: 1s;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
 
