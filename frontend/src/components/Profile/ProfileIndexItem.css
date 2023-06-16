@@ -239,6 +239,17 @@
  */
 
 
+.details button{
+  text-align: center;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 0.2em;
+    border: 2px solid #6c5ce7;
+    background-color: #a29bfe;
+    transition: 1s;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
 
@@ -441,9 +452,11 @@ transition: all 0.3 0.2s ease;
 
 .comment-index-container {
   position: relative;
-  left: 50px;
+  /* left: 50px; */
   margin-bottom: 20px;
-
+  margin-top: 20px;
+  overflow: auto;
+  border-top: 1px solid black;
 }
 
 
