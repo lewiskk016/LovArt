@@ -12,8 +12,9 @@
   justify-content: space-between;
   margin-right: 1px;
 }
-.root{
+#root{
 /* margin-right: 150px; */
+
 }
 .logo {
   display: flex;

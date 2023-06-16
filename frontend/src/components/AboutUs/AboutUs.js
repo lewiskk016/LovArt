@@ -25,7 +25,7 @@ function AboutUs() {
         <img src={require('./spike.png')} alt="Member 1" />
         <h3>Kevin Lewis</h3>
         <h4>Team Lead</h4>
-        <p>Description of Member 1</p>
+        <p>I am a highly motivated full-stack engineer with a passion for building robust applications. With a solid foundation in JavaScript, React, and Rails, I possess the technical skills necessary to develop innovative solutions and bring ideas to life. I thrive in collaborative environments, leveraging my strong problem-solving abilities to tackle complex challenges and deliver high-quality code.</p>
         <div className="social-links">
         <a className="social-link" href="https://github.com/lewiskk016">
             <i className="fab fa-github-square"></i>
