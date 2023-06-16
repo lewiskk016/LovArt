@@ -76,7 +76,7 @@ cursor: pointer;
 }
 .edit-delete-btn .delete-comment-btn{
 
-       text-align: center;
+    text-align: center;
     font-size: 12px;
     text-align: center;
     border-radius: 0.2em;
@@ -85,6 +85,7 @@ cursor: pointer;
     transition: 1s;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .edit-delete-btn .delete-comment-btn:hover{
