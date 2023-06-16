@@ -22,7 +22,8 @@
 
 .comment-box-username span{
 font-weight: bold;
-margin-left: 5px;
+margin-left: 10px;
+margin-top: 5px;
 cursor: pointer;
 }
 .comment-box-username img{
@@ -35,6 +36,7 @@ cursor: pointer;
     display: flex;
     align-content: center;
     justify-content: flex-start;
+    margin-top: 6px;
 }
 
 .edit-delete-btn{

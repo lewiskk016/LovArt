@@ -30,19 +30,18 @@ router.get('/current', restoreUser, (req, res) => {
   });
 });
 
-router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    const errorMessages = errors.array().map(error => error.msg);
-    return res.status(400).json({ errors: errorMessages });
-  }
 
-  // Check to make sure no one has already registered with the proposed email or username.
+router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
+  // Check to make sure no one has already registered with the proposed email or
+  // username.
   const user = await User.findOne({
     $or: [{ email: req.body.email }, { username: req.body.username }]
   });
 
   if (user) {
+    // Throw a 400 error if the email address and/or username already exists
+    const err = new Error("Validation Error");
+    err.statusCode = 400;
     const errors = {};
     if (user.email === req.body.email) {
       errors.email = "A user has already registered with this email";
@@ -50,10 +49,9 @@ router.post('/register', singleMulterUpload("image"), validateRegisterInput, asy
     if (user.username === req.body.username) {
       errors.username = "A user has already registered with this username";
     }
-    return res.status(400).json({ errors });
+    err.errors = errors;
+    return next(err);
   }
-
-
 
   // Otherwise create a new user
   const profileImageUrl = req.file ?
