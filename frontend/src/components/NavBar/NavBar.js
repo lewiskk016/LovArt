@@ -19,7 +19,7 @@ function NavBar() {
         <div className="links-nav">
           <div className="all-posts">
             <Link className="side-nav-text" to={"/posts"}>
-              <i className="fa-solid fa-glasses"></i>All posts
+              <i className="fa-solid fa-glasses"></i>Gallery
             </Link>
           </div>
           <div className="profile-page">

@@ -98,7 +98,7 @@
 }
 
 .all-posts {
-  width: 100%;
+  width: 80%;
   height: 15%;
   border: 2px solid black;
   border-radius: 3px;
@@ -108,9 +108,11 @@
   background: white;
   margin-bottom: 10px;
 }
-
+.all-posts i {
+  margin-right: 8px;
+}
 .profile-page {
-  width: 100%;
+  width: 80%;
   height: 15%;
   border: 2px solid black;
   border-radius: 3px;
@@ -122,7 +124,7 @@
 }
 
 .about-us-page {
-  width: 100%;
+  width: 80%;
   height: 15%;
   border: 2px solid black;
   border-radius: 3px;
@@ -134,7 +136,7 @@
 }
 
 .write-post {
-  width: 100%;
+  width: 80%;
   height: 15%;
   border: 2px solid black;
   border-radius: 3px;
@@ -146,7 +148,7 @@
 }
 
 .logout-btn {
-  width: 100%;
+  width: 80%;
   height: 15%;
   border: 2px solid black;
   border-radius: 3px;
@@ -157,7 +159,7 @@
 }
 
 .logout-btn button {
-  padding: 5px 30%;
+  padding: 5px 20%;
   font-size: 18px;
   margin-top: 10px;
   color: #ffffff;
@@ -170,7 +172,7 @@
 }
 .side-nav-text {
   text-decoration: none;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   color: black;
   background: linear-gradient(to right, rgb(148, 203, 203), rgb(107, 162, 162)),
@@ -186,8 +188,20 @@
   transition: background-size 400ms;
 }
 
+.profile-page i{
+  margin-right: 8px;
+}
+
+.write-post i {
+  margin-right: 8px;
+}
+
+.about-us-page i {
+  margin-right: 8px;
+}
+
 .side-nav-text:hover {
-  font-size: 40px;
+  font-size: 30px;
   background-size: 0 3px, 100% 3px;
 }
 

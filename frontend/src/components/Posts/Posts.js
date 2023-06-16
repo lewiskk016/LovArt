@@ -17,7 +17,7 @@ function Posts() {
 
   if (posts.length === 0) return   (
   <div className="loading-container"> 
-    <img src={art} className="loading-art"/> 
+    <img src={art} className="loading-art" alt="logo"/> 
   </div>
   );
   
@@ -25,11 +25,13 @@ function Posts() {
   return (
     // <div className="post-index-container">
       <div className="finally-happen">
-        {posts.map((post) => (
+        {/* <div className="index-right-side"> */}
+       {posts.map((post) => (
           <PostBox key={post._id} post={post} />
-        ))}
-      // </div>
-    // </div>
+        ))} 
+    {/* </div>  */}
+      {/* <div className="index-left-side"></div> */}
+    </div>
   );
 }
 

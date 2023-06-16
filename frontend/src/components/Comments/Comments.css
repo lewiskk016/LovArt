@@ -22,6 +22,8 @@
 
 .comment-box-username span{
 font-weight: bold;
+margin-left: 5px;
+cursor: pointer;
 }
 .comment-box-username img{
     border-radius: 50%;
@@ -90,11 +92,12 @@ font-weight: bold;
 
 .comment-form-container{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-size: 25px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 15px;
 }
-.comment-form-container span{
+/* .comment-form-container span{
 margin-left: 5px;
-}
+} */
 
