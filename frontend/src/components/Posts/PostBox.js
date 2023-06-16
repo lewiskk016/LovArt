@@ -93,26 +93,111 @@ function PostBox({
 
 
   return (
-    <div className="post-con">
-      <div className="post-image">
-        <div className="artist-img">{images}</div>
-
+    
+      <div className="index-page-right-side">
+      <div className="right-side-art-box">
+           <div className="artist-img">{images}</div>
       </div>
-      <div className="post-det">
-        <div className="user-image">
-          {profileImageUrl ? (
-            <img
+      <div className="index-left-side">
+        <div className="paper-box">
+        <div className="post-det">
+    <div className="user-image">
+           {profileImageUrl ? (
+           <img
               className="profile-image"
-              src={profileImageUrl}
-              alt="profile"
-            />
-          ) : undefined}
-        </div>
+             src={profileImageUrl}
+             alt="profile"
+             />
+           ) : undefined}
+         </div>
 
         <div className="user-username">
           <Link to={`/profile/${authorId}`}>{username}</Link>
-          {/* <h3>{username}</h3> */}
+       </div>
+        <div className="post-title">
+        {" "}
+          {editMode ? (
+            <div className="save-btn">
+              <input type="text" value={newText} onChange={handleTextChange} />
+              <button onClick={handleUpdate}>Save</button>
+            </div>
+          ) : (
+            <p>{text}</p>
+          )}
+        </div>     
+      </div>
+
+      <div className="post-like-comments">
+        <div className="post-like-btn">
+          <span onClick={handleLike}>
+            {likeMode ? (
+              <FontAwesomeIcon
+                icon={solidHeart}
+                style={{ color: "#ff0000", cursor: "pointer" }}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={thinHeart}
+                style={{ color: "#000000", cursor: "pointer" }}
+              />
+            )}
+          </span>
         </div>
+          <div className="post-like"> {likes?.length ?? 0}</div>
+      </div>
+      <div className="post-comment">
+        <div className="comment">
+          <Comment postId={postId} />
+        </div>
+      </div>
+
+      <div>
+        {currentUser._id === authorId && (
+          <div className="delete-edit-post-btn">
+            <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
+            {!editMode && (
+              <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
+            )}
+          </div>
+        )}
+      </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    //---------------------------------
+    // <div className="post-con">
+    //   <div className="post-image">
+    //     <div className="artist-img">{images}</div>
+
+    //   </div>
+    //   <div className="post-det">
+    //     <div className="user-image">
+    //       {profileImageUrl ? (
+    //         <img
+    //           className="profile-image"
+    //           src={profileImageUrl}
+    //           alt="profile"
+    //         />
+    //       ) : undefined}
+    //     </div>
+
+    //     <div className="user-username">
+    //       <Link to={`/profile/${authorId}`}>{username}</Link>
+          /* <h3>{username}</h3> */
+        /* </div>
         <div className="post-title">
         {" "}
           {editMode ? (
@@ -160,7 +245,7 @@ function PostBox({
           </div>
         )}
       </div>
-    </div>
+    </div> */
   );
 }
 

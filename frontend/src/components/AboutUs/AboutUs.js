@@ -39,7 +39,7 @@ function AboutUs() {
       <img src={require('./candy.jpeg')} alt="Member 1" />
         <h3>Merve Dogan-Espaillat</h3>
         <h4>Frontend Lead</h4>
-        <p>Description of Member 1</p>
+        <p>I am proficient in both front-end and back-end development. My skill set includes proficiency in front-end technologies such as HTML, CSS, and JavaScript, as well as back-end languages like Ruby and SQL. I am experienced in building responsive and intuitive user interfaces, as well as developing robust server-side functionalities. </p>
         <div className="social-links">
         <a className="social-link" href="https://github.com/mervedespaillat">
             <i className="fab fa-github-square"></i>
