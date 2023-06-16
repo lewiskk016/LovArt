@@ -337,6 +337,7 @@
   transition: 1s;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 4px;
 }
 
 .delete-edit-post-btn .edit-post-btn {
