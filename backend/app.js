@@ -25,13 +25,13 @@ app.use(cookieParser()); // parse cookies as an object on req.cookies
 app.use(passport.initialize()); // make Express use passport for authentication
 
 // Security Middleware
-if (!isProduction) {
-  // enable CORS only in development because React will be on the React
-  // development server (http://localhost:3000)
-  // (In production, React files will be served statically on the Express server)
-  app.use(cors());
-}
-
+// if (!isProduction) {
+//   // enable CORS only in development because React will be on the React
+//   // development server (http://localhost:3000)
+//   // (In production, React files will be served statically on the Express server)
+//   app.use(cors());
+// }
+app.use(cors());
 // Set the _csrf token and create req.csrfToken method to generate a hashed
 // CSRF token
 app.use(
