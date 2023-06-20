@@ -55,13 +55,13 @@ function Profile() {
     setSelectedPost(null);
   };
 
-  if (userPosts.length === 0) {
-    return (
-      <div className="loading-container">
-        <img src={art} className="loading-art" alt="Loading" />
-      </div>
-    );
-  } else {
+  // if (userPosts.length === 0) {
+  //   return (
+  //     <div className="loading-container">
+  //       <img src={art} className="loading-art" alt="Loading" />
+  //     </div>
+  //   );
+  // }
     return (
       <>
         <div className="profile-page-body">
@@ -127,6 +127,5 @@ function Profile() {
       </>
     );
   }
-}
 
 export default Profile;
