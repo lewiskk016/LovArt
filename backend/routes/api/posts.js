@@ -159,7 +159,7 @@ router.patch('/:id', requireUser, validatePostInput, async (req, res, next) => {
 
     return res.json(formattedPost);
   } catch (err) {
-    console.log(err, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    // console.log(err, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     next(err);
   }
 });
