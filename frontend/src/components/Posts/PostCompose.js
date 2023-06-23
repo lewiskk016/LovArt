@@ -33,7 +33,7 @@ function PostCompose() {
       })
       .catch(() => {
         setImageUrls([])
-        console.log("Error while creating post");
+        // console.log("Error while creating post");
       });
     fileRef.current.value = null;
   };
@@ -91,7 +91,7 @@ function PostCompose() {
                 />
               </div>
             </div>
-            
+
             <div className="upload-photo"></div>
             <div className="create-post-description">
               <div className="user-details">
