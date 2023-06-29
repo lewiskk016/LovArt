@@ -12,15 +12,15 @@
   }
   
   .details {
-    position: relative; /* Add this line */
+    position: relative;
     background-color: #fff;
     padding: 30px;
     border-radius: 5px;
-    max-width: 85%;
-    max-height: 85%;
-    width: auto;
+    max-width: 1200px; /* Increase the max-width as desired */
+    max-height: 800px; /* Increase the max-height as desired */
+     /* width: auto; */
     height: auto;
-    overflow: auto;
+    overflow: auto; 
   }
   
   .close-button {
@@ -35,7 +35,7 @@
     border: 1px solid #ccc;
     padding: 5px;
   }
-
+  
   .close-button:hover {
     background-color: #e0e0e0;
   }

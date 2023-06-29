@@ -30,7 +30,7 @@ function AboutUs() {
         <a className="social-link" href="https://github.com/lewiskk016">
             <i className="fab fa-github-square"></i>
         </a>
-        <a className="social-link" href="will update">
+        <a className="social-link" href="https://www.linkedin.com/in/kevin-lewis-5b0baa27b/">
             <i className="fab fa-linkedin"></i>
         </a>
         </div>
@@ -53,7 +53,7 @@ function AboutUs() {
       <img src={require('./bert.webp')} alt="Member 1" />
         <h3>Ethan Mercado</h3>
         <h4>Flex Lead</h4>
-        <p>Description of Member 1</p>
+        <p>I am a dedicated full-stack developer with a passion for creating applications. Proficient in Ruby and JavaScript, I possess the necessary technical aptitude to craft innovative solutions and transform ideas into reality. Thriving in collaborative settings, I excel at problem-solving, especially when faced with intricate obstacles, and strive to deliver impeccable code.</p>
         <div className="social-links">
         <a className="social-link" href="https://github.com/Ethanjonm">
             <i className="fab fa-github-square"></i>

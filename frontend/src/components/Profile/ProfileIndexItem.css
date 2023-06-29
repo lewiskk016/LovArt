@@ -334,7 +334,9 @@
   position: relative;
   background-color: aliceblue;
   overflow: hidden;
+
   border: 3mm ridge #000000;
+
   z-index: 0;
   }
 
@@ -546,5 +548,3 @@ transition: all 0.3 0.2s ease;
   border-radius: 5px;
   cursor: pointer;
 }
-
-

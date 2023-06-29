@@ -23,8 +23,9 @@
 import React from 'react';
 import './Modal.css';
 
+
 const FullPageModal = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null;
+    if (!isOpen) return null;
 
   return (
     <div className="overlay">

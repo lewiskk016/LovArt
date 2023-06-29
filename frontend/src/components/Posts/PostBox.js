@@ -1,22 +1,17 @@
 import "./PostBox.css";
-import image from "./monet.jpeg";
+// import image from "./monet.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUserPosts,
-  fetchPosts,
   updatePost,
-  fetchUserPosts,
 } from "../../store/posts";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Comment from "../Comments/Comments";
 import React, { useState } from "react";
 import { likePostAction, unlikePostAction } from "../../store/posts";
-import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as thinHeart } from "@fortawesome/free-regular-svg-icons";
-import {faComment as thinComment  } from "@fortawesome/free-regular-svg-icons";
-import {faComment as solidComment  } from "@fortawesome/free-solid-svg-icons";
 
 function PostBox({
   post: {
@@ -39,7 +34,6 @@ function PostBox({
     currentUser && likes ? likes.includes(currentUser._id) : false
   );
 
-  const posts = useSelector((state) => state.posts.all);
   const images = imageUrls?.map((url, index) => {
     return (
       <img
@@ -100,6 +94,7 @@ function PostBox({
       </div>
       <div className="index-left-side">
 
+
       <div className="paper-box">
 
 <div className="top-part">
@@ -121,6 +116,16 @@ function PostBox({
       <div className="save-btn">
         <input type="text" value={newText} onChange={handleTextChange} />
         <button onClick={handleUpdate}>Save</button>
+
+//       <div>
+//         {currentUser._id === authorId && (
+//           <div className="delete-edit-post-btn">
+//             {!editMode && (
+//               <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
+//             )}
+//             <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
+//           </div>
+//         )}
       </div>
     ) : (
       <p>{text}</p>

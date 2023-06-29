@@ -178,6 +178,7 @@ input[type=textarea] {
 
   .user-details img{
     border-radius: 50%;
+    margin-bottom: 10px;
   }
 
   .user-details h1{
