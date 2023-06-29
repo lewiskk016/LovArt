@@ -177,4 +177,15 @@ router.get('/:userId/followers', async (req, res, next) => {
 });
 
 
+router.get('/usernames', async (req, res, next) => {
+  try {
+    const usernames = await User.find().select('username');
+
+    res.json({ usernames });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 module.exports = router;

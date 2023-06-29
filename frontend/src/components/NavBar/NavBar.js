@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./NavBar.css";
 import { logout } from "../../store/session";
+import SearchBar from "./SearchBar"
 // import image from "./lovart-logo.png";
 
 function NavBar() {
@@ -17,6 +18,10 @@ function NavBar() {
     if (loggedIn) {
       return (
         <div className="links-nav">
+          <div className="search-bar">
+            <SearchBar />
+
+          </div>
           <div className="all-posts">
             <Link className="side-nav-text" to={"/posts"}>
               <i className="fa-solid fa-glasses"></i>Gallery
