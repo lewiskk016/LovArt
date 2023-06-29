@@ -6,6 +6,7 @@ import { searchRequest } from "../../store/searches";
 import {useRef } from "react";
 
 
+
 const SearchBar = () => {
     const [query, setQueryTerm] = useState("");
     const dispatch = useDispatch();
