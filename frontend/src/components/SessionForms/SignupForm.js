@@ -66,28 +66,56 @@ function SignupForm() {
   
     let validationError = false;
   
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const usernameRegex = /^.{5,30}$/;
+    const passwordRegex = /^.{6,30}$/;
+  
     if (!email) {
       setEmailError("Email cannot be blank");
+      validationError = true;
+    } else if (!emailRegex.test(email)) {
+      setEmailError("Email is invalid");
+      validationError = true;
+    } else if (errors?.email) {
+      setEmailError(errors.email);
       validationError = true;
     }
   
     if (!username) {
       setUsernameError("Username cannot be blank");
       validationError = true;
+    } else if (!usernameRegex.test(username)) {
+      setUsernameError("Username must be between 5 and 30 characters");
+      validationError = true;
+    } else if (errors?.username) {
+      setUsernameError(errors.username);
+      validationError = true;
     }
   
     if (!password) {
       setPasswordError("Password cannot be blank");
+      validationError = true;
+    } else if (!passwordRegex.test(password)) {
+      setPasswordError("Password must be between 6 and 30 characters");
+      validationError = true;
+    } else if (errors?.password) {
+      setPasswordError(errors.password);
       validationError = true;
     }
   
     if (!password2) {
       setPassword2Error("Confirm password cannot be blank");
       validationError = true;
+    } else if (errors?.password) {
+      setPassword2Error(errors.password);
+      validationError = true;
+    } else if (password !== password2) {
+      setPassword2Error("Confirm Password field must match");
+      validationError = true;
     }
   
     if (!image) {
-      setImageError("Profile image is required");
+      setImageError(errors?.image || "Profile image is required");
       validationError = true;
     }
   
@@ -102,6 +130,8 @@ function SignupForm() {
       dispatch(signup(user));
     }
   };
+  
+  
   
   
   const updateFile = (e) => {
