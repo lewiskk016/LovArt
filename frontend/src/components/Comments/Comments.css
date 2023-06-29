@@ -7,16 +7,15 @@
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
     margin-top: 10px;
 }
 
 .comment-box-username{
     height: 100%;
-    width: 20%;
+    width: 30%;
     display: flex;
     align-content: center;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     margin-left: 5px;
 }
 
@@ -32,7 +31,7 @@ cursor: pointer;
 
 .comment-box-comment{
     height: 100%;
-    width: 30%;
+    width: 50%;
     display: flex;
     align-content: center;
     justify-content: flex-start;
@@ -41,7 +40,7 @@ cursor: pointer;
 
 .edit-delete-btn{
     height: 100%;
-    width: 30%;
+    width: 10%;
     display: flex;
     align-content: center;
     justify-content: flex-end;
@@ -56,6 +55,8 @@ cursor: pointer;
     transition: 1s;
     border-radius: 5px;
     cursor: pointer;
+    height: fit-content;
+    margin: 5px;
 }
 
 .edit-delete-btn span{
@@ -87,6 +88,16 @@ cursor: pointer;
     cursor: pointer;
     margin-left: 5px;
 }
+.delete-comment-btn{
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+.edit-delete-btn{
+    display: flex;
+    width: 100%;
+}
+
 
 .edit-delete-btn .delete-comment-btn:hover{
     background-color: #81ecec;
@@ -104,3 +115,78 @@ cursor: pointer;
 margin-left: 5px;
 } */
 
+.comment-box-out{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    margin-top: 10px;
+}
+
+.photo-part{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: 50%;
+}
+
+.photo-part-img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.photo-part-name{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 100%;
+}
+
+.comment-part{
+    display: flex;
+    word-break: break-word;
+    width: 60%;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.btn-part{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    margin-right: 5px;
+
+}
+
+.cmt-btn{
+    display: flex;
+    width: 100%;
+    height: 50%;
+
+}
+.cmnt-icon{
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
+.photo-part-name span{
+    font-weight: bold;
+    cursor: pointer;
+}
+.photo-part-img img{
+    border-radius: 50%;
+}
+
+.comment-part p{
+    margin-left: 10px;
+}
+
+
+.text-input{
+    margin-right: 5px;
+    height: 50%;
+}
