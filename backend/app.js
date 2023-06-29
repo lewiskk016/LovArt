@@ -4,6 +4,8 @@ const logger = require('morgan');
 const debug = require('debug');
 const cors = require('cors');
 const csurf = require('csurf');
+const searchesRouter = require('./routes/api/searches');
+
 /* --- Need to import these to load the models into mongoose --- */
 require('./models/User');
 require('./models/Post');
@@ -55,6 +57,8 @@ app.use('/api/posts/:postId/comments', commentsRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
+app.use('/api/searches', searchesRouter);
+
 
 // Serve static React build files statically in production
 if (isProduction) {
