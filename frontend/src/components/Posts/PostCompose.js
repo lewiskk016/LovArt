@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearPostErrors, composePost, fetchPosts, receiveErrors } from "../../store/posts";
+import {
+  clearPostErrors,
+  composePost,
+  fetchPosts,
+  receiveErrors,
+} from "../../store/posts";
 import PostBox from "./PostBox";
 import "./PostCompose.css";
 import { useRef } from "react";
@@ -11,7 +16,9 @@ function PostCompose() {
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [text, setText] = useState("");
-  const history = useHistory()
+  const [descriptionError, setDescriptionError] = useState("");
+  const [imagesError, setImagesError] = useState("");
+  const history = useHistory();
   const dispatch = useDispatch();
   const author = useSelector((state) => state.session.user);
   const newPost = useSelector((state) => state.posts.new);
@@ -19,29 +26,76 @@ function PostCompose() {
 
   const image = author.profileImageUrl;
 
+  useEffect(() => {
+    if (errors && errors.text) {
+      setDescriptionError(errors.text);
+    } else {
+      setDescriptionError("");
+    }
+  }, [errors?.text]);
+
+  useEffect(() => {
+    if (errors && errors.images) {
+      setImagesError(errors.images);
+    } else {
+      setImagesError("");
+    }
+  }, [errors?.images]);
+
+  useEffect(() => {
+    // Clear error messages when there is a change in text or images
+    if (text) {
+      setDescriptionError("");
+    }
+    if (images.length > 0) {
+      setImagesError("");
+    }
+    dispatch(clearPostErrors());
+  }, [text, images, dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      if (images.length === 0) {
-      // Display an error or show a message indicating that at least one image is required
-      return;
+
+    let validationError = false;
+
+    if (!text) {
+      validationError = true;
+      setDescriptionError("Description cannot be blank");
+    } else if (text.length < 5 || text.length > 140) {
+      validationError = true;
+      setDescriptionError(
+        "Description must be between 5 and 140 characters"
+      );
     }
-    dispatch(clearPostErrors());
-    dispatch(composePost(text, images))
-      .then(() => {
-        history.push("/");
-      })
-      .catch(() => {
-        setImageUrls([])
-        // console.log("Error while creating post");
-      });
-    fileRef.current.value = null;
+
+    if (images.length === 0) {
+      validationError = true;
+      setImagesError("At least one image is required");
+    }
+
+    if (!validationError) {
+      dispatch(clearPostErrors());
+      dispatch(composePost(text, images))
+        .then(() => {
+          setDescriptionError("");
+          setImagesError("");
+          setImageUrls([]);
+          history.push("/");
+        })
+        .catch(() => {
+          setImageUrls([]);
+          // console.log("Error while creating post");
+        });
+      fileRef.current.value = null;
+    }
   };
 
   let imageText;
 
   if (images.length === 0) {
-    imageText =   <h1 className="create-imagetext">LovArt Accepts .jpg .jpeg .png</h1>
+    imageText = (
+      <h1 className="create-imagetext">LovArt Accepts .jpg .jpeg .png</h1>
+    );
   }
 
   const update = (e) => setText(e.currentTarget.value);
@@ -72,13 +126,19 @@ function PostCompose() {
               {imageText}
               <div className="upload-photo-box">
                 {imageUrls.length !== 0 ? (
-                  <img src={imageUrls} alt="" className="upload-photo-image"></img>
-                ) : <>
+                  <img
+                    src={imageUrls}
+                    alt=""
+                    className="upload-photo-image"
+                  />
+                ) : (
+                  <>
                     <div className="icon-style">
                       <i className="fa-solid fa-camera"></i>
                     </div>
                     <h1>Images to Upload</h1>
-                    </>}
+                  </>
+                )}
               </div>
               <div className="upload-photo-btn">
                 <input
@@ -99,17 +159,18 @@ function PostCompose() {
                 <h1 className="create-usersname">{author.username}</h1>
               </div>
               <div className="create-description">
-                {" "}
                 <textarea
                   type="textarea"
                   value={text}
                   onChange={update}
-                  placeholder="Write your post..."
-                  required
+                  placeholder="Write your post between 5 and 140 characters..."
                   className="create-textarea"
                 />
               </div>
-              <div className="errors">{errors?.text}</div>
+              {descriptionError && (
+                <div className="errors">{descriptionError}</div>
+              )}
+              {imagesError && <div className="errors">{imagesError}</div>}
               <div className="post-btn-style">
                 <input
                   type="submit"
