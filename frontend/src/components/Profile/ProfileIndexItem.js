@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Modal from "../Modal/Modal";
 import Comments from "../Comments/Comments";
 import PostBox from "../Posts/PostBox";
@@ -7,6 +7,21 @@ import "./ProfileIndexItem.css";
 function ProfileIndexItem({ post, onOpenModal }) {
   const [showModal, setShowModal] = useState(false);
   const { text, author, imageUrls, _id } = post;
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        setShowModal(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -24,7 +39,7 @@ function ProfileIndexItem({ post, onOpenModal }) {
         <div className="overlay">
           <div className="details">
             <button className="openModalBtn" onClick={handleOpenModal}>
-              Comments
+              View Post
             </button>
           </div>
         </div>
@@ -32,7 +47,7 @@ function ProfileIndexItem({ post, onOpenModal }) {
 
       {showModal && (
         <Modal onClose={handleCloseModal}>
-          <div className="modal-content">
+          <div className="modal-content" ref={modalRef}>
             {/* Add modal content */}
           </div>
         </Modal>

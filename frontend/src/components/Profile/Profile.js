@@ -120,7 +120,6 @@ function Profile() {
   <FullPageModal isOpen={true} onClose={handleCloseModal}>
     <div className="modal-content">
       <PostBox post={selectedPost} onClose={handleCloseModal} showComments />
-      {/* <Comments postId={selectedPost._id} /> */}
     </div>
   </FullPageModal>
 )}
