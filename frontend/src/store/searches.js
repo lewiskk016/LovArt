@@ -21,6 +21,7 @@ export const searchRequest = (query) => async (dispatch) => {
       console.error(error);
     }
   };
+  
 
 const initialState = {};
 const searchReducer = (state = initialState, action) => {
