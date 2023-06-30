@@ -8,7 +8,7 @@ import '../Posts/PostBox.css';
 import './Search.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import art from './kelly-sikkema-mdADGzyXCVE-unsplash.jpg';
+
 
 const Search = () => {
   const dispatch = useDispatch();
