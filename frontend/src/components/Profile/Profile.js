@@ -85,9 +85,9 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <div className="profile-info-box">
-              <p className="user-bio">
-                Now that the component is done statically, it was time to move
+            {/* <div className="profile-info-box"> */}
+              {/* <p className="user-bio"> */}
+                {/* Now that the component is done statically, it was time to move
                 on to making it do what it is supposed to do. There are two ways
                 that I could’ve made this component — have a Next and Prev
                 button on either side of the carousel block to manually change
@@ -95,9 +95,9 @@ function Profile() {
                 for the second option. To deal with currentIndex, I made a
                 function what would run at an interval of 3 seconds (which is
                 what will determine how long is a carousel item visible before
-                it moves on to the next one) and called it inside useEffect().
-              </p>
-            </div>
+                it moves on to the next one) and called it inside useEffect(). */}
+              {/* </p> */}
+            {/* </div> */}
           </div>
           <hr />
           <div className="image-gallery">

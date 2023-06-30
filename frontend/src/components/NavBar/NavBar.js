@@ -51,6 +51,7 @@ function NavBar() {
               Logout
             </button>
           </div>
+
         </div>
       );
     } else {

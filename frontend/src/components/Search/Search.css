@@ -1,17 +1,14 @@
-body {
-    background-image: url('./gabriel-komorov-2BAqsDgD00w-unsplash.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed; /* Keep the background image fixed */
+ .posts-container {
+  background-image: url("../Profile/joe-woods-4Zaq5xY5M_c-unsplash.jpg");
   }
-  .search-results {
+  /* .search-results {
     border: 3px solid #000;
     box-sizing: border-box;
     padding: 10px;
     width: 20%;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-top: 15px;
   }
 
   .search-results2 {
@@ -20,7 +17,8 @@ body {
     font-weight: bold;
     font-family: Papyrus, fantasy;
     text-align: center;
-  }
+    margin-top: 20px;
+  }  */
 
   .scroll-down {
     color: rgb(98, 95, 95);
