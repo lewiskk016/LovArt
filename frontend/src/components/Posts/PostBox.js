@@ -6,7 +6,7 @@ import {
   updatePost,
 } from "../../store/posts";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import Comment from "../Comments/Comments";
+import Comment from "../Comments/Comments2";
 import React, { useState } from "react";
 import { likePostAction, unlikePostAction } from "../../store/posts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
