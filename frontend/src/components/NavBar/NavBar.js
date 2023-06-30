@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import "./NavBar.css";
 import { logout } from "../../store/session";
 import SearchBar from "./SearchBar"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 // import image from "./lovart-logo.png";
 
 function NavBar() {
@@ -18,9 +21,13 @@ function NavBar() {
     if (loggedIn) {
       return (
         <div className="links-nav">
-          <div className="search-bar">
+          <div className="search-bar-navbar">
+            <div className="search-bar">
+            <i className="fa-search-icon">
+              <FontAwesomeIcon icon={faSearch} />
+            </i>
             <SearchBar />
-
+            </div>
           </div>
           <div className="all-posts">
             <Link className="side-nav-text" to={"/posts"}>
