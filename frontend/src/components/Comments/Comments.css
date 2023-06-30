@@ -201,12 +201,12 @@ margin-left: 5px;
     width: 90%;
   }
 
-  @media screen and (max-width: 768px) {
-    .comment-box {
-      flex-direction: column;
-    }
+  .paper-box {
+    width: 375px;
+  }
 
-    .comment-part {
-      margin-top: 1rem;
+  @media screen and (max-width: 1150px) {
+    .paper-box {
+      display: none;
     }
   }
