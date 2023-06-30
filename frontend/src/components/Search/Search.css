@@ -1,0 +1,31 @@
+body {
+    background-image: url('/Users/L/Desktop/AppAcademy/LovArt/frontend/src/components/Search/gabriel-komorov-2BAqsDgD00w-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Keep the background image fixed */
+  }
+  .search-results {
+    border: 3px solid #000;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+
+  .search-results2 {
+    color: rgb(98, 95, 95);
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Papyrus, fantasy;
+    text-align: center;
+  }
+
+  .scroll-down {
+    color: rgb(98, 95, 95);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Papyrus, fantasy;
+    text-align: center;
+  }

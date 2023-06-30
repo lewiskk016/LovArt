@@ -1,0 +1,39 @@
+.search-bar{
+    display: flex;
+    border-radius: 10px;
+    /* Additional styles */
+  }
+
+
+  .search-bar input {
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: 24px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .search-bar-container {
+    color: white;
+  }
+
+
+  .search-text {
+    color: white;
+  }
+
+
+  .search-bar-container {
+    color: white;
+  }
+
+  .search-bar-container input::placeholder {
+    color: white; /* Default color */
+  }
+
+  .search-bar-container input:focus::placeholder {
+    color: gray; /* Color when input is focused */
+  }

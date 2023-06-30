@@ -2,8 +2,10 @@ import {useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { searchRequest } from "../../store/searches";
-
+import "./SearchBar.css";
 import {useRef } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -29,13 +31,16 @@ const SearchBar = () => {
     return (
         <div className="search-bar-container">
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Search LovArt"
-                    value={query}
-                    onChange={(e) => setQueryTerm(e.target.value)}
-                />
-                <button className="button" type="submit">Search</button>
+            <input
+                className='search-text'
+                type="text"
+                placeholder="Search LovArt"
+                value={query}
+                onChange={(e) => setQueryTerm(e.target.value)}
+            />
+                 <button type="submit">
+                    <FontAwesomeIcon icon={faSearch} className="search-icon"/>
+                </button>
             </form>
         </div>
     );
