@@ -109,7 +109,8 @@ function SignupForm() {
     } else if (errors?.password) {
       setPassword2Error(errors.password);
       validationError = true;
-    } else if (password !== password2) {
+    } 
+      else if (password !== password2) {
       setPassword2Error("Confirm Password field must match");
       validationError = true;
     }
@@ -198,7 +199,7 @@ function SignupForm() {
                     style={{ borderColor: errors?.password || password2Error ? 'red' : '#ddd' }}
                   />
                   <div className="errors">
-                    {password !== password2 && "Confirm Password field must match"}
+                    {password !== password2}
                     {password2Error}
                   </div>
                 </label>
