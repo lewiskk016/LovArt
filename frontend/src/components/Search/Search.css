@@ -1,0 +1,7 @@
+body {
+    background-image: url('/Users/L/Desktop/AppAcademy/LovArt/frontend/src/components/Posts/joe-woods-4Zaq5xY5M_c-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Keep the background image fixed */
+  }

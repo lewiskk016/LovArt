@@ -90,29 +90,22 @@ function Comments({ postId }) {
               </div>
 
               <div className="comment-part">
-  {editingCommentId === comment._id ? (
-    <input
-      className="text-input"
-      type="text"
-      value={updatedComments[comment._id] || comment.text}
-      onChange={(e) =>
-        setUpdatedComments({
-          ...updatedComments,
-          [comment._id]: e.target.value,
-        })
-      }
-    />
-  ) : (
-    <p>{comment.text}</p>
-  )}
-</div>
-
-
-
-
-
-
-
+                  {editingCommentId === comment._id ? (
+                  <input
+                    className={`text-input ${editingCommentId === comment._id ? 'input-extended' : ''}`}
+                    type="text"
+                    value={updatedComments[comment._id] || comment.text}
+                    onChange={(e) =>
+                  setUpdatedComments({
+                    ...updatedComments,
+                    [comment._id]: e.target.value,
+                 })
+                }
+                />
+                ) : (
+              <p>{comment.text}</p>
+                )}
+              </div>
 
               <div className="btn-part">
                 {currentUser && currentUser._id === comment.author._id && (

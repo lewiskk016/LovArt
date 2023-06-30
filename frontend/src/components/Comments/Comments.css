@@ -196,3 +196,17 @@ margin-left: 5px;
     width: 100%;
     overflow-y: auto;
   }
+
+  .input-extended {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .comment-box {
+      flex-direction: column;
+    }
+
+    .comment-part {
+      margin-top: 1rem;
+    }
+  }

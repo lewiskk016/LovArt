@@ -4,7 +4,10 @@ import { fetchPosts } from '../../store/posts';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import PostBox from '../Posts/PostBox';
-
+import '../Posts/PostBox.css';
+import './Search.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -36,7 +39,7 @@ const Search = () => {
 
     return (
         <div className="posts-container">
-          <h2>Search Results for "{query}"</h2>
+          {/* <h2 className="search-results">Search Results for "{query}"</h2> */}
           {searchResults.length === 0 ? (
             <h3 className="no-results">No results found</h3>
           ) : (
