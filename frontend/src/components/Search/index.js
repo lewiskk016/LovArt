@@ -34,21 +34,18 @@ const Search = () => {
 
   const searchResults = filterPosts(query);
   const numberOfResults = searchResults.length;
+  const fontSize = 24 - query.length * 0.5;
+
 
   return (
     <div className="posts-container">
       <div className="picture-frame">
-        <img src={art} alt="Picture" className="picture" />
-        <div className="search-results">
+      <div className="search-results" style={{ fontSize: `${fontSize}px` }}>
           <h2 className="search-results2">
           {numberOfResults} {numberOfResults === 1 ? 'result' : 'results'} for "{query}"
           </h2>
-          {numberOfResults > 0 && (
-            <h3 className="scroll-down">
-             Please scroll down
-            </h3>
-          )}
-        </div>
+          </div>
+
       </div>
       {numberOfResults > 0 && (
         <div className="posts-container">

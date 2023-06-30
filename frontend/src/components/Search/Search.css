@@ -5,34 +5,13 @@ body {
     background-position: center;
     background-attachment: fixed; /* Keep the background image fixed */
   }
-
-
   .search-results {
-    border: 2px solid #000;
+    border: 3px solid #000;
     box-sizing: border-box;
     padding: 10px;
     width: 20%;
-  }
-
-
-
-  .picture-frame {
-    position: relative;
-    display: inline-block;
-  }
-
-  .picture {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .search-results {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    margin: 0 auto;
+    margin-top: 40px;
   }
 
   .search-results2 {
@@ -40,6 +19,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     font-family: Papyrus, fantasy;
+    text-align: center;
   }
 
   .scroll-down {
@@ -47,4 +27,5 @@ body {
     font-size: 16px;
     font-weight: bold;
     font-family: Papyrus, fantasy;
+    text-align: center;
   }
