@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment as thinComment } from "@fortawesome/free-regular-svg-icons";
 import { faEdit as regularEdit } from "@fortawesome/free-regular-svg-icons";
 import {useEffect, useRef} from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import { set } from "../../../../backend/app";
 
 function Comments({ postId }) {
@@ -84,7 +85,7 @@ function Comments({ postId }) {
                   />
                 </div>
                 <div className="photo-part-name">
-                  <span>{comment.author.username}</span>
+                <Link className="name-link" to={`/profile/${comment.author._id}`}>{comment.author.username}</Link>
                 </div>
               </div>
 
