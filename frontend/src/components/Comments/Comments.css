@@ -202,10 +202,10 @@ margin-left: 5px;
   }
 
   .paper-box {
-    width: 60%;
+    width: 375px;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1150px) {
     .paper-box {
       display: none;
     }

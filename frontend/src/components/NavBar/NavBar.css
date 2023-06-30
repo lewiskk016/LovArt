@@ -87,13 +87,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 15%;
+  width: 200px;
   height: 70%;
   border-radius: 6px;
   top: 0;
   position: fixed;
   right: 0;
-  margin-right: 10px;
+  margin-right: 40px;
   z-index: 3;
 
 }
