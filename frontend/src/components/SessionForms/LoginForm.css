@@ -4,6 +4,7 @@
   height: 730px;
   margin: 20px;
 
+
 }
 .back-line {
   display: flex;
@@ -12,6 +13,7 @@
   border: solid 2px black;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 .session-form .link-sign {
   text-decoration: none;
@@ -106,7 +108,7 @@
 }
 
 .text-overlay h1 {
-  /* text-shadow: 1px 1px 1px #000, 
+  /* text-shadow: 1px 1px 1px #000,
     3px 3px 5px blue; */
   font-size: 45px;
   /* background-color: cornflowerblue; */

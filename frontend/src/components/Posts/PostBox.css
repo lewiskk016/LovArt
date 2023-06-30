@@ -34,6 +34,7 @@
 }
 
 .post-image {
+  position: relative;
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -59,21 +60,24 @@
 }
 
 .artist-img {
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
   border: 4mm ridge black;
   margin-bottom: 10px;
   box-shadow: rgb(13, 19, 25) 0px 20px 30px -10px;
+  aspect-ratio: auto;
 }
 .artist-img img {
-  max-height: 700px;
-  width: 100%;
+  /* max-height: 700px;
+  width: 100%; */
   object-fit: cover;
+  aspect-ratio: auto;
 }
 .artist-img p {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  aspect-ratio: auto;
 }
 .post-det {
   display: flex;
@@ -374,12 +378,17 @@
 }
 
 .right-side-art-box {
-  height: 400px;
-  width: 30%;
+
+  aspect-ratio: auto;
+  height: 350px;
+  width: 400px;
+  position: relative;
   display: flex;
   margin-bottom: 20px;
-  margin-left: 30px;
-  margin-top: 20px;
+  /* margin-left: 50px; */
+  margin-top: 50px;
+  aspect-ratio: auto;
+  justify-content: center;
   /* align-items: center; */
   /* border: 3mm ridge black; */
 }
@@ -389,6 +398,7 @@
   width: 100%;
   display: flex;
   margin-bottom: 20px;
+  aspect-ratio: auto;
 }
 
 .post-card-page {
@@ -426,14 +436,14 @@
   box-sizing: border-box;
   position: relative;
   margin: auto;
-  top: 30px; 
+  top: 30px;
   color: black;
   text-indent: 20px; */
   /* overflow: auto; */
 }
 .paper-box {
   position: relative;
-  margin: 70px auto;
+  /* margin: 70px auto; */
   width: 60%;
   height: 280px;
   background: #f7f6f4;
@@ -542,9 +552,11 @@
 
 }
 .photo img {
+
   margin: 10px;
-  width: 60px;
-  height: 60px;
+  width: auto;
+  height: auto;
+  aspect-ratio: auto;
 }
 .username-new{
   display: flex;
