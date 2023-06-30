@@ -117,15 +117,16 @@ function PostBox({
         <input type="text" value={newText} onChange={handleTextChange} />
         <button onClick={handleUpdate}>Save</button>
 
-//       <div>
-//         {currentUser._id === authorId && (
-//           <div className="delete-edit-post-btn">
-//             {!editMode && (
-//               <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
-//             )}
-//             <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
-//           </div>
-//         )}
+     {/* <div>
+       {currentUser._id === authorId && (
+          <div className="delete-edit-post-btn">
+            {!editMode && (
+              <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
+            )}
+            <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
+          </div>
+        )}
+      </div> */}
       </div>
     ) : (
       <p>{text}</p>
@@ -175,9 +176,9 @@ function PostBox({
     </div>
 
 
- 
 
-  
+
+
     </>
   );
 }
@@ -212,7 +213,7 @@ export default PostBox;
 //   ) : (
 //     <p>{text}</p>
 //   )}
-// </div>     
+// </div>
 // </div>
 
 // <div className="post-like-comments">
