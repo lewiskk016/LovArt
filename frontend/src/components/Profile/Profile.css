@@ -4,7 +4,7 @@
     align-items:center ;
     flex-direction: column;
     z-index: 0;
-    background-image: url("joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+    background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
 
 }
 
@@ -168,7 +168,7 @@ margin-left: 10px;
     justify-content: center;
     align-items: center;
     /* height: 100%; */
-    background-image: url("joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+    background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
 }
 
 .loading-art {

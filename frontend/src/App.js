@@ -17,7 +17,7 @@ import { getCurrentUser } from "./store/session";
 import UserIndex from "./components/UserIndex/UserIndex";
 import AboutUs from "./components/AboutUs/AboutUs";
 
-import backgroundImage from "./components/Profile/joe-woods-4Zaq5xY5M_c-unsplash.jpg";
+import backgroundImage from "./joe-woods-4Zaq5xY5M_c-unsplash.jpg";
 import "./index.css";
 
 function App() {
