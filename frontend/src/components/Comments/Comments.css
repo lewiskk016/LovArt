@@ -190,3 +190,9 @@ margin-left: 5px;
     margin-right: 5px;
     height: 50%;
 }
+
+.comment-box-out {
+    height: 200px;
+    width: 100%;
+    overflow-y: auto;
+  }
