@@ -4,7 +4,7 @@
     align-items:center ;
     flex-direction: column;
     z-index: 0;
-    background-image: url("joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+    background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
 
 }
 
@@ -156,7 +156,7 @@ margin-left: 10px;
     justify-content: center;
     align-items: center;
     border: 4px solid #ffffff;
-    background-color: #ebebeb;
+    background-color: #a29bfe;
     box-shadow: 3px 3px 4px black;
     border-radius: 4%;
     margin-bottom: 3px;
@@ -168,7 +168,7 @@ margin-left: 10px;
     justify-content: center;
     align-items: center;
     /* height: 100%; */
-    background-image: url("joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+    background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
 }
 
 .loading-art {

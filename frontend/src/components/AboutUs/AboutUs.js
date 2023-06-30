@@ -14,7 +14,7 @@ function AboutUs() {
         <a className="social-link" href="https://github.com/aciffone23">
             <i className="fab fa-github-square"></i>
         </a>
-        <a className="social-link" href="have to put in">
+        <a className="social-link" href="https://www.linkedin.com/in/angelo-ciffone-8a8645248/">
             <i className="fab fa-linkedin"></i>
         </a>
         </div>

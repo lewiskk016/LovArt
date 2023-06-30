@@ -1,8 +1,11 @@
-.search-bar{
-    display: flex;
-    border-radius: 10px;
-    /* Additional styles */
-  }
+.search-bar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px; /* Add padding to create space between input and container border */
+
+}
 
 
   .search-bar input {
@@ -10,11 +13,12 @@
     background-color: black;
     color: white;
     border-radius: 10px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     font-weight: 24px;
     padding: 10px;
     margin-bottom: 8px;
   }
+
 
   .search-bar-container {
     color: white;
@@ -22,7 +26,15 @@
 
 
   .search-text {
+    background-color: black;
     color: white;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 10px;
+    margin: 8px;
+    width: 90%;
+    max-width: 400px; 
+    box-sizing: border-box; 
   }
 
 
@@ -37,3 +49,9 @@
   .search-bar-container input:focus::placeholder {
     color: gray; /* Color when input is focused */
   }
+
+  .search-icon {
+    display: none;
+  }
+  
+  

@@ -10,8 +10,6 @@ import image1 from "../Posts/lovart-logo-white.png"
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
 
@@ -23,30 +21,12 @@ function LoginForm() {
 
   const update = (field) => {
     const setState = field === "email" ? setEmail : setPassword;
-    const setErrorState = field === "email" ? setEmailError : setPasswordError;
-    return (e) => {
-      setState(e.currentTarget.value);
-      setErrorState("");
-    };
+    return (e) => setState(e.currentTarget.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let validationError = false;
-
-    if (!email) {
-      setEmailError('Email cannot be blank');
-      validationError = true;
-    }
-
-    if (!password) {
-      setPasswordError('Password cannot be blank');
-      validationError = true;
-    }
-
-    if (!validationError) {
-      dispatch(login({ email, password }));
-    }
+    dispatch(login({ email, password }));
   };
 
   return (
@@ -60,7 +40,7 @@ function LoginForm() {
                 <img src={image1} className="carousel-logo-img" alt="logo" />
 
                 <p>
-                  Don't you have an account?
+                  Don't you have an account?  
                   <Link className="link-sign" to="/signup">
                     Sign Up
                   </Link>
@@ -68,32 +48,34 @@ function LoginForm() {
 
                 <label>
                   <input
+                    required
                     className="input"
                     type="text"
                     value={email}
                     onChange={update("email")}
                     placeholder="Email"
-                    style={{ borderColor: errors?.email || emailError ? 'red' : '#ddd' }}
-                    />
+                    style={{ borderColor: errors?.email ? 'red' : '#ddd' }}
+                  />
                 </label>
-                <div className="errors">{errors?.email || emailError}</div>
+                <div className="errors">{errors?.email}</div>
 
                 <label>
                   <input
+                    required
                     className="input"
                     type="password"
                     value={password}
                     onChange={update("password")}
                     placeholder="Password"
-                    style={{ borderColor: errors?.password || passwordError ? 'red' : '#ddd' }}
-                    />
+                    style={{ borderColor: errors?.password ? 'red' : '#ddd' }}
+                  />
                 </label>
-                <div className="errors">{errors?.password || passwordError}</div>
+                <div className="errors">{errors?.password}</div>
                 <input
                   className="submit-style-this"
                   type="submit"
                   value="Log In"
-                  // disabled={!email || !password}
+                  disabled={!email || !password}
                 />
               </form>
               <div className="demo-user-container">

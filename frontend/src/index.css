@@ -58,3 +58,35 @@ table {
 html {
 	font-family: 'Playfair Display', serif;
   }
+
+  .app-background {
+	background-image: url("./joe-woods-4Zaq5xY5M_c-unsplash.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+
+  }
+
+  a {
+	color: blue;
+	text-decoration: none;
+  }
+  
+  a:hover,
+  a:focus {
+	text-decoration: none;
+	color: inherit;
+  }
+  
+  a:active {
+	text-decoration: none;
+  }
+
+
+
+
+
+  .visited-link {
+	color: inherit; /* or specify the desired color */
+	text-decoration: none; /* optional - remove underline */
+  }
