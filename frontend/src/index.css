@@ -67,10 +67,24 @@ html {
 
   }
 
-  a:visited {
-	color: inherit; /* or specify the desired color */
-	text-decoration: none; /* optional - remove underline */
+  a {
+	color: blue;
+	text-decoration: none;
   }
+  
+  a:hover,
+  a:focus {
+	text-decoration: none;
+	color: inherit;
+  }
+  
+  a:active {
+	text-decoration: none;
+  }
+
+
+
+
 
   .visited-link {
 	color: inherit; /* or specify the desired color */
