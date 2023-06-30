@@ -143,16 +143,27 @@ input[type=textarea] {
     display: flex;
     border-bottom: 2px solid black;
     /* border-radius: 5px; */
+    justify-content: space-between;
   }
 
   .create-imagetext{
     font-size: larger;
   }
 
-  .create-usersname{
-    margin-top: 20px;
-    margin-left: 10px;
+  .create-usersname {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
   }
+  .create-usersname h1 {
+    margin: 0;
+  }
+  
 
   .create-textarea{
     height: 100%;

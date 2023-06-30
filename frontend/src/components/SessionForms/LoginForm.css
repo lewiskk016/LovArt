@@ -33,6 +33,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease-in-out;
+  margin-left: 5px;
 }
 
 .link-sign:before {
@@ -49,6 +50,10 @@
 
 .link-sign:hover::before {
   width: 100%;
+}
+
+.link-sign:visited {
+  color: rgb(217, 100, 120);
 }
 
 .login-form-container {

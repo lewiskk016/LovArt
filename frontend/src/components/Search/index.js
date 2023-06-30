@@ -42,7 +42,7 @@ const Search = () => {
       <div className="picture-frame">
       <div className="search-results" style={{ fontSize: `${fontSize}px` }}>
           <h2 className="search-results2">
-          {numberOfResults} {numberOfResults === 1 ? 'result' : 'results'} for "{query}"
+          {/* {numberOfResults} {numberOfResults === 1 ? 'result' : 'results'} for "{query}" */}
           </h2>
           </div>
 
