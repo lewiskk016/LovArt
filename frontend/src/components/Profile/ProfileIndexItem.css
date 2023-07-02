@@ -550,4 +550,20 @@ transition: all 0.3 0.2s ease;
   z-index: 0;
 } */
 
+/* 
+.image-gallery {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  justify-content: space-between;
+} */
 
+/* .image-box {
+  height: 300px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+  border: 3mm ridge #000000;
+  z-index: 0;
+  aspect-ratio: auto;
+} */
