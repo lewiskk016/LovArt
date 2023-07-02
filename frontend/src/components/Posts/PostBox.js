@@ -89,35 +89,35 @@ function PostBox({
   return (
     <>
       <div className="index-page-right-side">
-      <div className="right-side-art-box">
-           <div className="artist-img">{images}</div>
-      </div>
-      <div className="index-left-side">
+        <div className="right-side-art-box">
+          <div className="artist-img">{images}</div>
+        </div>
+        <div className="index-left-side">
 
 
-      <div className="paper-box">
+          <div className="paper-box">
 
-<div className="top-part">
-  <div className="profile-user-info">
-    <div className="photo">  {profileImageUrl ? (
-     <img
-        className="profile-image"
-       src={profileImageUrl}
-       alt="profile"
-       />
-     ) : undefined}</div>
-    <div className="username-new">
-    <Link className="name-link" to={`/profile/${authorId}`}>{username}</Link>
-    <span>|</span>
-    </div>
-    <div className="info">
-    {" "}
-    {editMode ? (
-      <div className="save-btn">
-        <input type="text" value={newText} onChange={handleTextChange} />
-        <button onClick={handleUpdate}>Save</button>
+            <div className="top-part">
+              <div className="profile-user-info">
+                <div className="photo">  {profileImageUrl ? (
+                  <img
+                    className="profile-image"
+                    src={profileImageUrl}
+                    alt="profile"
+                  />
+                ) : undefined}</div>
+                <div className="username-new">
+                  <Link className="name-link" to={`/profile/${authorId}`}>{username}</Link>
+                  <span>|</span>
+                </div>
+                <div className="info">
+                  {" "}
+                  {editMode ? (
+                    <div className="save-btn">
+                      <input type="text" value={newText} onChange={handleTextChange} />
+                      <button onClick={handleUpdate}>Save</button>
 
-     {/* <div>
+                      {/* <div>
        {currentUser._id === authorId && (
           <div className="delete-edit-post-btn">
             {!editMode && (
@@ -127,53 +127,53 @@ function PostBox({
           </div>
         )}
       </div> */}
+                    </div>
+                  ) : (
+                    <p>{text}</p>
+                  )}
+                </div>
+                <div className="like-btn">
+                  <span onClick={handleLike}>
+                    {likeMode ? (
+                      <FontAwesomeIcon
+                        icon={solidHeart}
+                        style={{ color: "#ff0000", cursor: "pointer" }}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={thinHeart}
+                        style={{ color: "#000000", cursor: "pointer" }}
+                      />
+                    )}
+                  </span>
+                  <p>{likes?.length ?? 0}</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div className="bottom-part">
+              <div className="comments-last">
+                <Comment postId={postId}></Comment>
+              </div>
+
+              {/* <div className="make-comment"></div> */}
+              <div>
+                {currentUser._id === authorId && (
+                  <div className="delete-edit-post-btn">
+                    <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
+                    {!editMode && (
+                      <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
+                    )}
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
-    ) : (
-      <p>{text}</p>
-    )}
-    </div>
-  </div>
-
-  <div className="like-btn">
-  <span onClick={handleLike}>
-      {likeMode ? (
-        <FontAwesomeIcon
-          icon={solidHeart}
-          style={{ color: "#ff0000", cursor: "pointer" }}
-        />
-      ) : (
-        <FontAwesomeIcon
-          icon={thinHeart}
-          style={{ color: "#000000", cursor: "pointer" }}
-        />
-      )}
-    </span>
-    <p>{likes?.length ?? 0}</p>
-  </div>
-</div>
-
-<div className="bottom-part">
-  <div className="comments-last">
-    <Comment postId={postId}></Comment>
-  </div>
-
-  {/* <div className="make-comment"></div> */}
-  <div>
-  {currentUser._id === authorId && (
-    <div className="delete-edit-post-btn">
-      <button onClick={handleDelete} className="delete-post-btn">Delete Post</button>
-      {!editMode && (
-        <button onClick={() => setEditMode(true)} className="edit-post-btn">Edit Post</button>
-      )}
-    </div>
-  )}
-</div>
-
-</div>
-</div>
-
-      </div>
-    </div>
 
 
 

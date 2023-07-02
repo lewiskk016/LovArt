@@ -4,7 +4,7 @@
   /* align-items: center; */
   border: 2px solid black;
   width: 100%;
-  height: auto;
+  /* height: auto; */
   flex-direction: column;
   margin-bottom: 20px;
 }
@@ -410,20 +410,16 @@
 }
 
 .index-left-side {
-  height: auto;
-  width: 50%;
-}
-.index-left-side {
-  /* display: flex; */
-  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px;
   margin-bottom: 20px;
   margin-top: 50px;
-  margin-left: 60px;
-  height: auto;
-  width: 50%;
+  margin-left: 100px;
+  width: 100%;
+  max-width: 600px; /* Adjust the max-width to your preference */
 }
 
 .paper-box {
@@ -444,64 +440,21 @@
   /* overflow: auto; */
 }
 .paper-box {
-  position: relative;
-  /* margin: 70px auto; */
-  width: 60%;
-  height: 280px;
+  flex-grow: 1;
+  height: auto;
   background: #f7f6f4;
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;}
-
-.paper-box::before,
-.paper-box::after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  width: 40%;
-  height: 10px;
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 1);
-  z-index: -1;
-  transition: all 0.3s ease-in-out;
-}
-.paper-box:after {
-  /* content: "";
-  display: block;
-  position: absolute;
-  border: 50px solid transparent;
-  border-bottom: 50px solid #fefefe;
-  bottom: -60px;
-  right: -65px;
-  box-shadow: 0px 7px 6px -9px black;
-  transform: rotate(135deg); */
-  right: 15px;
-  transform: skew(5deg) rotate(5deg);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  background: white;
+  padding: 10px;
+  margin-bottom: 20px;  
+  width: 100%; 
+  /* min-height: 300px; */
 }
 
-.paper-box:before {
-  /* content: "";
-  display: block;
-  position: absolute;
-  border: 50px solid transparent;
-  border-top: 50px solid #fefefe;
-  top: -60px;
-  left: -65px;
-  box-shadow: 0px -7px 6px -9px black;
-  transform: rotate(135deg); */
-  left: 15px;
-  transform: skew(-5deg) rotate(-5deg);
-}
-.paper-box:hover::before,
-.paper-box:hover::after {
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-}
 
-.paper-box:hover::before {
-  left: 5px;
-}
 
-.paper-box:hover::after {
-  right: 5px;
-}
+
 
 .top-part{
   display: flex;
@@ -516,6 +469,9 @@
   flex-direction: row;
   height: 70%;
   width: 100%;
+  align-items: center;
+  border-bottom: 1px solid black; /* Add this line */
+
 }
 
 .like-btn{
@@ -524,50 +480,46 @@
   align-items: center;
   flex-direction: row;
   height: 30%;
-  width: 100%;
-  border-bottom: 1px solid black;
+  width: 20%;
 }
 .like-btn span{
-  margin-left: 10px;
+  /* margin-left: 10px;
   margin-top: 12px;
   margin-bottom: 10px;
-  margin-right: 5px;
+  margin-right: 5px; */
   font-size: 20px;
-
 }
 
 .like-btn p{
-  margin-left: 0px;
-  margin-right: 15px;
   font-size: 20px;
-  margin-bottom: 6px;
-
-
-
+  margin-left: 5px;
+  /* margin-right: 15px; */
+  margin-bottom: 8px;
 }
 .photo{
   display: flex;
   align-self: center;
   justify-self: center;
   height: 100%;
-  width: 50px;
+  width: 100px;
   /* padding: 10px; */
 
 }
 .photo img {
 
-  margin: 15px;
-  width: 30px;
-  height: 30px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
   aspect-ratio: auto;
 }
-.username-new{
+.username-new {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-end;
   height: 100%;
   width: 30%;
-
 }
+
 
 .username-new .name-link {
   text-decoration: none;
@@ -590,10 +542,12 @@
 }
 
 .info p{
-  font-size: 13px;
+  font-size: 16px;
   margin-left: 10px;
   margin-top: 10px;
-overflow: scroll;}
+  margin-bottom: 5px;
+  /* overflow: scroll; */
+}
 
 .bottom-part{
   display: flex;
@@ -607,7 +561,6 @@ overflow: scroll;}
   flex-direction: column;
   height: 80%;
   width: 100%;
-
 }
 .make-comment{
   display: flex;
