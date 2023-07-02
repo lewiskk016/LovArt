@@ -226,7 +226,7 @@ margin-left: 5px;
     width: 90%;
   }
 
-  .paper-box {
+  /* .paper-box {
     width: 375px;
   }
 
@@ -234,7 +234,7 @@ margin-left: 5px;
     .paper-box {
       display: none;
     }
-  }
+  } */
 
   .comment-box textarea {
     height: auto;
