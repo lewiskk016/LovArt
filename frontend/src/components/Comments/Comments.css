@@ -3,27 +3,31 @@
     width: 30px;
 }
 
-.comment-box{
-    height: 100%;
+.comment-box {
+    height: 70%;
     width: 100%;
     display: flex;
-    margin-top: 10px;
-}
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }  
+
+  
 
 .comment-box-username{
     height: 100%;
     width: 30%;
     display: flex;
     align-content: center;
-    /* margin-right: 20px; */
+    margin-right: 20px;
     margin-left: 5px;
 }
 
 .comment-box-username span{
-font-weight: bold;
-margin-left: 10px;
-margin-top: 5px;
-cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+    cursor: pointer;
 }
 .comment-box-username img{
     border-radius: 50%;
@@ -48,7 +52,7 @@ cursor: pointer;
 .edit-delete-btn button{
     text-align: center;
     font-size: 12px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 0.2em;
     border: 2px solid #6c5ce7;
     background-color: #a29bfe;
@@ -79,7 +83,7 @@ cursor: pointer;
 
     text-align: center;
     font-size: 12px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 0.2em;
     border: 2px solid #6c5ce7;
     background-color: #a29bfe;
@@ -88,11 +92,15 @@ cursor: pointer;
     cursor: pointer;
     margin-left: 5px;
 }
-.delete-comment-btn{
+.delete-comment-btn {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 50%;
-}
+    height: 100%;
+    text-align: center;
+  }
+  
 .edit-delete-btn{
     display: flex;
     width: 100%;
@@ -127,14 +135,15 @@ margin-left: 5px;
 .photo-part{
     display: flex;
     flex-direction: row;
-    width: 30%;
-    height: 50%;
+    width: 15%;
+    height: 100%;
+    margin-left: 18px;
 }
 
 .photo-part-img{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     width: 50%;
     height: 100%;
@@ -142,7 +151,7 @@ margin-left: 5px;
 .photo-part-name{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 33%;
     height: 100%;
 }
 
@@ -163,16 +172,30 @@ margin-left: 5px;
 
 }
 
-.cmt-btn{
+.cmt-btn {
     display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
     width: 100%;
-    height: 50%;
-
-}
-.cmnt-icon{
-    margin-left: 10px;
-    margin-bottom: 50px;
-}
+    height: 100%;
+    margin-left: 25px;
+  }
+  
+  .cmt-btn span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cmt-btn p {
+    font-size: 12px;
+  }
+  
+  .cmnt-icon {
+    margin-right: 0.5rem;
+  }
+  
+  
+  
 .photo-part-name span{
     font-weight: bold;
     cursor: pointer;
@@ -187,14 +210,16 @@ margin-left: 5px;
 
 
 .text-input{
-    margin-right: 5px;
+    margin-left: 16px;
     height: 50%;
 }
 
 .comment-box-out {
-    height: 200px;
-    width: 100%;
+    /* height: 200px;
+    width: 100%; */
+    position: relative;
     overflow-y: auto;
+    min-height: 150px;
   }
 
   .input-extended {
@@ -209,4 +234,11 @@ margin-left: 5px;
     .paper-box {
       display: none;
     }
+  }
+
+  .comment-box textarea {
+    height: auto;
+    min-height: 16px; 
+    overflow: hidden;
+    resize: none; 
   }
