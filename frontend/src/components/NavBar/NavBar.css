@@ -93,8 +93,21 @@
   right: 0;
   margin-right: 40px;
   z-index: 3;
-
 }
+
+@media screen and (max-width: 768px) {
+  .links-nav {
+    width: 150px; /* Adjust the width for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .links-nav {
+    width: 100px; /* Further reduce the width for even smaller screens */
+  }
+}
+
+
 
 .all-posts {
   width: 80%;

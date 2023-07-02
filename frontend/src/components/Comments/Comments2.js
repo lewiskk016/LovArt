@@ -25,7 +25,6 @@ function Comments({ postId }) {
   const [showCommentInput, setShowCommentInput] = useState(false);
   const [showNewCommentBox, setShowNewCommentBox] = useState(false);
   const [newComment, setNewComment] = useState("");
-
   const commentContainerRef = useRef(null);
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(false);
 
@@ -89,6 +88,8 @@ function Comments({ postId }) {
     }
   }, [comments, shouldScrollToBottom]);
 
+  console.log(comments)
+  
   return (
     <div className="comment-box-out" ref={commentContainerRef}>
       {comments &&
