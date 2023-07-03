@@ -2,18 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center; /* Added alignment property */
+    align-items: center; 
     padding: 35px;
     gap: 30px;
-    height: 100vh; /* Added height property */
-    box-sizing: border-box; /* Added box-sizing property */
+    height: 100vh; 
+    box-sizing: border-box; 
     margin-left: 175px;
     
   }
   
   .about-us-box {
     margin-bottom: 100px;
-    width: 225px; /* Adjust the width as needed */
+    width: 225px; 
     height: 500px;
     margin: 10px;
     padding: 10px;
@@ -69,10 +69,10 @@
   }
   
   
-  /* Media query for responsive layout */
+
   @media screen and (max-width: 768px) {
     .about-us-box {
-      width: 45%; /* Adjust the width for smaller screens */
+      width: 45%; 
     }
   }
   
