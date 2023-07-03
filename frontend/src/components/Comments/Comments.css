@@ -52,7 +52,6 @@
 .edit-delete-btn button{
     text-align: center;
     font-size: 12px;
-    /* text-align: center; */
     border-radius: 0.2em;
     border: 2px solid #6c5ce7;
     background-color: #a29bfe;
@@ -83,7 +82,6 @@
 
     text-align: center;
     font-size: 12px;
-    /* text-align: center; */
     border-radius: 0.2em;
     border: 2px solid #6c5ce7;
     background-color: #a29bfe;
@@ -119,9 +117,6 @@
     margin-top: 20px;
     margin-left: 15px;
 }
-/* .comment-form-container span{
-margin-left: 5px;
-} */
 
 .comment-box-out{
     display: flex;
@@ -143,7 +138,6 @@ margin-left: 5px;
 .photo-part-img{
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: center;
     width: 50%;
     height: 100%;
@@ -215,8 +209,6 @@ margin-left: 5px;
 }
 
 .comment-box-out {
-    /* height: 200px;
-    width: 100%; */
     position: relative;
     overflow-y: auto;
     min-height: 150px;
@@ -230,7 +222,7 @@ margin-left: 5px;
     .paper-box {
       display: none;
     }
-  } */
+  }
 
   .comment-box textarea {
     height: auto;
