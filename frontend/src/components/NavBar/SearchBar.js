@@ -34,7 +34,7 @@ const SearchBar = () => {
         <input
           className='search-text'
           type="text"
-          placeholder="Search LovArt"
+          placeholder="Search..."
           value={query}
           onChange={(e) => setQueryTerm(e.target.value)}
         />

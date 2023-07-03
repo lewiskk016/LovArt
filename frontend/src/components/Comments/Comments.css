@@ -226,15 +226,11 @@ margin-left: 5px;
     width: 90%;
   }
 
-  /* .paper-box {
-    width: 300px;
-  } */
-
   @media screen and (max-width: 1250px) {
     .paper-box {
       display: none;
     }
-  }
+  } */
 
   .comment-box textarea {
     height: auto;

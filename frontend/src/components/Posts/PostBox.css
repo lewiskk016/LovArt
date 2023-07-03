@@ -67,9 +67,18 @@
   box-shadow: rgb(13, 19, 25) 0px 20px 30px -10px;
   aspect-ratio: auto;
 }
+
+@media screen and (max-width: 1300px) {
+    .artist-img {
+    height: 400px;
+    width: 250px;
+    margin-right: 100px; 
+    position: relative;
+  }
+}
 .artist-img img {
-  /* max-height: 700px;
-  width: 100%; */
+  /* max-height: 700px; */
+  width: 100%;
   object-fit: cover;
   aspect-ratio: auto;
 }
@@ -385,13 +394,21 @@
   position: relative;
   display: flex;
   margin-bottom: 20px;
-  margin-left: 80px;
+  margin-left: 250px;
   margin-top: 50px;
   aspect-ratio: auto;
-  justify-content: center;
+  /* justify-content: center; */
   /* align-items: center; */
   /* border: 3mm ridge black; */
 }
+
+.modal-content .right-side-art-box {
+  margin-left: 0;
+}
+
+
+
+
 
 .index-page-right-side {
   height: auto;
@@ -399,6 +416,7 @@
   display: flex;
   margin-bottom: 20px;
   aspect-ratio: auto;
+  justify-content: center;
 }
 
 .post-card-page {
@@ -420,16 +438,33 @@
   max-width: 600px;
 }
 
-.index-left-side {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 10px;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  margin-top: 50px;
-  /* margin-left: 60px; */
-  width: 100%;
-  max-width: 400px; /* Adjust the max-width to your preference */
+@media screen and (max-width: 1000px) {
+  .index-left-side {
+    width: auto;
+}
+}
+@media screen and (max-width: 600px) {
+  .index-left-side {
+   display: none;
+}
+}
+
+.paper-box {
+  /* width: 70%;
+  max-height: 300PX;
+  border: 2px solid black;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-size: cover;
+  background-clip: content-box;
+  background-color: #FAF9F6;
+  box-sizing: border-box;
+  position: relative;
+  margin: auto;
+  top: 30px;
+  color: black;
+  text-indent: 20px; */
+  /* overflow: auto; */
 }
 
 

@@ -83,29 +83,30 @@
 .links-nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 200px;
   height: 70%;
   border-radius: 6px;
   top: 0;
   position: fixed;
-  right: 0;
-  margin-right: 40px;
+  left: 0; /* Adjusted property to position on the left */
   z-index: 3;
+  margin-left: 40px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .links-nav {
-    width: 150px; /* Adjust the width for smaller screens */
+    display: none;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .links-nav {
-    width: 100px; /* Further reduce the width for even smaller screens */
+    display: none;
   }
 }
+
 
 
 
@@ -237,6 +238,7 @@
   text-shadow: 1px 1px 1px #d1c5c5, 3px 3px 5px rgb(209, 97, 214);
 }
 .fa-search-icon {
-  font-size: 24px;
-  margin-bottom: 5px;
+  font-size: 18px;
+  margin-bottom: 0px;
+  font-weight: 900;
 }
