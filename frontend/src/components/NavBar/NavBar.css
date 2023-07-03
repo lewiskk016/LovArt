@@ -240,3 +240,10 @@
   font-size: 24px;
   margin-bottom: 5px;
 }
+
+
+@media screen and (max-width: 1250px) {
+    .links-nav {
+      display: none;
+    }
+  }

@@ -230,7 +230,7 @@ margin-left: 5px;
     width: 300px;
   } */
 
-  @media screen and (max-width: 1250px) {
+  @media screen and (max-width: 1060px) {
     .paper-box {
       display: none;
     }
