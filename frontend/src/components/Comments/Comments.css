@@ -10,9 +10,9 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-  }
+  }  
 
-
+  
 
 .comment-box-username{
     height: 100%;
@@ -98,7 +98,7 @@
     height: 100%;
     text-align: center;
   }
-
+  
 .edit-delete-btn{
     display: flex;
     width: 100%;
@@ -174,22 +174,22 @@
     height: 100%;
     margin-left: 25px;
   }
-
+  
   .cmt-btn span {
     display: flex;
     align-items: center;
   }
-
+  
   .cmt-btn p {
     font-size: 12px;
   }
-
+  
   .cmnt-icon {
     margin-right: 0.5rem;
   }
-
-
-
+  
+  
+  
 .photo-part-name span{
     font-weight: bold;
     cursor: pointer;
@@ -218,7 +218,11 @@
     width: 90%;
   }
 
-  @media screen and (max-width: 1250px) {
+  /* .paper-box {
+    width: 375px;
+  }
+
+  @media screen and (max-width: 1150px) {
     .paper-box {
       display: none;
     }
@@ -226,7 +230,7 @@
 
   .comment-box textarea {
     height: auto;
-    min-height: 16px;
+    min-height: 16px; 
     overflow: hidden;
-    resize: none;
+    resize: none; 
   }

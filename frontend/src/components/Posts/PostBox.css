@@ -430,12 +430,14 @@
 .index-left-side {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
   margin-bottom: 20px;
   margin-top: 50px;
-  margin-left: 60px;
+  margin-left: 100px;
   width: 100%;
-  max-width: 600px;
+  max-width: 600px; /* Adjust the max-width to your preference */
 }
 
 @media screen and (max-width: 1000px) {
@@ -449,8 +451,6 @@
 }
 }
 
-
-
 .paper-box {
   flex-grow: 1;
   height: auto;
@@ -459,10 +459,13 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
   background: white;
   padding: 10px;
-  margin-bottom: 20px;
-  width: 120%;
+  margin-bottom: 20px;  
+  width: 100%; 
   /* min-height: 300px; */
 }
+
+
+
 
 
 .top-part{
@@ -492,7 +495,10 @@
   width: 20%;
 }
 .like-btn span{
-
+  /* margin-left: 10px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  margin-right: 5px; */
   font-size: 20px;
 }
 
