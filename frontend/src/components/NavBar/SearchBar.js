@@ -38,9 +38,9 @@ const SearchBar = () => {
           value={query}
           onChange={(e) => setQueryTerm(e.target.value)}
         />
-        <button type="submit">
+        {/* <button type="submit">
           <FontAwesomeIcon icon={faSearch} className="search-icon"/>
-        </button>
+        </button> */}
       </form>
     </div>
   );

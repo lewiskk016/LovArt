@@ -5,6 +5,7 @@ import { logout } from "../../store/session";
 import SearchBar from "./SearchBar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useState } from "react";
 
 // import image from "./lovart-logo.png";
 
