@@ -14,7 +14,8 @@
   justify-content: center;
   align-items: center;
   /* height: 100%; */
-  background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+  background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg");
+  background-size:contain;
 
 }
 
@@ -301,7 +302,9 @@
   align-items: center;
   height: auto;
   width: 100%;
-  background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg")
+  background-image: url("../../joe-woods-4Zaq5xY5M_c-unsplash.jpg");
+  background-size:contain;
+  /* background-repeat: no-repeat; */
   /* position: absolute;
   z-index: -3; */
 
@@ -348,6 +351,8 @@
   transition: 1s;
   border-radius: 5px;
   cursor: pointer;
+  padding: 0px 5px 0px 5px;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .delete-edit-post-btn .delete-post-btn {
@@ -362,6 +367,8 @@
   border-radius: 5px;
   cursor: pointer;
   margin-left: 4px;
+  padding: 0px 5px 0px 5px;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .delete-edit-post-btn .edit-post-btn {
@@ -374,6 +381,8 @@
   transition: 1s;
   border-radius: 5px;
   cursor: pointer;
+  padding: 0px 5px 0px 5px;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .delete-edit-post-btn .delete-post-btn:hover {

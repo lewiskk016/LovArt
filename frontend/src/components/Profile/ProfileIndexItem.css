@@ -249,6 +249,8 @@
     transition: 1s;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Chakra Petch", sans-serif;
+    padding: 0px 5px 0px 5px;
 }
 
 .box-body{
