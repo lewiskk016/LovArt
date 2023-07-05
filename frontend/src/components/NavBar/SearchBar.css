@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   padding: 0 12px; 
-
+  margin-bottom: 10px;
 }
 
 
@@ -38,7 +38,7 @@
     margin: 8px;
     width: 90%;
     max-width: 400px; 
-    box-sizing: border-box; 
+    box-sizing: border-box;
   }
 
 
