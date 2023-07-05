@@ -163,6 +163,7 @@
     width: 20%;
     height: 100%;
     margin-right: 5px;
+    font-family: "Chakra Petch", sans-serif;
 
 }
 
@@ -233,4 +234,10 @@
     min-height: 16px; 
     overflow: hidden;
     resize: none; 
+    font-family: "Chakra Petch", sans-serif;
+  }
+
+  .name-link{
+color: black;
+text-decoration: underline;
   }
